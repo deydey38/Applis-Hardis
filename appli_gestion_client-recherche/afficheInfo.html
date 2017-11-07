@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<title id='title'>Gestion clients</title>
+
+	<script type="text/javascript" src="./JS/JQuery/jquery_1.9.1.js"></script>	
+	<script type="text/javascript" src="./JS/JQuery/jquery_1.6.2.js"></script>
+	<script type="text/javascript" src="./JS/JQuery/jquery_1.12.4.js"></script>
+	<script type="text/javascript" src="./JS/JQuery/jquery-ui-1.12.1.js"></script>
+	<script type="text/javascript" src="./JS/load_selectInfo.js"></script>
+	<script type="text/javascript" src="./JS/load_formulaire.js"></script>
+	<script type="text/javascript" src="./JS/load_formulaire-backlog.js"></script>
+	<script type="text/javascript" src="./JS/load_CI.js"></script>
+	<script type="text/javascript" src="./JS/load_Contact.js"></script>
+	<script type="text/javascript" src="./JS/load_docCo.js"></script>
+	<script type="text/javascript" src="./JS/load_backlog.js"></script>
+	<script type="text/javascript" src="./JS/get_param.js"></script>
+	<script type="text/javascript" src="./JS/spin.js"></script>	
+	<script type="text/javascript" src="./JS/load_rapport.js"></script>
+	
+	<link rel="stylesheet" href="style/body.css">
+	<link rel="stylesheet" href="style/selectInfo.css">
+	<link rel="stylesheet" href="style/CI.css">
+	<link rel="stylesheet" href="style/backlog.css">
+	<link rel="stylesheet" href="style/form.css">
+	<link rel="stylesheet" href="style/form_edit_backlog.css">
+	<link rel="stylesheet" href="style/popup.css">
+	<link rel="stylesheet" href="style/docCo.css">
+	<link rel="stylesheet" href="style/tooltip.css">
+	<link rel="stylesheet" href="./JS/jquery-ui-themes-1.11.4/themes/smoothness/jquery-ui.css">	
+	<style type="text/css" src="https://itop.hardis.fr/css/light-grey.css"></style>
+	
+	<script>		
+	
+		var hidden, visibilityChange, fcis;
+		var nomOrg = 'undefined';
+		var nomCI = 'undefined';
+		
+		var page='afficheSelectInfo';
+		var modifClient= 0;
+		var loginVisible= 0;
+		
+		//pour la gestion de chargement des onglets
+		var dejaVisiteContact=0;
+		var dejaVisiteBacklog=0;
+		var dejaVisiteDocCo=0;
+		var dejaVisiteCIs=0;
+		
+		
+		//pour reload la page quand on quitte et quon reviens sur la page
+		if (typeof document.hidden !== "undefined") {
+		  hidden = "hidden";
+		  visibilityChange = "visibilitychange";
+		  visibilityState = "visibilityState";
+		} else if (typeof document.mozHidden !== "undefined") {
+		  hidden = "mozHidden";
+		  visibilityChange = "mozvisibilitychange";
+		  visibilityState = "mozVisibilityState";
+		} else if (typeof document.msHidden !== "undefined") {
+		  hidden = "msHidden";
+		  visibilityChange = "msvisibilitychange";
+		  visibilityState = "msVisibilityState";
+		} else if (typeof document.webkitHidden !== "undefined") {
+		  hidden = "webkitHidden";
+		  visibilityChange = "webkitvisibilitychange";
+		  visibilityState = "webkitVisibilityState";
+		}
+		<!-- // La variable hidden contient le nom de la propriété du document -->
+		<!-- // La variable visibilityChange contient le nom de l'événement -->
+		<!-- // La variable visibilityState contient la propriété d'état -->
+		document.addEventListener(visibilityChange, changementVisibilite, false);
+		// Elément qui va permettre un affichage informatif
+		var log = document.getElementById('log');
+		
+		// Fonction qui traite l'événement
+		function changementVisibilite() {
+			
+			if(!document[hidden] && loginVisible==1) {
+				window.location.reload()
+				
+			} 		 
+		}
+				
+		$( function() {
+			$('input').keyup(function(e) {    
+			   if(e.keyCode == 13) { // KeyCode de la touche entrée
+					//cacher les proposition de lautocompletion
+					$('#ui-id-1').hide();
+			 }
+			});			
+		});
+		
+		function ChangeOnglet(onglet, contenu) 
+		{   
+		
+			if(onglet=='tab_contact' && dejaVisiteContact!=1){
+				dejaVisiteContact=1;
+				loadPageAfficheContact();
+			}else if(onglet=='tab_docCo' && dejaVisiteDocCo!=1){
+				dejaVisiteDocCo=1;
+				loadPageAfficheDocCo();
+			}else if(onglet=='tab_CIs' && dejaVisiteCIs!=1){
+				dejaVisiteCIs=1;
+				loadPageAfficheCI();
+			}else if(onglet=='tab_backlog' && dejaVisiteBacklog!=1){
+				dejaVisiteBacklog=1;
+				loadPageAfficheBacklog();
+			}
+			
+			document.getElementById('content_CIs').style.display = 'none';
+			document.getElementById('content_contact').style.display = 'none';
+			document.getElementById('content_docCo').style.display = 'none';       
+			document.getElementById('content_backlog').style.display = 'none';       
+			document.getElementById(contenu).style.display = 'block';       
+		 
+			document.getElementById('tab_CIs').className = '';
+			document.getElementById('tab_contact').className = '';
+			document.getElementById('tab_docCo').className = '';       
+			document.getElementById('tab_backlog').className = '';       
+			document.getElementById(onglet).className = 'active';       
+		}   
+
+		function reloadOngletActive(){
+			var ongletActif= document.getElementsByClassName("active");
+				
+			if(ongletActif[0].id == 'tab_CIs'){
+				dejaVisiteCIs=0;
+				ChangeOnglet('tab_CIs', 'content_CIs'); 
+			}else if(ongletActif[0].id == 'tab_contact'){
+				dejaVisiteContact=0;
+				ChangeOnglet('tab_contact', 'content_contact'); 
+			}else if(ongletActif[0].id == 'tab_docCo'){
+				dejaVisiteDocCo=0;
+				ChangeOnglet('tab_docCo', 'content_docCo'); 
+			}else if(ongletActif[0].id == 'tab_backlog'){
+				dejaVisiteBacklog=0;
+				ChangeOnglet('tab_backlog', 'content_backlog'); 
+			}
+				
+		}
+		
+	</script>
+</head>
+<!-- onload='loadPageSelectInfo(); loadPageAfficheCI(); ' -->
+<body onload='loadPageSelectInfo();'>
+	<div id="main_div">
+		<div id='login' hidden>
+			<h2>Authentification iTop</h2>
+			
+			<p>
+				Vous devez être connecté sur iTop.
+			</p>
+			<a href='https://itop.hardis.fr' target='_blank'>Cliquez ici pour se connecter</a>
+			<span class='errorMessage' id='errorMessage'></span><br />
+
+		</div>
+		<span id="backlogHardisListId">	</span>
+		
+		<div id='connected' hidden>
+			<span id='refresh' onclick='reloadOngletActive();'>Actualiser</span>
+			
+			<h1>Bienvenue sur l'application de gestion des clients</h1>
+			<h2></h2>
+
+			
+			<form method="get" action="afficheInfo.html" id='formC' >
+
+				<label for="client">Entrez le nom du client </label> 
+				<input type="search" name="client" id='client' autofocus />
+				<p id="ou">ou</p> 
+				<label for="ciName">Entrez le nom d'un CI </label> 
+				<input type="search" name="ciName" id='ciName'/>
+				
+				<span id='alertFormError' hidden></span>
+				<input type="submit" value="Rechercher" id='valid' />
+
+			</form>
+	
+			<div class='tabbed_area' hidden>
+				<ul class="tabs">
+					<li><a href="javascript:ChangeOnglet('tab_CIs', 'content_CIs');" id="tab_CIs" class="active">CIs</a></li>
+					<li><a href="javascript:ChangeOnglet('tab_contact', 'content_contact');" id="tab_contact">Contacts</a></li>
+					<li><a href="javascript:ChangeOnglet('tab_backlog', 'content_backlog');" id="tab_backlog">Backlog</a></li>
+					<li><a href="javascript:ChangeOnglet('tab_docCo', 'content_docCo');" id="tab_docCo">document de connexion</a></li>
+				</ul>
+			
+			
+				<div id="content_CIs" class="content">        
+					<div id='div_db'>		
+						<div class='div_table'>
+							<table id='table_db' class='table'>
+								<caption>Liste des bases de données du client (Adélia et SQL)</caption>
+								<thead>
+									<tr>
+										<th>Utilisation</th>
+										<th>CI</th>
+										<th>Système</th>
+									</tr>
+								</thead>
+								<tbody>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<!-- <div id='div_db'>		 -->
+						<!-- <div class='div_table'> -->
+							<!-- <table id='table_db_sql_oracle' class='table'> -->
+								<!-- <caption>Liste des bases de données du client</caption> -->
+								<!-- <thead> -->
+									<!-- <tr> -->
+										<!-- <th>Utilisation</th> -->
+										<!-- <th>Description</th> -->
+										<!-- <th>CI</th> -->
+										<!-- <th>Environnement BD</th> -->
+										<!-- <th>Système</th> -->
+									<!-- </tr> -->
+								<!-- </thead> -->
+								<!-- <tbody> -->
+								<!-- </tbody> -->
+							<!-- </table> -->
+						<!-- </div> -->
+					<!-- </div> -->
+					
+					<div id='div_vm'>
+						<div class='div_table'>
+							<table id='table_vm' class='table'>
+								<caption>Liste des machines virtuelles du client </caption>
+								<thead>
+									<tr>
+										<th>Utilisation</th>
+										<th>CI</th>
+										<th>IP</th>
+										<th>ESX / Cluster</th>
+										<th>Famille OS</th>
+										<th>Version OS</th>
+									</tr>
+								</thead>
+								<tbody>								
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div id='div_contact'>
+						<table id='table_contact' class='table'>
+							<caption>Contact internes du client</caption>
+							<thead>
+								<tr>
+									<th>Agent</th>
+									<th>Fonction</th>
+									<th>E-mail</th>
+									<th>Téléphone</th>
+								</tr>
+							</thead>
+							<tbody>								
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div id="content_contact" class="content"hidden>        
+					<table id='table_contactC' class='table'>
+						<caption>Contact du client</caption>
+						<thead>
+							<tr>
+								<th>Nom</th>
+								<th>Site</th>
+								<th>E-mail</th>
+								<th>Téléphone</th>
+								<th>Téléphone portable</th>
+							</tr>
+						</thead>
+						<tbody>								
+						</tbody>
+					</table>
+				</div>
+				<div id="content_backlog" class="content"hidden>        
+					<p id='lastExtractDate'></p>
+					<section id='header'>
+						<article id='ticketOuvert'>
+							<h2>ticket(s) ouvert(s) dans iTOP</h2>
+							<div id='headerTicketAT'>
+								<h3>ticket(s) à traiter:</h3>
+								<ul>
+									<li>incident(s)</li>
+									<li>demande(s)</li>
+								</ul>
+							</div>
+							<div id='headerTicketEAT'>
+								<h3>ticket(s) en attente:</h3>
+								<ul>
+									<li>incident(s)</li>
+									<li>demande(s)</li>
+								</ul>
+							</div>
+							<div id='headerPbAT'>
+								<h3>problème(s) à traiter</h3>
+							</div>
+							<div id='headerPbEAT'>
+								<h3>problème(s) en attente</h3>
+							</div>
+						</article>
+					</section>
+					<section id='recapCount'>
+						<article id='recapCountInc'>
+							<table id='tableRecapCountInc'>
+								<caption>Incidents</caption>
+								<thead>
+									<tr>
+										<th>Organisation</th>
+										<th class='hotline'>Hotline</th>
+										<th class='tma'>TMA</th>
+										<th class='retd'>R&D </th>
+										<th class='h2i'>H2i</th>
+										<th class='at'>AT</th>
+									</tr>
+								</thead>
+								<tbody>								
+								</tbody>
+							</table>
+						</article>
+				
+						<article id="recapCountDem">
+							<table id='tableRecapCountDem'>
+								<caption>Demandes</caption>
+								<thead>
+									<tr>
+										<th>Organisation</th>
+										<th class='hotline'>Hotline</th>
+										<th class='tma'>TMA</th>
+										<th class='retd'>R&D </th>
+										<th class='h2i'>H2i</th>
+										<th class='at'>AT</th>
+									</tr>
+								</thead>
+								<tbody>								
+								</tbody>
+							</table>
+						</article>
+						
+						<article id="recapCountProblem">
+							<table id='tableRecapCountProblem'>
+								<caption>Problèmes</caption>
+								<thead>
+									<tr>
+										<th>Organisation</th>
+										<th class='hotline'>Hotline</th>
+										<th class='tma'>TMA</th>
+										<th class='retd'>R&D </th>
+										<th class='h2i'>H2i</th>
+										<th class='at'>AT</th>
+									</tr>
+								</thead>
+								<tbody>								
+								</tbody>
+							</table>
+						</article>
+					</section>
+					<section id='ticketAT'>
+						<table id='tableTicketAT'>
+							<caption>Liste des tickets à traiter</caption>
+							<thead>
+								<tr>
+									<th>Type du ticket</th>
+									<th>Priorité</th>
+									<th>Type</th>
+									<th>Statut</th>
+									<th>Réfèrence iTop</th>
+									<th>Titre</th>
+									<th>Date de création</th>
+									<th>Équipe</th>
+									<th>Agent</th>
+									<th>Dernier commentaire public</th>
+								</tr>
+							</thead>
+							<tbody>								
+							</tbody>
+						</table>
+					</section>
+					<section id='ticketEA'>
+						<table id='tableTicketEA'>
+							<caption>Liste des tickets en attente</caption>
+							<thead>
+								<tr>
+									<th>Type du ticket</th>
+									<th>Priorité</th>
+									<th>Type</th>
+									<th>Statut</th>
+									<th>Réfèrence iTop</th>
+									<th>Titre</th>
+									<th>Date de création</th>
+									<th>Équipe</th>
+									<th>Agent</th>
+									<th>Dernier commentaire public</th>
+								</tr>
+							</thead>
+							<tbody>								
+							</tbody>
+						</table>
+					</section>
+					<section id='ticketF'>
+						<form method="post" action="BacklogClient.html" id='form'>
+						   <p>
+							   <label for='periode'>Sélectionnez une période</label>
+							   <select name="periode" id="periode" onchange="loadTabPeriode();">
+								   <option value="oneMonth">1 mois</option>
+								   <option value="twoMonths">2 mois</option>
+								   <option selected value="threeMonths">3 mois</option>
+							   </select>
+							   <br>
+							    <label for='displayTF'>Afficher les tickets fermés</label>
+							   <input id="displayTF" type="checkbox" checked="checked" onclick='if($("#displayTF").is(":checked")){$("#tableTicketF").show();}else{$("#tableTicketF").hide();}'/>
+						   </p>
+						</form>
+						<table id='tableTicketF'>
+							<caption>Liste des tickets fermés/résolus/rejetés sur la période</caption>
+							<thead>
+								<tr>
+									<th>Type du ticket</th>
+									<th>Type</th>
+									<th>Réfèrence iTop</th>
+									<th>Titre</th>
+									<th>Date de création</th>
+									<th>Date de fermeture/résolution</th>
+									<th>Équipe</th>
+									<th>Agent</th>
+									<th>Dernier commentaire public</th>
+								</tr>
+							</thead>
+							<tbody id='bodyTableTicketF'>								
+							</tbody>
+						</table>
+					</section>
+					<section id='ticketSpe'>
+						<article id='ticketP1'>			
+							<table id='tableTicketP1'>
+							<caption>Liste des tickets P1 sur la période</caption>
+								<thead>
+									<tr>
+										<th>Type du ticket</th>
+										<th>Réfèrence iTop</th>
+										<th>Titre</th>
+										<th>Date de création</th>
+										<th>Date de fermeture/résolution</th>
+										<th>Équipe</th>
+										<th>Dernier commentaire public</th>
+									</tr>
+								</thead>
+								<tbody>								
+								</tbody>
+							</table>
+						</article>
+						<article id='SLA'>
+							<table id='tableSLA'>
+								<caption>Liste des SLA dépassées sur la période</caption>
+								<thead>
+									<tr>
+										<th>Type du ticket</th>
+										<th>Réfèrence iTop</th>
+										<th>Titre</th>
+										<th>Date de création</th>
+										<th>Date de fermeture/résolution</th>
+										<th>Équipe</th>
+										<th>Dernier commentaire public</th>
+										<th>SLA</th>
+									</tr>
+								</thead>
+								<tbody>								
+								</tbody>
+							</table>
+						</article>
+					</section>	
+		
+				</div>
+				<div id="content_docCo" class="content"hidden>        
+					<h3 id='nomDoc'>Nom du document:</h3><p id='nomDocp'></p>
+					<h3 id="lienitop">Lien iTop:</h3> <p id="lienitopp"></p>
+					<h3 id='statDoc'>Statut:</h3><p id='statDocp'></p>
+					<h3 id='majByDoc'>Mis à jour par:</h3><p id='majByDocp'></p>
+					<h3>Contenu:</h3>
+					<p id='contentDoc'></p>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	
+	<!--Pour l'annimation du chargement--->
+	<div id='spinner' class='spinner'>
+	</div>
+	<div id="shadowing">
+	</div>
+</body>
+</html>

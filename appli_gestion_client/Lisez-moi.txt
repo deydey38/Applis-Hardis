@@ -1,0 +1,3 @@
+Application affichage des informations d'un client pour l'espace client.
+
+url de l'application avec paramètre:  /appli_gestion_client-EC/afficheInfo.html?client=ATRYA

@@ -1,0 +1,47 @@
+/*popup message*/
+#popupMessage{
+	position: absolute;
+	top:50%;
+	left:50%;
+}
+
+#popupMessage .popup_block{
+	position: fixed;
+    width:250px;
+	bottom: 1%;
+	right: 2.5%;
+    box-sizing: border-box;
+    border-radius: 15px;
+	border-style:solid;
+	border-color:#3498db;
+    transform-style: preserve-3d;
+	box-shadow: 0px 20px 100px #aaa;
+	background-color: white;
+}
+
+#popupMessage .popup_head{
+	background-color:#3498db;
+	border-radius: 10px 10px 0 0;
+	transition-duration:0.2s;
+}
+
+#popupMessage .popup_body{
+	padding:0px 10px;
+}
+
+#popupMessage .popup_head h2{
+	margin-top:0px;
+	color:white;
+	padding: 4px 10px;
+	font-size: 18px;
+	font-style: justify;
+}
+
+#popupMessage .popup_head img{
+	width: 25px;
+	height: 25px;
+	position: relative;
+	float: right;
+	bottom: 41px;
+	cursor: pointer;
+}

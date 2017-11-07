@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<title id='title'>Gesion indicateurs</title>
+
+	<script type="text/javascript" src="./JS/JQuery/jquery_1.9.1.js"></script>	
+	<script type="text/javascript" src="./JS/JQuery/jquery_1.6.2.js"></script>
+	<script type="text/javascript" src="./JS/JQuery/jquery_1.12.4.js"></script>
+	<script type="text/javascript" src="./JS/JQuery/jquery-ui-1.12.1.js"></script>
+	<script type="text/javascript" src="./JS/load_page.js"></script>
+	<script type="text/javascript" src="./JS/spin.js"></script>
+	
+	
+	<link rel="stylesheet" href="style/backlog.css">
+	<link rel="stylesheet" href="style/body.css">
+	<link rel="stylesheet" href="./JS/jquery-ui-themes-1.11.4/themes/smoothness/jquery-ui.css">	
+	<style type="text/css" src="https://itop.hardis.fr/css/light-grey.css"></style>
+	
+	<script>
+		
+		var hidden, visibilityChange;	
+		
+		var loginVisible= 0;
+		
+		//anti drag&drop
+		$(document).on('dragstart',function(e){return false;});
+		
+		//pour reload la page quand on quitte et quon reviens sur la page
+		if (typeof document.hidden !== "undefined") {
+		  hidden = "hidden";
+		  visibilityChange = "visibilitychange";
+		  visibilityState = "visibilityState";
+		} else if (typeof document.mozHidden !== "undefined") {
+		  hidden = "mozHidden";
+		  visibilityChange = "mozvisibilitychange";
+		  visibilityState = "mozVisibilityState";
+		} else if (typeof document.msHidden !== "undefined") {
+		  hidden = "msHidden";
+		  visibilityChange = "msvisibilitychange";
+		  visibilityState = "msVisibilityState";
+		} else if (typeof document.webkitHidden !== "undefined") {
+		  hidden = "webkitHidden";
+		  visibilityChange = "webkitvisibilitychange";
+		  visibilityState = "webkitVisibilityState";
+		}
+		<!-- // La variable hidden contient le nom de la propriété du document -->
+		<!-- // La variable visibilityChange contient le nom de l'événement -->
+		<!-- // La variable visibilityState contient la propriété d'état -->
+		document.addEventListener(visibilityChange, changementVisibilite, false);
+		// Elément qui va permettre un affichage informatif
+		var log = document.getElementById('log');
+		
+		// Fonction qui traite l'événement
+		function changementVisibilite() {
+			
+			if(!document[hidden] && loginVisible==1) {
+				window.location.reload()
+				
+			} 		 
+		}
+		
+	</script>
+</head>
+<body onload='loadPage();'>
+	<div id="main_div">
+		<h1>Gestion des indicateurs</h1>
+		<div id='login' hidden>
+			<h2>Authentification iTop</h2>
+			
+			<p>
+				Vous devez être connecté sur iTop.
+			</p>
+			<a href='https://itop.hardis.fr' target='_blank'>Cliquez ici pour se connecter</a>
+			<span class='errorMessage' id='errorMessage'></span><br />
+
+		</div>
+		<span id="backlogHardisListId">	</span>
+		
+		<div id='connected' hidden>
+			<span id='refresh' onclick='loadTabPeriode();'>Actualiser</span>
+				<div id="content_backlog" class="content">        
+					<p id='lastExtractDate'></p>
+					<form method="post" action="BacklogClient.html" id='form'>
+					   <p>
+						   <label for='periode'>Sélectionnez une période: </label>
+						   <select name="periode" id="periode" onchange="loadTabPeriode();">
+							   <option selected="selected" value="oneMonth">1 mois</option>
+							   <option value="twoMonths">2 mois</option>
+							   <option value="threeMonths">3 mois</option>
+						   </select>
+					   </p>
+					</form>
+					<h2>Indicateurs globaux</h2>
+					<table id='tableIndicGlobal'>
+						<caption>Demandes de clients</caption>
+						<thead>
+							<tr>
+								<th COLSPAN="2">Nombre d'incidents P1</th>
+								<th COLSPAN="2">Nombre d'incidents P2</th>
+								<th COLSPAN="2">Nombre d'incidents P3</th>
+								<th COLSPAN="2">Nombre de demandes</th>
+							<th ROWSPAN="2">Nombre de tickets résolus</th>
+								<th ROWSPAN="2">Nombre de tickets en cours (hors en attente client)</th>
+							</tr>
+							<tr>
+								<th>Créés</th>
+								<th>Résolus</th>
+								<th>Créés</th>
+								<th>Résolus</th>
+								<th>Créés</th>
+								<th>Résolus</th>
+								<th>Créés</th>
+								<th>Résolus</th>
+							</tr>
+						</thead>
+						<tbody>								
+						</tbody>
+					</table>
+					<table id='tableIndicGlobalPb'>
+						<caption>Problèmes</caption>
+						<thead>
+							<tr>
+								<th COLSPAN="2">Nombre de problèmes P1</th>
+								<th COLSPAN="2">Nombre de problèmes P2</th>
+								<th COLSPAN="2">Nombre de problèmes P3</th>
+								<th ROWSPAN="2">Nombre de problèmes résolus</th>
+								<th ROWSPAN="2">Nombre de problèmes en cours (hors en attente client)</th>
+							</tr>
+							<tr>
+								<th>Créés</th>
+								<th>Résolus</th>
+								<th>Créés</th>
+								<th>Résolus</th>
+								<th>Créés</th>
+								<th>Résolus</th>
+							</tr>
+						</thead>
+						<tbody>								
+						</tbody>
+					</table>
+					<h2>Indicateur par équipe</h2>
+					<table id='tableIndicEquipe'>
+						<caption>Demandes de clients</caption>
+						<thead>
+							<tr>
+								<th class="noTH"></th>
+								<th COLSPAN="2">Nombre d'incidents P1</th>
+								<th COLSPAN="2">Nombre d'incidents P2</th>
+								<th COLSPAN="2">Nombre d'incidents P3</th>
+								<th COLSPAN="2">Nombre de demandes</th>
+								<th ROWSPAN="2">Nombre de tickets résolus</th>
+								<th ROWSPAN="2">Nombre de tickets en cours (hors en attente client)</th>
+							</tr>	
+							<tr>
+								<th>Équipe</th>
+								<th>Créés</th>
+								<th>Résolus</th>
+								<th>Créés</th>
+								<th>Résolus</th>
+								<th>Créés</th>
+								<th>Résolus</th>
+								<th>Créés</th>
+								<th>Résolus</th>
+							</tr>
+						</thead>
+						<tbody>								
+						</tbody>
+					</table>
+					<table id='tableIndicEquipePb'>
+						<caption>Problèmes</caption>
+						<thead>
+							<tr>
+								<th class="noTH"></th>
+								<th COLSPAN="2">Nombre de problèmes P1</th>
+								<th COLSPAN="2">Nombre de problèmes P2</th>
+								<th COLSPAN="2">Nombre de problèmes P3</th>
+								<th ROWSPAN="2">Nombre de problèmes résolus</th>
+								<th ROWSPAN="2">Nombre de problèmes en cours (hors en attente client)</th>
+							</tr>	
+							<tr>
+								<th>Équipe</th>
+								<th>Créés</th>
+								<th>Résolus</th>
+								<th>Créés</th>
+								<th>Résolus</th>
+								<th>Créés</th>
+								<th>Résolus</th>
+								
+							</tr>
+						</thead>
+						<tbody>								
+						</tbody>
+					</table>	
+					
+				</div>
+				
+		</div>
+	</div>
+	
+	<!--Pour l'annimation du chargement--->
+	<div id='spinner' class='spinner'>
+	</div>
+</body>
+</html>

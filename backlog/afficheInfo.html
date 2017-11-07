@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<title id='title'>Gesion backlog client</title>
+
+	<script type="text/javascript" src="./JS/JQuery/jquery_1.9.1.js"></script>	
+	<script type="text/javascript" src="./JS/JQuery/jquery_1.6.2.js"></script>
+	<script type="text/javascript" src="./JS/JQuery/jquery_1.12.4.js"></script>
+	<script type="text/javascript" src="./JS/JQuery/jquery-ui-1.12.1.js"></script>
+	<script type="text/javascript" src="./JS/load_formulaire-backlog.js"></script>
+	<script type="text/javascript" src="./JS/load_backlog.js"></script>
+	<script type="text/javascript" src="./JS/load_rapport.js"></script>
+	<script type="text/javascript" src="./JS/get_param.js"></script>
+	<script type="text/javascript" src="./JS/spin.js"></script>
+	
+	
+	 <link rel="stylesheet" href="style/backlog.css">
+	 <link rel="stylesheet" href="style/form-edit.css">
+	 <link rel="stylesheet" href="style/body.css">
+	 <link rel="stylesheet" href="style/tooltip.css">
+	<link rel="stylesheet" href="./JS/jquery-ui-themes-1.11.4/themes/smoothness/jquery-ui.css">	
+	<style type="text/css" src="https://itop.hardis.fr/css/light-grey.css"></style>
+	
+	<script>
+	
+		//savoir si on est sur chrome
+		var is_chrome = window.chrome;
+		
+		var hidden, visibilityChange;
+		//get param
+		var nomOrgGet = $_GET('client');
+		//pour les espaces
+		var nomOrg = nomOrgGet.replace(/%20/g, " "); 
+		
+		var page='afficheSelectInfo';		
+		
+		var loginVisible= 0;
+		
+		//anti drag&drop
+		$(document).on('dragstart',function(e){return false;});
+		
+		//pour reload la page quand on quitte et quon reviens sur la page
+		if (typeof document.hidden !== "undefined") {
+		  hidden = "hidden";
+		  visibilityChange = "visibilitychange";
+		  visibilityState = "visibilityState";
+		} else if (typeof document.mozHidden !== "undefined") {
+		  hidden = "mozHidden";
+		  visibilityChange = "mozvisibilitychange";
+		  visibilityState = "mozVisibilityState";
+		} else if (typeof document.msHidden !== "undefined") {
+		  hidden = "msHidden";
+		  visibilityChange = "msvisibilitychange";
+		  visibilityState = "msVisibilityState";
+		} else if (typeof document.webkitHidden !== "undefined") {
+		  hidden = "webkitHidden";
+		  visibilityChange = "webkitvisibilitychange";
+		  visibilityState = "webkitVisibilityState";
+		}
+		<!-- // La variable hidden contient le nom de la propriété du document -->
+		<!-- // La variable visibilityChange contient le nom de l'événement -->
+		<!-- // La variable visibilityState contient la propriété d'état -->
+		document.addEventListener(visibilityChange, changementVisibilite, false);
+		// Elément qui va permettre un affichage informatif
+		var log = document.getElementById('log');
+		
+		// Fonction qui traite l'événement
+		function changementVisibilite() {
+			
+			if(!document[hidden] && loginVisible==1) {
+				window.location.reload()
+				
+			} 		 
+		}
+
+		
+	</script>
+</head>
+<body onload='loadPageAfficheBacklog();'>
+	<div id="main_div">
+		<div id='login' hidden>
+			<h2>Authentification iTop</h2>
+			
+			<p>
+				Vous devez être connecté sur iTop.
+			</p>
+			<a href='https://itop.hardis.fr' target='_blank'>Cliquez ici pour se connecter</a>
+			<span class='errorMessage' id='errorMessage'></span><br />
+
+		</div>
+		<span id="backlogHardisListId">	</span>
+		
+		<div id='connected' hidden>
+			<span id='refresh' onclick='loadPageAfficheBacklog();'>Actualiser</span>
+			<h1>Bienvenue sur l'application de gestion du client</h1>
+				<div id="content_backlog" class="content"hidden>        
+					<p id='lastExtractDate'></p>
+					<section id='header'>
+						<article id='ticketOuvert'>
+							<h2>ticket(s) ouvert(s) dans iTOP</h2>
+							<div id='headerTicketAT'>
+								<h3>demande(s) du client à traiter:</h3>
+								<ul>
+									<li>incident(s)</li>
+									<li>demande(s)</li>
+								</ul>
+							</div>
+							<div id='headerTicketEAT'>
+								<h3>demande(s) du client en attente:</h3>
+								<ul>
+									<li>incident(s)</li>
+									<li>demande(s)</li>
+								</ul>
+							</div>
+							<div id='headerPbAT'>
+								<h3>problème(s) à traiter</h3>
+							</div>
+							<div id='headerPbEAT'>
+								<h3>problème(s) en attente</h3>
+							</div>
+						</article>
+					</section>
+					<section id='recapCount'>
+						<article id='recapCountInc'>
+							<table id='tableRecapCountInc'>
+								<caption>Incidents</caption>
+								<thead>
+									<tr>
+										<th>Organisation</th>
+										<th class='hotline'>Hotline</th>
+										<th class='tma'>TMA</th>
+										<th class='retd'>R&D </th>
+										<th class='h2i'>H2i</th>
+										<th class='at'>AT</th>
+									</tr>
+								</thead>
+								<tbody>								
+								</tbody>
+							</table>
+						</article>
+				
+						<article id="recapCountDem">
+							<table id='tableRecapCountDem'>
+								<caption>Demandes</caption>
+								<thead>
+									<tr>
+										<th>Organisation</th>
+										<th class='hotline'>Hotline</th>
+										<th class='tma'>TMA</th>
+										<th class='retd'>R&D </th>
+										<th class='h2i'>H2i</th>
+										<th class='at'>AT</th>
+									</tr>
+								</thead>
+								<tbody>								
+								</tbody>
+							</table>
+						</article>
+						
+						<article id="recapCountProblem">
+							<table id='tableRecapCountProblem'>
+								<caption>Problèmes</caption>
+								<thead>
+									<tr>
+										<th>Organisation</th>
+										<th class='hotline'>Hotline</th>
+										<th class='tma'>TMA</th>
+										<th class='retd'>R&D </th>
+										<th class='h2i'>H2i</th>
+										<th class='at'>AT</th>
+									</tr>
+								</thead>
+								<tbody>								
+								</tbody>
+							</table>
+						</article>
+					</section>
+					<section id='ticketAT'>		
+						<table id='tableTicketAT'>
+							<caption>Liste des tickets à traiter</caption>
+							<thead>
+								<tr>
+									<th>Type du ticket</th>
+									<th>Priorité</th>
+									<th>Type</th>
+									<th>Statut</th>
+									<th>Réfèrence iTop</th>
+									<th>Titre</th>
+									<th>Date de création</th>
+									<th>Équipe</th>
+									<th>Agent</th>
+									<th>Dernier commentaire public</th>
+								</tr>
+							</thead>
+							<tbody>								
+							</tbody>
+						</table>
+					</section>
+					<section id='ticketEA'>
+						<table id='tableTicketEA'>
+							<caption>Liste des tickets en attente</caption>
+							<thead>
+								<tr>
+									<th>Type du ticket</th>
+									<th>Priorité</th>
+									<th>Type</th>
+									<th>Statut</th>
+									<th>Réfèrence iTop</th>
+									<th>Titre</th>
+									<th>Date de création</th>
+									<th>Équipe</th>
+									<th>Agent</th>
+									<th>Dernier commentaire public</th>
+								</tr>
+							</thead>
+							<tbody>								
+							</tbody>
+						</table>
+					</section>
+					<section id='ticketF'>
+						<form method="post" action="BacklogClient.html" id='form'>
+						   <p>
+							   <label for='periode'>Sélectionnez une période</label>
+							   <select name="periode" id="periode" onchange="loadTabPeriode();">
+								   <option value="oneMonth">1 mois</option>
+								   <option value="twoMonths">2 mois</option>
+								   <option selected value="threeMonths">3 mois</option>
+							   </select>
+							   <br>
+								<label for='displayTF'>Afficher les tickets fermés</label>
+							    <input id="displayTF" type="checkbox" checked="checked" onclick='if($("#displayTF").is(":checked")){$("#tableTicketF").show();}else{$("#tableTicketF").hide();}'/>
+						   </p>
+						</form>
+						<table id='tableTicketF'>
+							<caption>Liste des tickets fermés/résolus/rejetés sur la période</caption>
+							<thead>
+								<tr>
+									<th>Type du ticket</th>
+									<th>Type</th>
+									<th>Réfèrence iTop</th>
+									<th>Titre</th>
+									<th>Date de création</th>
+									<th>Date de fermeture/résolution</th>
+									<th>Équipe</th>
+									<th>Agent</th>
+									<th>Dernier commentaire public</th>
+								</tr>
+							</thead>
+							<tbody id='bodyTableTicketF'>								
+							</tbody>
+						</table>
+					</section>
+					<section id='ticketSpe'>
+						<article id='ticketP1'>			
+							<table id='tableTicketP1'>
+							<caption>Liste des tickets P1 sur la période</caption>
+								<thead>
+									<tr>
+										<th>Type du ticket</th>
+										<th>Réfèrence iTop</th>
+										<th>Titre</th>
+										<th>Date de création</th>
+										<th>Date de fermeture/résolution</th>
+										<th>Équipe</th>
+										<th>Dernier commentaire public</th>
+									</tr>
+								</thead>
+								<tbody>								
+								</tbody>
+							</table>
+						</article>
+						<article id='SLA'>
+							<table id='tableSLA'>
+								<caption>Liste des SLA dépassées sur la période</caption>
+								<thead>
+									<tr>
+										<th>Type du ticket</th>
+										<th>Réfèrence iTop</th>
+										<th>Titre</th>
+										<th>Date de création</th>
+										<th>Date de fermeture/résolution</th>
+										<th>Équipe</th>
+										<th>Dernier commentaire public</th>
+										<th>SLA</th>
+									</tr>
+								</thead>
+								<tbody>								
+								</tbody>
+							</table>
+						</article>
+					</section>	
+					
+				</div>
+				
+		</div>
+	</div>
+	<!--Pour l'annimation du chargement--->
+	<div id='spinner' class='spinner'>
+	</div>
+	<div id="shadowing">
+	</div>
+	</body>
+</html>

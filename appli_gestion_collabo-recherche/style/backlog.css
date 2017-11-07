@@ -1,0 +1,140 @@
+#content_backlog h3 {
+	font-family: Tahoma, Verdana, Arial, Helvetica;
+	color: #000;
+	font-weight: normal;
+	font-size: 10pt;
+}
+
+#headerTicketAT, #headerTicketEAT{
+	display: inline-block;
+
+	padding-left: 5.8%;
+	padding-right: 10.8%;
+} 
+
+#ticketSpe article,#recapCount article{
+	display: inline-block;
+}
+
+#ticketSpe article{
+	width: 49%;
+}
+
+#recapCount article{
+	width: 100%;
+}
+
+
+/* delimitation border */
+#recapCount, #ticketSpe, #ticketF, #ticketEA, #ticketAT, #header{
+	border: 1px dotted black;
+}
+
+#recapCountInc{
+	border-left: 1px dotted black;
+	border-right: 1px dotted black;
+	
+}
+
+
+#ticketOuvert{
+	border-right: 1px dotted black;
+}
+
+#ticketOuvert, #liens{
+	width: 49%;
+	display: inline-block;
+	
+}
+
+#liens{
+	position: relative;
+	bottom: 100px;
+	text-align: center;
+}
+
+
+/* tableau */
+
+table{
+	margin-bottom: 35px;
+	width: 100%;
+}
+
+table tr:nth-child(even) {
+	background-color: #EDF1F7;
+}
+
+tfoot { 			
+	font-weight: bold;
+	background-color: #EEEEEE;	
+}
+
+th {
+	font-family: Tahoma, Verdana, Arial, Helvetica;
+	font-size: 8pt;
+	color: #1C94C4;
+	height:20px;
+	background-color: #EEEEEE;	
+	width: 70px;
+}
+
+
+
+td{
+	font-family: Tahoma, Verdana, Arial, Helvetica;
+	font-size: 12px;
+	color:#696969;
+	nobackground-color: #ffffff;
+	padding: 6px;
+
+
+}
+
+td img{
+	 display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* colorer les td et th selon les teams */
+.tma{
+	background-color: #FF0066;
+	color: white;
+}
+
+.hotline, .retd{
+	background-color: #D9FFE5;
+	color: #00C486;
+}
+
+.h2i{
+	background-color: #FFE1FF;
+	color: #7D0198;
+}
+
+.at{
+	background-color: #C5D9F1;
+	color: #1F4991;
+}
+
+#recapCount caption, #ticketSpe caption{
+	text-align: center;
+}
+
+#recapCount table, #ticketSpe table{
+	display: inline-table;
+}
+
+/* liste */
+ul li{
+	color: #696969;
+    font-family: Tahoma,Verdana,Arial,Helvetica;
+    font-size: 12px;
+}
+
+ul{
+	display: inline-block;
+}
+
+

@@ -1,0 +1,68 @@
+#content_backlog h3 {
+	font-family: Tahoma, Verdana, Arial, Helvetica;
+	color: #000;
+	font-weight: normal;
+	font-size: 10pt;
+}
+
+
+/* tableau */
+
+table{
+	margin-bottom: 35px;
+	width: 100%;
+	border-collapse: collapse; 
+}
+
+table tr:nth-child(even) {
+	background-color: #EDF1F7;
+}
+
+
+td, th{
+    border: 1px solid black; 
+}
+
+
+
+tfoot { 			
+	font-weight: bold;
+	background-color: #EEEEEE;	
+}
+
+th {
+	font-family: Tahoma, Verdana, Arial, Helvetica;
+	font-size: 8pt;
+	color: #1C94C4;
+	height:20px;
+	width: 10%;
+	background-color: #EEEEEE;	
+	
+}
+
+
+.noTH{
+	background-color: white;
+	border:none;
+
+}
+
+#tableIndicEquipe td:first-child, #tableIndicEquipePb td:first-child{
+	font-weight: bold;
+}
+
+#tableIndicEquipe th, #tableIndicEquipePb th{
+	width: 5%;
+}
+
+td{
+	font-family: Tahoma, Verdana, Arial, Helvetica;
+	font-size: 12px;
+	color:#696969;
+	nobackground-color: #ffffff;
+	padding: 6px;
+
+
+}
+
+
