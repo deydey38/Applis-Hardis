@@ -4,7 +4,7 @@
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<title id='title'>Gestion clients</title>
 
-	<script type="text/javascript" src="./JS/JQuery/jquery_1.9.1.js"></script>	
+	<script type="text/javascript" src="./JS/JQuery/jquery_1.9.1.js"></script>
 	<script type="text/javascript" src="./JS/JQuery/jquery_1.6.2.js"></script>
 	<script type="text/javascript" src="./JS/JQuery/jquery_1.12.4.js"></script>
 	<script type="text/javascript" src="./JS/JQuery/jquery-ui-1.12.1.js"></script>
@@ -16,9 +16,9 @@
 	<script type="text/javascript" src="./JS/load_docCo.js"></script>
 	<script type="text/javascript" src="./JS/load_backlog.js"></script>
 	<script type="text/javascript" src="./JS/get_param.js"></script>
-	<script type="text/javascript" src="./JS/spin.js"></script>	
+	<script type="text/javascript" src="./JS/spin.js"></script>
 	<script type="text/javascript" src="./JS/load_rapport.js"></script>
-	
+
 	<link rel="stylesheet" href="style/body.css">
 	<link rel="stylesheet" href="style/selectInfo.css">
 	<link rel="stylesheet" href="style/CI.css">
@@ -28,26 +28,27 @@
 	<link rel="stylesheet" href="style/popup.css">
 	<link rel="stylesheet" href="style/docCo.css">
 	<link rel="stylesheet" href="style/tooltip.css">
-	<link rel="stylesheet" href="./JS/jquery-ui-themes-1.11.4/themes/smoothness/jquery-ui.css">	
+	<link rel="stylesheet" href="./JS/jquery-ui-themes-1.11.4/themes/smoothness/jquery-ui.css">
 	<style type="text/css" src="https://itop.hardis.fr/css/light-grey.css"></style>
-	
-	<script>		
-	
+
+	<script>
+
 		var hidden, visibilityChange, fcis;
 		var nomOrg = 'undefined';
 		var nomCI = 'undefined';
-		
+		var cds = 'undefined';
+
 		var page='afficheSelectInfo';
 		var modifClient= 0;
 		var loginVisible= 0;
-		
+
 		//pour la gestion de chargement des onglets
 		var dejaVisiteContact=0;
 		var dejaVisiteBacklog=0;
 		var dejaVisiteDocCo=0;
 		var dejaVisiteCIs=0;
-		
-		
+
+
 		//pour reload la page quand on quitte et quon reviens sur la page
 		if (typeof document.hidden !== "undefined") {
 		  hidden = "hidden";
@@ -72,28 +73,28 @@
 		document.addEventListener(visibilityChange, changementVisibilite, false);
 		// Elément qui va permettre un affichage informatif
 		var log = document.getElementById('log');
-		
+
 		// Fonction qui traite l'événement
 		function changementVisibilite() {
-			
+
 			if(!document[hidden] && loginVisible==1) {
 				window.location.reload()
-				
-			} 		 
+
+			}
 		}
-				
+
 		$( function() {
-			$('input').keyup(function(e) {    
+			$('input').keyup(function(e) {
 			   if(e.keyCode == 13) { // KeyCode de la touche entrée
 					//cacher les proposition de lautocompletion
 					$('#ui-id-1').hide();
 			 }
-			});			
+			});
 		});
-		
-		function ChangeOnglet(onglet, contenu) 
-		{   
-		
+
+		function ChangeOnglet(onglet, contenu)
+		{
+
 			if(onglet=='tab_contact' && dejaVisiteContact!=1){
 				dejaVisiteContact=1;
 				loadPageAfficheContact();
@@ -107,39 +108,39 @@
 				dejaVisiteBacklog=1;
 				loadPageAfficheBacklog();
 			}
-			
+
 			document.getElementById('content_CIs').style.display = 'none';
 			document.getElementById('content_contact').style.display = 'none';
-			document.getElementById('content_docCo').style.display = 'none';       
-			document.getElementById('content_backlog').style.display = 'none';       
-			document.getElementById(contenu).style.display = 'block';       
-		 
+			document.getElementById('content_docCo').style.display = 'none';
+			document.getElementById('content_backlog').style.display = 'none';
+			document.getElementById(contenu).style.display = 'block';
+
 			document.getElementById('tab_CIs').className = '';
 			document.getElementById('tab_contact').className = '';
-			document.getElementById('tab_docCo').className = '';       
-			document.getElementById('tab_backlog').className = '';       
-			document.getElementById(onglet).className = 'active';       
-		}   
+			document.getElementById('tab_docCo').className = '';
+			document.getElementById('tab_backlog').className = '';
+			document.getElementById(onglet).className = 'active';
+		}
 
 		function reloadOngletActive(){
 			var ongletActif= document.getElementsByClassName("active");
-				
+
 			if(ongletActif[0].id == 'tab_CIs'){
 				dejaVisiteCIs=0;
-				ChangeOnglet('tab_CIs', 'content_CIs'); 
+				ChangeOnglet('tab_CIs', 'content_CIs');
 			}else if(ongletActif[0].id == 'tab_contact'){
 				dejaVisiteContact=0;
-				ChangeOnglet('tab_contact', 'content_contact'); 
+				ChangeOnglet('tab_contact', 'content_contact');
 			}else if(ongletActif[0].id == 'tab_docCo'){
 				dejaVisiteDocCo=0;
-				ChangeOnglet('tab_docCo', 'content_docCo'); 
+				ChangeOnglet('tab_docCo', 'content_docCo');
 			}else if(ongletActif[0].id == 'tab_backlog'){
 				dejaVisiteBacklog=0;
-				ChangeOnglet('tab_backlog', 'content_backlog'); 
+				ChangeOnglet('tab_backlog', 'content_backlog');
 			}
-				
+
 		}
-		
+
 	</script>
 </head>
 <!-- onload='loadPageSelectInfo(); loadPageAfficheCI(); ' -->
@@ -147,7 +148,7 @@
 	<div id="main_div">
 		<div id='login' hidden>
 			<h2>Authentification iTop</h2>
-			
+
 			<p>
 				Vous devez être connecté sur iTop.
 			</p>
@@ -156,27 +157,27 @@
 
 		</div>
 		<span id="backlogHardisListId">	</span>
-		
+
 		<div id='connected' hidden>
 			<span id='refresh' onclick='reloadOngletActive();'>Actualiser</span>
-			
+
 			<h1>Bienvenue sur l'application de gestion des clients</h1>
 			<h2></h2>
+			<h2 class="cds"></h2>
 
-			
 			<form method="get" action="afficheInfo.html" id='formC' >
 
-				<label for="client">Entrez le nom du client </label> 
+				<label for="client">Entrez le nom du client </label>
 				<input type="search" name="client" id='client' autofocus />
-				<p id="ou">ou</p> 
-				<label for="ciName">Entrez le nom d'un CI </label> 
+				<p id="ou">ou</p>
+				<label for="ciName">Entrez le nom d'un CI </label>
 				<input type="search" name="ciName" id='ciName'/>
-				
+
 				<span id='alertFormError' hidden></span>
 				<input type="submit" value="Rechercher" id='valid' />
 
 			</form>
-	
+
 			<div class='tabbed_area' hidden>
 				<ul class="tabs">
 					<li><a href="javascript:ChangeOnglet('tab_CIs', 'content_CIs');" id="tab_CIs" class="active">CIs</a></li>
@@ -184,10 +185,10 @@
 					<li><a href="javascript:ChangeOnglet('tab_backlog', 'content_backlog');" id="tab_backlog">Backlog</a></li>
 					<li><a href="javascript:ChangeOnglet('tab_docCo', 'content_docCo');" id="tab_docCo">document de connexion</a></li>
 				</ul>
-			
-			
-				<div id="content_CIs" class="content">        
-					<div id='div_db'>		
+
+
+				<div id="content_CIs" class="content">
+					<div id='div_db'>
 						<div class='div_table'>
 							<table id='table_db' class='table'>
 								<caption>Liste des bases de données du client (Adélia et SQL)</caption>
@@ -221,7 +222,7 @@
 							<!-- </table> -->
 						<!-- </div> -->
 					<!-- </div> -->
-					
+
 					<div id='div_vm'>
 						<div class='div_table'>
 							<table id='table_vm' class='table'>
@@ -236,7 +237,7 @@
 										<th>Version OS</th>
 									</tr>
 								</thead>
-								<tbody>								
+								<tbody>
 								</tbody>
 							</table>
 						</div>
@@ -252,12 +253,12 @@
 									<th>Téléphone</th>
 								</tr>
 							</thead>
-							<tbody>								
+							<tbody>
 							</tbody>
 						</table>
 					</div>
 				</div>
-				<div id="content_contact" class="content"hidden>        
+				<div id="content_contact" class="content"hidden>
 					<table id='table_contactC' class='table'>
 						<caption>Contact du client</caption>
 						<thead>
@@ -269,11 +270,11 @@
 								<th>Téléphone portable</th>
 							</tr>
 						</thead>
-						<tbody>								
+						<tbody>
 						</tbody>
 					</table>
 				</div>
-				<div id="content_backlog" class="content"hidden>        
+				<div id="content_backlog" class="content"hidden>
 					<p id='lastExtractDate'></p>
 					<section id='header'>
 						<article id='ticketOuvert'>
@@ -314,11 +315,11 @@
 										<th class='at'>AT</th>
 									</tr>
 								</thead>
-								<tbody>								
+								<tbody>
 								</tbody>
 							</table>
 						</article>
-				
+
 						<article id="recapCountDem">
 							<table id='tableRecapCountDem'>
 								<caption>Demandes</caption>
@@ -332,11 +333,11 @@
 										<th class='at'>AT</th>
 									</tr>
 								</thead>
-								<tbody>								
+								<tbody>
 								</tbody>
 							</table>
 						</article>
-						
+
 						<article id="recapCountProblem">
 							<table id='tableRecapCountProblem'>
 								<caption>Problèmes</caption>
@@ -350,7 +351,7 @@
 										<th class='at'>AT</th>
 									</tr>
 								</thead>
-								<tbody>								
+								<tbody>
 								</tbody>
 							</table>
 						</article>
@@ -372,7 +373,7 @@
 									<th>Dernier commentaire public</th>
 								</tr>
 							</thead>
-							<tbody>								
+							<tbody>
 							</tbody>
 						</table>
 					</section>
@@ -393,7 +394,7 @@
 									<th>Dernier commentaire public</th>
 								</tr>
 							</thead>
-							<tbody>								
+							<tbody>
 							</tbody>
 						</table>
 					</section>
@@ -426,12 +427,12 @@
 									<th>Dernier commentaire public</th>
 								</tr>
 							</thead>
-							<tbody id='bodyTableTicketF'>								
+							<tbody id='bodyTableTicketF'>
 							</tbody>
 						</table>
 					</section>
 					<section id='ticketSpe'>
-						<article id='ticketP1'>			
+						<article id='ticketP1'>
 							<table id='tableTicketP1'>
 							<caption>Liste des tickets P1 sur la période</caption>
 								<thead>
@@ -445,7 +446,7 @@
 										<th>Dernier commentaire public</th>
 									</tr>
 								</thead>
-								<tbody>								
+								<tbody>
 								</tbody>
 							</table>
 						</article>
@@ -464,14 +465,14 @@
 										<th>SLA</th>
 									</tr>
 								</thead>
-								<tbody>								
+								<tbody>
 								</tbody>
 							</table>
 						</article>
-					</section>	
-		
+					</section>
+
 				</div>
-				<div id="content_docCo" class="content"hidden>        
+				<div id="content_docCo" class="content"hidden>
 					<h3 id='nomDoc'>Nom du document:</h3><p id='nomDocp'></p>
 					<h3 id="lienitop">Lien iTop:</h3> <p id="lienitopp"></p>
 					<h3 id='statDoc'>Statut:</h3><p id='statDocp'></p>
@@ -483,7 +484,7 @@
 		</div>
 
 	</div>
-	
+
 	<!--Pour l'annimation du chargement--->
 	<div id='spinner' class='spinner'>
 	</div>
