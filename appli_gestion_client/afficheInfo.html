@@ -4,7 +4,7 @@
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<title id='title'>Gestion client</title>
 
-	<script type="text/javascript" src="./JS/JQuery/jquery_1.9.1.js"></script>	
+	<script type="text/javascript" src="./JS/JQuery/jquery_1.9.1.js"></script>
 	<script type="text/javascript" src="./JS/JQuery/jquery_1.6.2.js"></script>
 	<script type="text/javascript" src="./JS/JQuery/jquery_1.12.4.js"></script>
 	<script type="text/javascript" src="./JS/JQuery/jquery-ui-1.12.1.js"></script>
@@ -18,7 +18,7 @@
 	<script type="text/javascript" src="./JS/load_formulaire-backlog.js"></script>
 	<script type="text/javascript" src="./JS/load_rapport.js"></script>
 	<script type="text/javascript" src="./JS/spin.js"></script>
-	
+
 	<link rel="stylesheet" href="style/body.css">
 	<link rel="stylesheet" href="style/selectInfo.css">
 	<link rel="stylesheet" href="style/CI.css">
@@ -27,30 +27,31 @@
 	<link rel="stylesheet" href="style/docCo.css">
 	<link rel="stylesheet" href="style/form-edit-backlog.css">
 	<link rel="stylesheet" href="style/tooltip.css">
-	<link rel="stylesheet" href="./JS/jquery-ui-themes-1.11.4/themes/smoothness/jquery-ui.css">	
+	<link rel="stylesheet" href="./JS/jquery-ui-themes-1.11.4/themes/smoothness/jquery-ui.css">
 	<style type="text/css" src="https://itop.hardis.fr/css/light-grey.css"></style>
-	
-	<script>		
+
+	<script>
 		//savoir si on est sur chrome
 		var is_chrome = window.chrome;
-		
+		var cds= 'undefined';
+
 		var hidden, visibilityChange, fcis;
 		var nomOrgGet = $_GET('client');
-		//pour les espaces	
-		var nomOrg = nomOrgGet.replace(/%20/g, " "); 
-		
+		//pour les espaces
+		var nomOrg = nomOrgGet.replace(/%20/g, " ");
+
 		var page='afficheSelectInfo';
 		var loginVisible= 0;
-		
+
 		//pour la gestion de chargement des onglets
 		var dejaVisiteContact=0;
 		var dejaVisiteBacklog=0;
 		var dejaVisiteDocCo=0;
 		var dejaVisiteCIs=0;
-		
+
 		//anti drag&drop
 		$(document).on('dragstart',function(e){return false;});
-		
+
 		//pour reload la page quand on quitte et quon reviens sur la page
 		if (typeof document.hidden !== "undefined") {
 		  hidden = "hidden";
@@ -75,27 +76,27 @@
 		document.addEventListener(visibilityChange, changementVisibilite, false);
 		// Elément qui va permettre un affichage informatif
 		var log = document.getElementById('log');
-		
+
 		// Fonction qui traite l'événement
 		function changementVisibilite() {
-			
+
 			if(!document[hidden] && loginVisible==1) {
 				window.location.reload()
-				
-			} 		 
+
+			}
 		}
-		
+
 		function redirect(href){
 			document.location.href=href+"?client="+nomOrg+"&form=y";
 		}
-		
+
 		$( function() {
-		
+
 		});
-		
-		function ChangeOnglet(onglet, contenu) 
-		{   
-		
+
+		function ChangeOnglet(onglet, contenu)
+		{
+
 			if(onglet=='tab_contact' && dejaVisiteContact!=1){
 				dejaVisiteContact=1;
 				loadPageAfficheContact();
@@ -109,47 +110,47 @@
 				dejaVisiteBacklog=1;
 				loadPageAfficheBacklog();
 			}
-			
+
 			document.getElementById('content_CIs').style.display = 'none';
 			document.getElementById('content_contact').style.display = 'none';
-			document.getElementById('content_docCo').style.display = 'none';       
-			document.getElementById('content_backlog').style.display = 'none';       
-			document.getElementById(contenu).style.display = 'block';       
-		 
+			document.getElementById('content_docCo').style.display = 'none';
+			document.getElementById('content_backlog').style.display = 'none';
+			document.getElementById(contenu).style.display = 'block';
+
 			document.getElementById('tab_CIs').className = '';
 			document.getElementById('tab_contact').className = '';
-			document.getElementById('tab_docCo').className = '';       
-			document.getElementById('tab_backlog').className = '';       
-			document.getElementById(onglet).className = 'active';       
-		}   
+			document.getElementById('tab_docCo').className = '';
+			document.getElementById('tab_backlog').className = '';
+			document.getElementById(onglet).className = 'active';
+		}
 
 		function reloadOngletActive(){
 			var ongletActif= document.getElementsByClassName("active");
-				
+
 			if(ongletActif[0].id == 'tab_CIs'){
 				dejaVisiteCIs=0;
-				ChangeOnglet('tab_CIs', 'content_CIs'); 
+				ChangeOnglet('tab_CIs', 'content_CIs');
 			}else if(ongletActif[0].id == 'tab_contact'){
 				dejaVisiteContact=0;
-				ChangeOnglet('tab_contact', 'content_contact'); 
+				ChangeOnglet('tab_contact', 'content_contact');
 			}else if(ongletActif[0].id == 'tab_docCo'){
 				dejaVisiteDocCo=0;
-				ChangeOnglet('tab_docCo', 'content_docCo'); 
+				ChangeOnglet('tab_docCo', 'content_docCo');
 			}else if(ongletActif[0].id == 'tab_backlog'){
 				dejaVisiteBacklog=0;
-				ChangeOnglet('tab_backlog', 'content_backlog'); 
+				ChangeOnglet('tab_backlog', 'content_backlog');
 			}
-				
+
 		}
-		
+
 	</script>
 </head>
 <!-- onload='loadPageSelectInfo(); loadPageAfficheCI(); ' -->
-<body onload='loadPageSelectInfo();'>
+<body onload='CDS();'>
 	<div id="main_div">
 		<div id='login' hidden>
 			<h2>Authentification iTop</h2>
-			
+
 			<p>
 				Vous devez être connecté sur iTop.
 			</p>
@@ -158,12 +159,13 @@
 
 		</div>
 		<span id="backlogHardisListId">	</span>
-		
+
 		<div id='connected' hidden>
 			<span id='refresh' onclick='reloadOngletActive();'>Actualiser</span>
-			
+
 			<h1>Bienvenue sur l'application de gestion des clients</h1>
-			
+			<h1 class="cds"></h1>
+
 			<div class='tabbed_area' hidden>
 				<ul class="tabs">
 					<li><a href="javascript:ChangeOnglet('tab_CIs', 'content_CIs');" id="tab_CIs" class="active">CIs</a></li>
@@ -171,10 +173,10 @@
 					<li><a href="javascript:ChangeOnglet('tab_backlog', 'content_backlog');" id="tab_backlog">Backlog</a></li>
 					<li><a href="javascript:ChangeOnglet('tab_docCo', 'content_docCo');" id="tab_docCo">document de connexion</a></li>
 				</ul>
-			
-			
-				<div id="content_CIs" class="content">        
-					<div id='div_db'>		
+
+
+				<div id="content_CIs" class="content">
+					<div id='div_db'>
 						<div class='div_table'>
 							<table id='table_db' class='table'>
 								<caption>Liste des bases de données du client (Adélia et SQL)</caption>
@@ -190,7 +192,7 @@
 							</table>
 						</div>
 					</div>
-					
+
 					<div id='div_vm'>
 						<div class='div_table'>
 							<table id='table_vm' class='table'>
@@ -205,7 +207,7 @@
 										<th>Version OS</th>
 									</tr>
 								</thead>
-								<tbody>								
+								<tbody>
 								</tbody>
 							</table>
 						</div>
@@ -221,12 +223,12 @@
 									<th>Téléphone</th>
 								</tr>
 							</thead>
-							<tbody>								
+							<tbody>
 							</tbody>
 						</table>
 					</div>
 				</div>
-				<div id="content_contact" class="content"hidden>        
+				<div id="content_contact" class="content"hidden>
 					<table id='table_contactC' class='table'>
 						<caption>Contact du client</caption>
 						<thead>
@@ -238,11 +240,11 @@
 								<th>Téléphone portable</th>
 							</tr>
 						</thead>
-						<tbody>								
+						<tbody>
 						</tbody>
 					</table>
 				</div>
-				<div id="content_backlog" class="content"hidden>        
+				<div id="content_backlog" class="content"hidden>
 					<p id='lastExtractDate'></p>
 					<section id='header'>
 						<article id='ticketOuvert'>
@@ -283,11 +285,11 @@
 										<th class='at'>AT</th>
 									</tr>
 								</thead>
-								<tbody>								
+								<tbody>
 								</tbody>
 							</table>
 						</article>
-				
+
 						<article id="recapCountDem">
 							<table id='tableRecapCountDem'>
 								<caption>Demandes</caption>
@@ -301,11 +303,11 @@
 										<th class='at'>AT</th>
 									</tr>
 								</thead>
-								<tbody>								
+								<tbody>
 								</tbody>
 							</table>
 						</article>
-						
+
 						<article id="recapCountProblem">
 							<table id='tableRecapCountProblem'>
 								<caption>Problèmes</caption>
@@ -319,7 +321,7 @@
 										<th class='at'>AT</th>
 									</tr>
 								</thead>
-								<tbody>								
+								<tbody>
 								</tbody>
 							</table>
 						</article>
@@ -341,7 +343,7 @@
 									<th>Dernier commentaire public</th>
 								</tr>
 							</thead>
-							<tbody>								
+							<tbody>
 							</tbody>
 						</table>
 					</section>
@@ -362,7 +364,7 @@
 									<th>Dernier commentaire public</th>
 								</tr>
 							</thead>
-							<tbody>								
+							<tbody>
 							</tbody>
 						</table>
 					</section>
@@ -395,12 +397,12 @@
 									<th>Dernier commentaire public</th>
 								</tr>
 							</thead>
-							<tbody id='bodyTableTicketF'>								
+							<tbody id='bodyTableTicketF'>
 							</tbody>
 						</table>
 					</section>
 					<section id='ticketSpe'>
-						<article id='ticketP1'>			
+						<article id='ticketP1'>
 							<table id='tableTicketP1'>
 							<caption>Liste des tickets P1 sur la période</caption>
 								<thead>
@@ -414,7 +416,7 @@
 										<th>Dernier commentaire public</th>
 									</tr>
 								</thead>
-								<tbody>								
+								<tbody>
 								</tbody>
 							</table>
 						</article>
@@ -433,15 +435,15 @@
 										<th>SLA</th>
 									</tr>
 								</thead>
-								<tbody>								
+								<tbody>
 								</tbody>
 							</table>
 						</article>
-					</section>	
-		
+					</section>
+
 				</div>
-				
-				<div id="content_docCo" class="content"hidden>        
+
+				<div id="content_docCo" class="content"hidden>
 					<h3 id='nomDoc'>Nom du document:</h3><p id='nomDocp'></p>
 					<h3 id="lienitop">Lien iTop:</h3> <p id="lienitopp"></p>
 					<h3 id='statDoc'>Statut:</h3><p id='statDocp'></p>
@@ -488,8 +490,8 @@
 						<select name="team" id="team" onchange='$("#agent").val(""); $("#errorMessageTeam").val("");$("#errorMessageTeam").fadeOut();'>
 						</select>
 						<span class='errorMessage' id='errorMessageTeam'></span><br>
-						<label for="agent">Agent: </label> 
-						<input type="search" name="agent" id="agent" onclick=" $('#errorMessageAgent').fadeOut(); $('#errorMessageAgent').text('');" /> 
+						<label for="agent">Agent: </label>
+						<input type="search" name="agent" id="agent" onclick=" $('#errorMessageAgent').fadeOut(); $('#errorMessageAgent').text('');" />
 						<img src="./img/croix.png" alt="Supprimer agent" onclick='$("#agent").val("");' />
 						<span class='errorMessage' id='errorMessageAgent'></span><br>
 					</fieldset>
@@ -499,19 +501,19 @@
 							<label for='codReso' >Code de résolution:</label>
 							<select name='codReso' id='codReso' >
 								<option id='0'></option>
-							</select>	
+							</select>
 							<label for='solution'>Solution:</label>
 							<textarea name='solution' id='solution' rows='7' cols='50' placeholder='Tapez votre solution ici' onClick='$("#errorMessageSolution").fadeOut();'></textarea>
 							<br><span class='errorMessage' id='errorMessageSolution'></span><br>
 						</div>
-						<div class='div_resolvedItem' id='divService'>						
+						<div class='div_resolvedItem' id='divService'>
 							<label for='eltService' >Élement de service:</label>
 							<select name='eltService' id='eltService' >
 								<option id='0'></option>
-							</select>								
+							</select>
 						</div>
-					
-						
+
+
 					</fieldset>
 					<fieldset id='div_dateHeure' >
 						<legend>Date et heure de plannification</legend>
@@ -531,10 +533,10 @@
 											$('#heure').append("<option id='h0"+a+"'>0"+a.toString()+"</option>");
 										else
 											$('#heure').append("<option id='h"+a+"'>"+a.toString()+"</option>");
-										
-									}	
+
+									}
 								</script>
-							</select> : 
+							</select> :
 						</div>
 						<div class='div_Plannif' id='div_minutePlannif' >
 							<select type='text' id='minute'>
@@ -555,7 +557,7 @@
 						</div>
 						<div class='divCom'>
 							<label for="compv">Commentaire privé: </label>
-							<textarea name="compv" id="compv" rows="7" cols="50" placeholder="Tapez votre commentaire ici"></textarea> 
+							<textarea name="compv" id="compv" rows="7" cols="50" placeholder="Tapez votre commentaire ici"></textarea>
 						</div>
 					</fieldset>
 					<input type="submit" value="Valider" class='actionButtonFormEdit'/>
@@ -564,10 +566,10 @@
 
 			</div>
 		</div>
-			
-			
+
+
 	</div>
-	
+
 	<div id="popupMessage" class="popup" hidden >
 			<div id="popup_name" class="popup_block">
 				<div class="popup_head">

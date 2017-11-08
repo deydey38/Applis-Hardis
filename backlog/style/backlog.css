@@ -10,7 +10,7 @@
 
 	padding-left: 3.8%;
 	padding-right: 3.8%;
-} 
+}
 
 #ticketSpe article,#recapCount article{
 	display: inline-block;
@@ -33,12 +33,12 @@
 #recapCountInc{
 	border-left: 1px dotted black;
 	border-right: 1px dotted black;
-	
+
 }
 
 #recapCountDem{
 	border-right: 1px dotted black;
-	
+
 }
 
 #headerPbAT h3, #headerPbEAT h3{
@@ -62,9 +62,9 @@ table tr:nth-child(even) {
 	background-color: #EDF1F7;
 }
 
-tfoot { 			
+tfoot {
 	font-weight: bold;
-	background-color: #EEEEEE;	
+	background-color: #EEEEEE;
 }
 
 th {
@@ -72,7 +72,7 @@ th {
 	font-size: 8pt;
 	color: #1C94C4;
 	height:20px;
-	background-color: #EEEEEE;	
+	background-color: #EEEEEE;
 	width: 70px;
 }
 
@@ -133,5 +133,3 @@ ul li{
 ul{
 	display: inline-block;
 }
-
-
