@@ -6,7 +6,7 @@
 }
 
 #headerTicketAT, #headerTicketEAT, #headerPbEAT, #headerPbAT{
-	display: inline-block;
+	display: inline-grid;
 
 	padding-left: 3.8%;
 	padding-right: 3.8%;
@@ -42,7 +42,7 @@
 }
 
 #headerPbAT h3, #headerPbEAT h3{
-	position: absolute;
+	--position: absolute;
 	bottom: 65.9%;
 }
 
