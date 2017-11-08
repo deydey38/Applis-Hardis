@@ -5,6 +5,10 @@
 	font-size: 10pt;
 }
 
+#ticketOuvert{
+	text-align: center;
+}
+
 #headerTicketAT, #headerTicketEAT, #headerPbAT, #headerPbEAT{
 	display: inline-grid;
 

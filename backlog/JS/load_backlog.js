@@ -215,6 +215,7 @@ function refreshSuccessfull(data){
 
 		$('body h1').text(" ");
 		$('body h1').text("Bienvenue sur la page de gestion du backlog du client " + nomOrg.toUpperCase());
+    $('body h1').css("width", "100%");
 		document.getElementById('content_backlog').style.display = 'block';
 		document.getElementById("lastExtractDate").innerHTML = 'Extraction du ' + getCurrentDate();
 
