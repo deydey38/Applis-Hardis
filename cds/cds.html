@@ -8,7 +8,9 @@
   	<script type="text/javascript" src="./JS/JQuery/jquery_1.6.2.js"></script>
   	<script type="text/javascript" src="./JS/JQuery/jquery_1.12.4.js"></script>
   	<script type="text/javascript" src="./JS/JQuery/jquery-ui-1.12.1.js"></script>
+    <script type="text/javascript" src="./JS/spin.js"></script>
     <script type="text/javascript" src="./JS/function.js"></script>
+    <script type="text/javascript" src="./JS/load_formulaire.js"></script>
 
     <link rel="stylesheet" href="style/body.css">
     <link rel="stylesheet" href="style/cds.css">
@@ -18,30 +20,57 @@
 
     <h1>Répartition des clients par CDS</h1>
 
+    <div class="sidebar">
+      <ul><li><a href="#">Client</a>
+          </li>
+          <li><a href="#".CDS"">CDS1</a>
+          </li>
+          <li><a href="#">CDS2</a>
+          </li>
+          <li><a href="#">CDS3</a>
+          </li>
+        </ul>
+    </div>
+
    <!--<iframe src="https://itop.hardis.fr/webservices/export-v2.php?format=html&login_mode=basic&date_format=Y-m-d+H%3Ai%3As&query=376" width="" height="">
   </iframe>-->
+  <div class="wrap">
+    <div class="recherche Client">
+      <p class="test">Recherche par Client</p>
+      <form method="get" action="afficheInfo.html" id='formC' >
+        <label for="client">Entrez le nom du client </label>
+        <input type="search" name="client" id='client' autofocus />
+        <span id='alertFormError' hidden></span>
+        <input type="submit" value="Rechercher" id='valid' />
+        <p class="reponse">ok </p>
+      </form>
+    </div>
 
-  <div class="CDS1">
-    <p class="test">Liste des clients du CDS 1</p>
-    <button class="test" type="button" name="button">Afficher</button>
 
-    <div class="slide"></div>
+    <div class="CDS1 CDS">
+      <p class="test">Liste des clients du CDS1</p>
+      <button class="test" type="button" name="button">Masquer</button>
+      <table class="slide"></table>
+    </div>
+
+    <div class="CDS2 CDS">
+      <p class="test">Liste des clients du CDS2</p>
+      <button class="test" type="button" name="button">Masquer</button>
+      <table class="slide"></table>
+    </div>
+
+    <div class="CDS3 CDS">
+      <p class="test">Liste des clients du CDS3</p>
+      <button class="test" type="button" name="button">Masquer</button>
+      <table class="slide"></table>
+    </div>
 
   </div>
 
-  <div class="CDS2">
-      <p class="test">Liste des clients du CDS 2</p>
-      <button class="test" type="button" name="button">Afficher</button>
-    <div class="slide"></div>
+    <div id='spinner' class='spinner'>
+    </div>
+    <div id="shadowing">
+    </div>
 
-  </div>
-
-  <div class="CDS3">
-    <p class="test">Liste des clients du CDS 3</p>
-    <button class="test" type="button" name="button">Afficher</button>
-
-    <div class="slide"></div>
-
-  </div>
   </body>
 </html>

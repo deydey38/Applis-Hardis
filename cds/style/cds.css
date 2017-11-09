@@ -3,6 +3,7 @@ body{
   height: 100vh;
   margin: 0px;
   padding: 0px;
+  font-family: 'Lato';
 }
 
 h1{
@@ -24,14 +25,120 @@ iframe{
 
 .button{
   margin-left: 20%;
-  padding-top: 15px;
+  padding-top: -5px;
   display: inline;
 }
 
 .test{
   display: inline;
+  margin-bottom: 10px;
 }
 
+
 .slide{
-  display:none;
+  --display:none;
+  width: 100%;
+}
+
+.CDS1, .CDS2{
+  border-bottom : 1px solid black;
+}
+
+.wrap{
+
+  width:70%;
+  margin-left: 5%;
+}
+
+.CDS{
+  margin-bottom : 10px;
+  padding-bottom : 10px;
+
+}
+
+.CDS1 .slide, .CDS2 .slide{
+  padding-bottom: 10px;
+}
+
+.sidebar{
+  width: 190px;
+  position: fixed;
+  margin-left: 80%;
+  background-color: #c5cddb;
+  color:black;
+}
+
+.recherche{
+  margin-top: 40px;
+  margin-bottom: 60px;
+}
+
+.ui-autocomplete {
+	height: 70px;
+	width: 100px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+  border:1px solid black;
+  z-index: 2;
+  background-color: white;
+  text-align: left !important;
+}
+
+#alertFormError{
+	color: red;
+	padding-top: 15px;
+	padding-bottom: 25px;
+
+}
+
+.ui-menu{
+  padding:0;
+}
+
+.ui-menu-item{
+	font-size: 14px;
+}
+
+li, ul, a{
+  list-style:none;
+  color:black;
+  text-decoration: none;
+}
+
+li a:hover{
+  color:white;
+  text-decoration: none;
+}
+
+.spinner {
+    position: fixed;
+    top: 55%;
+    left: 50%;
+}
+
+.even{
+  background-color:#c5cddb;
+}
+
+p{
+  font-size: 20px;
+  position:relative;
+  font-family: Tahoma, Verdana, Arial, Helvetica;
+  top: 3px;
+  padding-right: 10px;
+  padding-left: 10px;
+  font-weight: bold;
+  color:#164463;
+}
+
+#formC{
+  margin-top: 40px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.reponse{
+  text-align: center;
+  font-size: 15px;
+  opacity: 0;
 }
