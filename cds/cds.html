@@ -14,9 +14,17 @@
 
     <link rel="stylesheet" href="style/body.css">
     <link rel="stylesheet" href="style/cds.css">
+    <link rel="stylesheet" href="./JS/JQuery/jquery-ui-themes-1.11.4/themes/smoothness/jquery-ui.css">
 
   </head>
   <body>
+
+    <div class="navbar">
+      <a href="../menu/menu.html">Menu</a>
+      <a href="../appli_gestion_client-recherche/afficheInfo.html">Recherche Client</a>
+      <a href="../appli_gestion_collabo-recherche/afficheInfo.html">Recherche Collaborateur</a>
+      <a class="active" href="#">CDS</a>
+    </div>
 
     <h1>Répartition des clients par CDS</h1>
 
@@ -40,9 +48,12 @@
       <form method="get" action="afficheInfo.html" id='formC' >
         <label for="client">Entrez le nom du client </label>
         <input type="search" name="client" id='client' autofocus />
-        <span id='alertFormError' hidden></span>
-        <input type="submit" value="Rechercher" id='valid' />
-        <p class="reponse">ok </p>
+        <input class="left" type="submit" value="Rechercher" id='valid' />
+        <div class="right" id='spinner-form' class='spinner-form'>
+        </div>
+        <p id='alertFormError' hidden></p>
+        <p class="reponse" hidden> </p>
+        <button class="erase" type="button" name="button" hidden>Effacer</button>
       </form>
     </div>
 

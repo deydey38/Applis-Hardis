@@ -4,7 +4,8 @@ html{
 
 body{
 	background-color: #efefef;
-	
+	margin-top: 30px;
+	font-family: Arial, sans-serif;
 }
 
 h1 {
@@ -21,7 +22,7 @@ h1 ~ h2{
 	font-family: Tahoma, Verdana, Arial, Helvetica;
 	color: #164463;
 	font-weight: bold;
-	font-size: 24px;	
+	font-size: 24px;
 	display: block;
 	margin: auto;
 	width: 785px;
@@ -59,7 +60,7 @@ a:hover {
 #refresh{
 	display: inline-block;
 	position: relative;
-	top: 10px; 
+	top: 10px;
 	border      : 0;
 	background  : transparent;
 	font-family : inherit;
@@ -98,10 +99,10 @@ a:hover {
 #login{
 
 	margin: 0 auto;
-	width: 350px;	
+	width: 350px;
 	padding: 20px;
 	text-align: center;
-	background-color: #C1C3C3; 
+	background-color: #C1C3C3;
 	margin-top: 20%;
 	-webkit-box-shadow: -1px 2px 13px 0px rgba(0,0,0,0.75);
 	-moz-box-shadow: -1px 2px 13px 0px rgba(0,0,0,0.75);
@@ -109,7 +110,7 @@ a:hover {
 	border-radius: 5px 5px 5px 5px;
 	-moz-border-radius: 5px 5px 5px 5px;
 	-webkit-border-radius: 5px 5px 5px 5px;
-}	
+}
 
 #login h2{
 	margin: 0;
@@ -153,14 +154,14 @@ ul.tabs li a:hover {
 }
 ul.tabs li a.active {
     background-color:#ffffff;
-    
+
     border:1px solid #464c54;
     border-bottom: 1px solid #ffffff;
 }
 .content {
     background-color:#ffffff;
     padding:10px;
-    border:1px solid #464c54; 
+    border:1px solid #464c54;
 }
 
 ul.tabs {
@@ -185,7 +186,7 @@ ul.tabs {
 }
 ul.tabs li a {
     background-image:url(images/tab_off.jpg);
-    background-repeat:repeat-x; 
+    background-repeat:repeat-x;
     background-position:bottom;
 }
 ul.tabs li a.active {
@@ -195,7 +196,7 @@ ul.tabs li a.active {
 }
 .content {
     background-image:url(images/content_bottom.jpg);
-    background-repeat:repeat-x; 
+    background-repeat:repeat-x;
     background-position:bottom;
 }
 
@@ -238,7 +239,7 @@ caption{
 	-webkit-box-shadow: 0px 1px 3px #666666;
 	-moz-box-shadow: 0px 1px 3px #666666;
 	box-shadow: 0px 1px 3px #666666;
-	
+
 }
 
 #infoC5 h3,#infoC5 p{
@@ -246,5 +247,30 @@ caption{
 	margin : 0 1% 0 0;
 }
 
+.navbar {
+  overflow: hidden;
+  background-color: #009ee0;
+  position: fixed;
+  top: 0;
+	left:0;
+  width: 100%;
+  z-index: 2;
+}
 
+.navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
 
+.navbar a:hover{
+  background-color: #06587a;
+}
+
+.active{
+  background-color: #06587a;
+}

@@ -4,7 +4,7 @@
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<title id='title'>Gestion collaborateurs</title>
 
-	<script type="text/javascript" src="./JS/JQuery/jquery_1.9.1.js"></script>	
+	<script type="text/javascript" src="./JS/JQuery/jquery_1.9.1.js"></script>
 	<script type="text/javascript" src="./JS/JQuery/jquery_1.6.2.js"></script>
 	<script type="text/javascript" src="./JS/JQuery/jquery_1.12.4.js"></script>
 	<script type="text/javascript" src="./JS/JQuery/jquery-ui-1.12.1.js"></script>
@@ -15,34 +15,34 @@
 	<script type="text/javascript" src="./JS/load_backlog.js"></script>
 	<script type="text/javascript" src="./JS/get_param.js"></script>
 	<script type="text/javascript" src="./JS/spin.js"></script>
-	
+
 	<link rel="stylesheet" href="style/body.css">
 	<link rel="stylesheet" href="style/selectInfo.css">
 	<link rel="stylesheet" href="style/CI.css">
 	<link rel="stylesheet" href="style/form.css">
 	<link rel="stylesheet" href="style/popup.css">
 	<link rel="stylesheet" href="style/backlog.css">
-	<link rel="stylesheet" href="./JS/jquery-ui-themes-1.11.4/themes/smoothness/jquery-ui.css">	
+	<link rel="stylesheet" href="./JS/jquery-ui-themes-1.11.4/themes/smoothness/jquery-ui.css">
 	<style type="text/css" src="https://itop.hardis.fr/css/light-grey.css"></style>
-	
-	<script>		
-	
+
+	<script>
+
 		var hidden, visibilityChange, fcis;
 
 		var nomCollabo = 'undefined';
-		var idCollabo;		
+		var idCollabo;
 		var page='afficheSelectInfo';
 		var modifCollabo= 0;
 		var loginVisible= 0;
-		
+
 		//pour la gestion de chargement des onglets
 		var dejaVisiteCIsOrg=0;
 		var dejaVisiteOrg=0;
 		var dejaVisiteBacklog=0;
-		
+
 		//liste des client du collabo
 		var lesClients;
-		
+
 		//pour reload la page quand on quitte et quon reviens sur la page
 		if (typeof document.hidden !== "undefined") {
 		  hidden = "hidden";
@@ -67,19 +67,19 @@
 		document.addEventListener(visibilityChange, changementVisibilite, false);
 		// Elément qui va permettre un affichage informatif
 		var log = document.getElementById('log');
-		
+
 		// Fonction qui traite l'événement
 		function changementVisibilite() {
-			
+
 			if(!document[hidden] && loginVisible==1) {
 				window.location.reload()
-				
-			} 		 
+
+			}
 		}
-		
-		function ChangeOnglet(onglet, contenu) 
-		{   
-		
+
+		function ChangeOnglet(onglet, contenu)
+		{
+
 			if(onglet=='tab_org' && dejaVisiteOrg!=1){
 				dejaVisiteOrg=1;
 				loadPageOrg();
@@ -96,44 +96,44 @@
 				loadBacklog();
 			}
 			document.getElementById('content_org').style.display = 'none';
-			document.getElementById('content_CIOrg').style.display = 'none';      
-			document.getElementById('content_backlog').style.display = 'none';      
-			document.getElementById(contenu).style.display = 'block';       
-		 
+			document.getElementById('content_CIOrg').style.display = 'none';
+			document.getElementById('content_backlog').style.display = 'none';
+			document.getElementById(contenu).style.display = 'block';
+
 			document.getElementById('tab_org').className = '';
-			document.getElementById('tab_CIOrg').className = '';     
-			document.getElementById('tab_backlog').className = '';     
-			document.getElementById(onglet).className = 'active';       
-		}   
+			document.getElementById('tab_CIOrg').className = '';
+			document.getElementById('tab_backlog').className = '';
+			document.getElementById(onglet).className = 'active';
+		}
 
 		function reloadOngletActive(){
 			var ongletActif= document.getElementsByClassName("active");
-				
+
 			if(ongletActif[0].id == 'tab_org'){
 				reloadInfoCollabo();
 				dejaVisiteOrg=0;
-				ChangeOnglet('tab_org', 'content_org'); 
+				ChangeOnglet('tab_org', 'content_org');
 			}else if(ongletActif[0].id == 'tab_CIOrg'){
 				reloadInfoCollabo();
 				dejaVisiteCIsOrg=0;
-				ChangeOnglet('tab_CIOrg', 'content_CIOrg'); 
+				ChangeOnglet('tab_CIOrg', 'content_CIOrg');
 			}else if(ongletActif[0].id == 'tab_backlog'){
 				reloadInfoCollabo();
 				dejaVisiteBacklog=0;
-				ChangeOnglet('tab_backlog', 'content_backlog'); 
-			}				
+				ChangeOnglet('tab_backlog', 'content_backlog');
+			}
 		}
 
 		$( function() {
-			$('input').keyup(function(e) {    
+			$('input').keyup(function(e) {
 			   if(e.keyCode == 13) { // KeyCode de la touche entrée
 					//cacher les proposition de lautocompletion
 					$('#ui-id-1').hide();
 			 }
 			});
-			
+
 		});
-		
+
 		//en cas de cliquage sur le bouton actualiser
 		//reload contenu des info perso du collabo
 		function reloadInfoCollabo(){
@@ -143,8 +143,8 @@
 				'class': 'Person',
 				key: 'SELECT ctc FROM Contact AS ctc WHERE ctc.status = "Active" AND ctc.finalclass="Person" AND ctc.email LIKE "%hardis%" AND ctc.friendlyname = "'+$('#collabo').val()+'"',
 				output_fields: "name, email, phone, first_name, mobile_phone, short_phone, site_name, function, team_list, org_name"
-			};		
-					
+			};
+
 			$.ajax({
 				type: "GET",
 				url: ITOP_WS_URL,
@@ -152,12 +152,12 @@
 				data: { auth_user: login, auth_pwd: pwd, json_data: JSON.stringify(iJSON)},
 				crossDomain: 'true',
 				success: function(data){
-					
+
 					var fields;
 					var team;
 					$.each(data['objects'], function(index, value){
 						if(fields==null){
-							fields= value['fields']; 
+							fields= value['fields'];
 							idCollabo= value['key'];
 							team= getTeamName(fields['team_list'][0]);
 						}
@@ -166,13 +166,13 @@
 					if(fields['org_name']=='Utilisateur Hardis'){
 						orgn='Hardis'
 					}
-										
+
 					$('body h1').text(" ");
 					$('body h1').text("Bienvenue sur l'application de gestion du collaborateur");
 					$('body h1').css("width", "665");
 					$('h1 ~ h2').text(" ");
 					$('h1 ~ h2').text(fields['first_name'] +" "+ fields['name']);
-					
+
 					$("#nom").html(fields['name']);
 					$("#prenom").html(fields['first_name']);
 					$("#mail").html(fields['email']);
@@ -186,16 +186,23 @@
 				}
 			});
 		}
-				
-		
+
+
 	</script>
 </head>
 <!-- onload='loadPageSelectInfo(); loadPageAfficheCI(); ' -->
 <body onload='loadPageSelectInfo();'>
+	<div class="navbar">
+		<a href="../menu/menu.html">Menu</a>
+		<a href="../appli_gestion_client-recherche/afficheInfo.html">Recherche Client</a>
+		<a class="active" href="#">Recherche Collaborateur</a>
+		<a href="../cds/cds.html">CDS</a>
+	</div>
+
 	<div id="main_div">
 		<div id='login' hidden>
 			<h2>Authentification iTop</h2>
-			
+
 			<p>
 				Vous devez être connecté sur iTop.
 			</p>
@@ -204,63 +211,63 @@
 
 		</div>
 		<span id="backlogHardisListId">	</span>
-		
+
 		<div id='connected' hidden>
 			<span id='refresh' onclick='reloadOngletActive();'>Actualiser</span>
-			
+
 			<h1>Bienvenue sur l'application de gestion des collaborateurs</h1>
 			<h2></h2>
-			
+
 			<form method="get" action="afficheInfo.html" id='formC' >
 
-				<label for="collabo">Entrez le nom du collaborateur </label> 
+				<label for="collabo">Entrez le nom du collaborateur </label>
 				<input type="search" name="collabo" id='collabo' required />
-				
+
 				<span id='alertFormError' hidden></span>
 				<input type="submit" value="Rechercher" id='valid' />
 
 			</form>
-			
+
 			<div id="infoCollabo" hidden>
 				<div id="infoC1">
 					<h3>Nom: </h3><p id='nom'></p><br>
 					<h3>Prénom: </h3><p  id='prenom'></p>
 				</div>
-				<div id="infoC2">	
+				<div id="infoC2">
 					<h3>E-mail: </h3><p id='mail'></p><br>
 					<h3>Téléphone: </h3><p id='tel'></p>
-					
+
 				</div>
 				<div id="infoC3">
 					<h3>Téléphone mobile:</h3><p id='telMobile'></p><br>
-					<h3>Téléphone court:</h3><p id='telCourt'></p>			
+					<h3>Téléphone court:</h3><p id='telCourt'></p>
 				</div>
-				<div id="infoC4">				
+				<div id="infoC4">
 					<h3>Fonction:</h3><p id='fonction'></p><br>
 					<h3>Site:</h3><p id='site'></p>
 				</div>
 				<div id="infoC5">
-					<h3>Organisation:</h3><p id='org'></p>				
+					<h3>Organisation:</h3><p id='org'></p>
 					<h3>Équipe:</h3><p id='equipe'></p>
 				</div>
 			</div>
-	
+
 			<div class='tabbed_area' hidden>
 				<ul class="tabs">
 					<li><a href="javascript:ChangeOnglet('tab_org', 'content_org');" id="tab_org" class="active">Clients du collaborateur</a></li>
 					<li><a href="javascript:ChangeOnglet('tab_CIOrg', 'content_CIOrg');" id="tab_CIOrg">CIs des clients</a></li>
 					<li><a href="javascript:ChangeOnglet('tab_backlog', 'content_backlog');" id="tab_backlog">Backlog</a></li>
 				</ul>
-				<div id="content_org" class="content"hidden>        
+				<div id="content_org" class="content"hidden>
 					<ul id='listeOrg'>
 					</ul>
 				</div>
-				
-				<div id="content_CIOrg" class="content">        
-				
+
+				<div id="content_CIOrg" class="content">
+
 				</div>
-				
-				<div id="content_backlog" class="content"hidden>        
+
+				<div id="content_backlog" class="content"hidden>
 					<p id='lastExtractDate'></p>
 					<section id='recapCount'>
 						<article id='recapCountIncDem'>
@@ -273,12 +280,12 @@
 										<th>Problèmes</th>
 									</tr>
 								</thead>
-								<tbody>								
+								<tbody>
 								</tbody>
 							</table>
 						</article>
-						
-						
+
+
 					</section>
 					<section id='ticketP1Open'>
 						<table id='tableTicketP1Open'>
@@ -295,7 +302,7 @@
 									<th>Référence bug</th>
 								</tr>
 							</thead>
-							<tbody>								
+							<tbody>
 							</tbody>
 						</table>
 					</section>
@@ -315,7 +322,7 @@
 									<th>Référence bug</th>
 								</tr>
 							</thead>
-							<tbody>								
+							<tbody>
 							</tbody>
 						</table>
 					</section>
@@ -335,7 +342,7 @@
 									<th>Référence bug</th>
 								</tr>
 							</thead>
-							<tbody>								
+							<tbody>
 							</tbody>
 						</table>
 					</section>
@@ -367,12 +374,12 @@
 									<th>Référence bug</th>
 								</tr>
 							</thead>
-							<tbody id='bodyTableTicketF'>								
+							<tbody id='bodyTableTicketF'>
 							</tbody>
 						</table>
 					</section>
 					<section id='ticketSpe'>
-						<article id='ticketP1'>			
+						<article id='ticketP1'>
 							<table id='tableTicketP1'>
 							<caption>Liste des tickets P1 sur la période</caption>
 								<thead>
@@ -385,7 +392,7 @@
 										<th>Référence bug</th>
 									</tr>
 								</thead>
-								<tbody>								
+								<tbody>
 								</tbody>
 							</table>
 						</article>
@@ -403,15 +410,15 @@
 										<th>SLA</th>
 									</tr>
 								</thead>
-								<tbody>								
+								<tbody>
 								</tbody>
 							</table>
 						</article>
-					</section>	
+					</section>
 				</div>
-				
-				
-				
+
+
+
 			</div>
 		</div>
 	<!--Pour l'annimation du chargement--->

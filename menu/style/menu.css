@@ -21,3 +21,60 @@ a:hover{
   color:#164463;
   text-decoration:none;
 }
+
+.row{
+  width:100%;
+  height: 300px;
+}
+
+.choix{
+  display: inline-block;
+  height: 100%;
+  width:30%;
+}
+
+.choix a {
+  text-decoration: none;
+  color:black;
+}
+
+.choix a:hover{
+  color:black;
+}
+
+.choix1{
+  background-image: url("../Photo/client.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.choix2{
+  background-image: url("../Photo/collabo.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.choix3{
+  background-image: url("../Photo/cds.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.text{
+  text-align: center;
+  opacity:0;
+  background: rgba(255, 255, 255, 0.6);
+  width: 100%;
+  height: 280px;
+  padding-top:20px;
+}
+
+.text p{
+  padding-top:100px;
+  font-weight: bold;
+  color:black;
+  font-family: arial, sans-serif;
+}

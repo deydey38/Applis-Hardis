@@ -34,13 +34,12 @@ spinner.spin(spinner_div);
   var ITOP_URL	= 'https://itop.hardis.fr';
   var ITOP_WS_URL	= ITOP_URL + "/webservices/rest.php?version=1.3";
 
-  $('ul li').on('click', function (e) {
+  $('ul li a').on('click', function (e) {
     var targetSec = $(this).text();
     var off = $('.'+targetSec).offset();
+    console.log("offset "+off);
     e.preventDefault();
-    $('html, body').animate({
-      scrollTop: off.top
-    }, 500, 'swing');
+    $('html, body').animate({scrollTop: off.top-55}, 500, 'swing');
   });
 
   function getContactByCDS1(){
@@ -247,7 +246,7 @@ spinner.spin(spinner_div);
 
 
 
-  $("button").click(function() {
+  $(".CDS button").click(function() {
       	$(this).parent().find('.slide').toggle('show');
 				if($(this).text() === "Afficher"){
 					$(this).html("Masquer");

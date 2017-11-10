@@ -29,6 +29,8 @@ function checkConnection(){
           $("header").show();
           $(".contenu").show();
           $(".contenu p").show();
+          $(".row").show();
+          $(".choix").show();
         }
       },
   		error: function (data) {
@@ -36,3 +38,15 @@ function checkConnection(){
   		}
   	});
 }
+
+$(document).ready(function(){
+
+  $(".choix").hover(function(){
+  	//$(this).fadeTo("fast", 0.5);
+    $(this).find(".text").fadeTo("fast", 1);
+  },
+  function(){
+    //$(this).fadeTo("fast", 1);
+    $(this).find(".text").fadeTo("fast", 0);
+    });
+});

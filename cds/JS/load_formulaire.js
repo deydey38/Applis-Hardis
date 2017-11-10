@@ -4,6 +4,29 @@ var ITOP_URL	= 'https://itop.hardis.fr';
 var ITOP_WS_URL	= ITOP_URL + "/webservices/rest.php?version=1.3";
 var cds = '';
 var nomOrg = '';
+var opts = {
+			lines: 8, // The number of lines to draw
+			length: 9, // The length of each line
+			width: 2, // The line thickness
+			radius: 4, // The radius of the inner circle
+			corners: 1, // Corner roundness (0..1)
+			rotate: 0, // The rotation offset
+			direction: 1, // 1: clockwise, -1: counterclockwise
+			color: '#000', // #rgb or #rrggbb
+			speed: 1.4, // Rounds per second
+			trail: 60, // Afterglow percentage
+			shadow: false, // Whether to render a shadow
+			hwaccel: false, // Whether to use hardware acceleration
+			className: 'spinner', // The CSS class to assign to the spinner
+			zIndex: 2e9, // The z-index (defaults to 2000000000)
+			top: 'auto', // Top position relative to parent in px
+			left: 'auto' // Left position relative to parent in px
+};
+
+var spinner = null;
+var spinner_div = 0;
+
+
 $(function(){
 
 	$('#client').val('');
@@ -54,15 +77,21 @@ $(function(){
 	//soumission du formulaire
 	$("#formC").submit(function(e){
 		//pas de rechargement de page
-		
-		e.preventDefault();
 
+		e.preventDefault();
 		$('#alertFormError').fadeOut();
 
+		spinner_div = $('#spinner-form').get(0);
+		if(spinner == null) {
+		spinner = new Spinner(opts).spin(spinner_div);
+		}else {
+		spinner.spin(spinner_div);
+		}
 		var ok = true;
 
 		// rien n'est renseigné
 		if($('#client').val()==''){
+			spinner.stop(spinner_div);
 			$('#alertFormError').text("Veuillez renseigner le champs...");
 			$('#alertFormError').fadeIn();
 
@@ -93,6 +122,7 @@ $(function(){
 							ok = false;
 							$('#alertFormError').text("Désolé, ce client n'existe pas ou n'est pas présent dans iTop");
 							$('#alertFormError').fadeIn();
+							spinner.stop(spinner_div);
 						}else{
 							nomOrg= $('#client').val().toUpperCase();
 							//testOK();
@@ -155,11 +185,17 @@ function CDS(){
 					cds = value['fields']['name'];
 				});
 			}else{
-				cds="PAS DE CDS";
+				cds="Pas de CDS";
 			}
-			console.log("cds :"+cds);
-			$(".reponse").text(nomOrg+" : "+cds);
-			$(".reponse").fadeTo("fast", 1);
+			//console.log("cds :"+cds);
+			spinner.stop(spinner_div);
+			spinner_div = $('#spinner-form').get(0);
+			$(".reponse").append(nomOrg+" : "+cds+'</br>');
+			$(".reponse").fadeIn();
+			$(".erase").fadeIn();
+			$(".erase").click(function() {
+						$(".reponse").html("");
+			});
 		},
 		error: function(data){
 			console.log("cds error");
