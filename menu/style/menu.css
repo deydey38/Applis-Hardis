@@ -1,5 +1,5 @@
 body{
-  padding:40px;
+  margin: 0;
 }
 
 h1{
@@ -10,8 +10,20 @@ header h1:last-of-type{
   margin-bottom: 20px;
 }
 
+header{
+  background-image: url("../Photo/bg.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 50vh;
+  width:100vw;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .contenu{
-  padding-top: 40px;
+  --padding-top: 40px;
   text-align: center;
   display: block;
   font-size: 20px;
@@ -28,7 +40,7 @@ a:hover{
 }
 
 .choix{
-  display: inline-block;
+  display: inline-grid;
   height: 100%;
   width:30%;
 }
@@ -66,15 +78,17 @@ a:hover{
 .text{
   text-align: center;
   opacity:0;
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(226, 239, 248, 0.6);
   width: 100%;
   height: 280px;
   padding-top:20px;
 }
 
 .text p{
-  padding-top:100px;
-  font-weight: bold;
-  color:black;
-  font-family: arial, sans-serif;
+  padding-top:75px;
+  font-size: 1.5em;
+  font-weight: 400;
+  color: #114e6f;
+  letter-spacing: 4px;
+  font-family: Gill Sans extrabold, century gothic, sans-serif;
 }
