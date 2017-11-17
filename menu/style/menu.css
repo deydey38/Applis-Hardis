@@ -15,9 +15,12 @@ header{
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 50vh;
-  width:100vw;
-  max-width: 1000px;
+  max-height: 190px;
+  max-width:440px;
+  width: 100vw;
+  height:50vh;
+  margin-top: 10vh;
+  margin-bottom: 10vh;
   margin-left: auto;
   margin-right: auto;
 }
@@ -42,7 +45,8 @@ a:hover{
 .choix{
   display: inline-grid;
   height: 100%;
-  width:30%;
+  width:25%;
+  max-width: 300px;
 }
 
 .choix a {
@@ -59,6 +63,7 @@ a:hover{
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  margin-right: 7%;
 }
 
 .choix2{
@@ -66,6 +71,7 @@ a:hover{
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  margin-right: 7%;
 }
 
 .choix3{
@@ -77,7 +83,7 @@ a:hover{
 
 .text{
   text-align: center;
-  opacity:0;
+  opacity:1;
   background: rgba(226, 239, 248, 0.6);
   width: 100%;
   height: 280px;

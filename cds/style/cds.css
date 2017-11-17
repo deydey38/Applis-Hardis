@@ -32,7 +32,7 @@ h1{
 
 
 .slide{
-  --display:none;
+  display:none;
   width: 100%;
 }
 
@@ -201,4 +201,8 @@ p{
 
 .active{
   background-color: #06587a;
+}
+
+.slide tbody tr td a {
+  color:black;
 }

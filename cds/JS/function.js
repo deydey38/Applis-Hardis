@@ -109,6 +109,8 @@ spinner.spin(spinner_div);
       //console.log("data "+data);
       $.each(data['objects'], function(index, value){
         //console.log(value);
+        nomClient = value['fields']['name'];
+        console.log(nomClient);
         if(client1){
           //console.log("client 1 "+client1);
           var row = document.createElement("tr");
@@ -120,7 +122,7 @@ spinner.spin(spinner_div);
           }else{
             even=true;
           }
-          $(div1).text(value['fields']['name']);
+          $(div1).html('<a href="../../../Applis-Hardis/appli_gestion_client/afficheInfo.html?client='+nomClient+'" target="_blank">'+ nomClient+'</a>');
           $(row).append(div1);
           client1=false;
           //console.log("client "+client1);
@@ -131,7 +133,7 @@ spinner.spin(spinner_div);
           var div2 = document.createElement("td");
 
           $(div2).css("width", "50%");
-          $(div2).text(value['fields']['name']);
+          $(div2).html('<a href="../../../Applis-Hardis/appli_gestion_client/afficheInfo.html?client='+nomClient+'" target="_blank">'+ nomClient+'</a>');
           $(".CDS1 .slide tr").last().append(div2);
 
           client1=true;
@@ -157,6 +159,7 @@ spinner.spin(spinner_div);
         //console.log("data "+data);
         $.each(data['objects'], function(index, value){
           //console.log(value);
+          nomClient = value['fields']['name'];
           if(client1){
             //console.log("client 1 "+client1);
             var row = document.createElement("tr");
@@ -168,7 +171,7 @@ spinner.spin(spinner_div);
             }else{
               even=true;
             }
-            $(div1).text(value['fields']['name']);
+            $(div1).html('<a href="../../../Applis-Hardis/appli_gestion_client/afficheInfo.html?client='+nomClient+'" target="_blank">'+ nomClient+'</a>');
             $(row).append(div1);
             $(".CDS2 .slide").append(row);
             client1=false;
@@ -180,7 +183,7 @@ spinner.spin(spinner_div);
             var div2 = document.createElement("td");
 
             $(div2).css("width", "50%");
-            $(div2).text(value['fields']['name']);
+            $(div2).html('<a href="../../../Applis-Hardis/appli_gestion_client/afficheInfo.html?client='+nomClient+'" target="_blank">'+ nomClient+'</a>');
             $(".CDS2 .slide tr").last().append(div2);
 
             client1=true;
@@ -207,6 +210,7 @@ spinner.spin(spinner_div);
         //console.log("data "+data);
         $.each(data['objects'], function(index, value){
           //console.log(value);
+          nomClient = value['fields']['name'];
           if(client1){
             //console.log("client 1 "+client1);
             var row = document.createElement("tr");
@@ -218,7 +222,7 @@ spinner.spin(spinner_div);
             }else{
               even=true;
             }
-            $(div1).text(value['fields']['name']);
+            $(div1).html('<a href="../../../Applis-Hardis/appli_gestion_client/afficheInfo.html?client='+nomClient+'" target="_blank">'+ nomClient+'</a>');
             $(row).append(div1);
             $(".CDS3 .slide").append(row);
             client1=false;
@@ -230,7 +234,7 @@ spinner.spin(spinner_div);
             var div2 = document.createElement("td");
 
             $(div2).css("width", "50%");
-            $(div2).text(value['fields']['name']);
+            $(div2).html('<a href="../../../Applis-Hardis/appli_gestion_client/afficheInfo.html?client='+nomClient+'" target="_blank">'+ nomClient+'</a>');
             $(".CDS3 .slide tr").last().append(div2);
 
             client1=true;

@@ -195,6 +195,8 @@ function CDS(){
 			$(".erase").fadeIn();
 			$(".erase").click(function() {
 						$(".reponse").html("");
+						$(".reponse").fadeOut();
+						$(".erase").fadeOut();
 			});
 		},
 		error: function(data){

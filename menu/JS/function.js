@@ -44,11 +44,10 @@ function checkConnection(){
 $(document).ready(function(){
 
   $(".choix").hover(function(){
-  	//$(this).fadeTo("fast", 0.5);
-    $(this).find(".text").fadeTo("fast", 1);
+    $(this).css("box-shadow", "0px 6px 30px 0px teal");
+
   },
   function(){
-    //$(this).fadeTo("fast", 1);
-    $(this).find(".text").fadeTo("fast", 0);
+    $(this).css("box-shadow", "none");
     });
 });
