@@ -43,16 +43,20 @@ h1 ~ h2{
 	text-decoration:none;
 	color: #1C94C4;
 }
-/*
+
+#login a, #login a:visited {
+	text-decoration:none;
+	color: #1C94C4;
+}
+
+#login a:hover {
+	text-decoration:underline;
+	color:#EB8F00;
+}
+
 a, a:visited {
 	text-decoration:none;
 	color: #1C94C4;
-}*/
-
-a:hover {
-	text-decoration:underline;
-	color:#EB8F00;
-
 }
 
 #valid, button{

@@ -11,13 +11,65 @@
     <script type="text/javascript" src="./JS/spin.js"></script>
     <script type="text/javascript" src="./JS/function.js"></script>
     <script type="text/javascript" src="./JS/load_formulaire.js"></script>
+    <script type="text/javascript" src="./JS/connection.js"></script>
+    <script type="text/javascript" src="./JS/timeout.js"></script>
 
     <link rel="stylesheet" href="style/body.css">
     <link rel="stylesheet" href="style/cds.css">
     <link rel="stylesheet" href="./JS/JQuery/jquery-ui-themes-1.11.4/themes/smoothness/jquery-ui.css">
 
+    <script>
+    var hidden, visibilityChange;
+    var loginVisible= 0;
+
+    if (typeof document.hidden !== "undefined") {
+		  hidden = "hidden";
+		  visibilityChange = "visibilitychange";
+		  visibilityState = "visibilityState";
+		} else if (typeof document.mozHidden !== "undefined") {
+		  hidden = "mozHidden";
+		  visibilityChange = "mozvisibilitychange";
+		  visibilityState = "mozVisibilityState";
+		} else if (typeof document.msHidden !== "undefined") {
+		  hidden = "msHidden";
+		  visibilityChange = "msvisibilitychange";
+		  visibilityState = "msVisibilityState";
+		} else if (typeof document.webkitHidden !== "undefined") {
+		  hidden = "webkitHidden";
+		  visibilityChange = "webkitvisibilitychange";
+		  visibilityState = "webkitVisibilityState";
+		}
+
+
+    document.addEventListener(visibilityChange, changementVisibilite, false);
+		// Elément qui va permettre un affichage informatif
+		//var log = document.getElementById('log');
+
+		// Fonction qui traite l'événement
+		function changementVisibilite() {
+      console.log(loginVisible);
+			if(!document[hidden] && loginVisible==1) {
+			  window.location.reload();
+          // timeout();
+			}else{
+        timeout();
+      }
+		}
+
+    </script>
+
   </head>
-  <body>
+  <body onload="checkConnection();">
+    <div id='login' hidden>
+			<h2>Authentification iTop</h2>
+
+			<p>
+				Vous devez être connecté sur iTop.
+			</p>
+			<a href='https://itop.hardis.fr' target='_blank'>Cliquez ici pour se connecter</a>
+			<span class='errorMessage' id='errorMessage'></span><br />
+
+		</div>
 
     <div class="navbar">
       <a href="../menu/menu.html">Menu</a>
@@ -26,16 +78,19 @@
       <a class="active" href="#">CDS</a>
     </div>
 
+
+    <div class="contenu" hidden>
     <h1>Répartition des clients par CDS</h1>
 
+
     <div class="sidebar">
-      <ul><li><a href="#">Client</a>
+      <ul><li><a class="sidelink" href="#">Client</a>
           </li>
-          <li><a href="#".CDS"">CDS1</a>
+          <li><a class="sidelink" href="#".CDS"">CDS1</a>
           </li>
-          <li><a href="#">CDS2</a>
+          <li><a class="sidelink" href="#">CDS2</a>
           </li>
-          <li><a href="#">CDS3</a>
+          <li><a class="sidelink" href="#">CDS3</a>
           </li>
         </ul>
     </div>
@@ -44,34 +99,34 @@
   </iframe>-->
   <div class="wrap">
     <div class="recherche Client">
-      <p class="test">Recherche par Client</p>
+      <p class="para test">Recherche par Client</p>
       <form method="get" action="afficheInfo.html" id='formC' >
         <label for="client">Entrez le nom du client </label>
         <input type="search" name="client" id='client' autofocus />
         <input class="left" type="submit" value="Rechercher" id='valid' />
         <div class="right" id='spinner-form' class='spinner-form'>
         </div>
-        <p id='alertFormError' hidden></p>
-        <p class="reponse" hidden> </p>
+        <p class="para"id='alertFormError' hidden></p>
+        <p class="reponse para" hidden> </p>
         <button class="erase" type="button" name="button" hidden>Effacer</button>
       </form>
     </div>
 
 
     <div class="CDS1 CDS">
-      <p class="test">Liste des clients du CDS1</p>
+      <p class="test para">Liste des clients du CDS1</p>
       <button class="test" type="button" name="button">Afficher</button>
       <table class="slide"></table>
     </div>
 
     <div class="CDS2 CDS">
-      <p class="test">Liste des clients du CDS2</p>
+      <p class="test para">Liste des clients du CDS2</p>
       <button class="test" type="button" name="button">Afficher</button>
       <table class="slide"></table>
     </div>
 
     <div class="CDS3 CDS">
-      <p class="test">Liste des clients du CDS3</p>
+      <p class="test para">Liste des clients du CDS3</p>
       <button class="test" type="button" name="button">Afficher</button>
       <table class="slide"></table>
     </div>
@@ -82,6 +137,7 @@
     </div>
     <div id="shadowing">
     </div>
+  </div>
 
   </body>
 </html>

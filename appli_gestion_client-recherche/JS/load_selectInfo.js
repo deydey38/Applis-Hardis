@@ -27,12 +27,13 @@ function loadPageSelectInfo(){
 			// Check code
 			console.log("DATA "+data);
 			console.log("DATA CODE "+data.code);
+			console.log("DATA CODE "+data.message);
 	if(data.code != 0){
 		// Missing password -> itop not connect
 		// Open login form
 		if (!first)
 		{
-			document.getElementById("errorMessage").innerHTML = data.message + ' ';
+			//document.getElementById("errorMessage").innerHTML = data.message + ' ';
 		}
 
 		first = false;

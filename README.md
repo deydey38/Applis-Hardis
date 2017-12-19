@@ -1,2 +1,2 @@
 # Applis-Hardis
-Contient les applis client/client recherche et collaborateur/collaborateur recherche
+Contient les applis client, colaborateur et CDS.

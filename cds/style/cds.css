@@ -125,13 +125,13 @@ label{
 	font-size: 14px;
 }
 
-.sidebar ul li, a{
+.sidebar ul li, .sidelink, .sidelink:visited{
   list-style:none;
   color:white;
   text-decoration: none;
 }
 
-li a:hover{
+.sidelink:hover{
   color:#06587a;
   text-decoration: none;
 }
@@ -149,7 +149,7 @@ li a:hover{
   background-color:#c5cddb;
 }
 
-p{
+.para{
   font-size: 20px;
   position:relative;
   font-family: Tahoma, Verdana, Arial, Helvetica;
@@ -205,4 +205,10 @@ p{
 
 .slide tbody tr td a {
   color:black;
+
+}
+
+.slide tbody tr td a:hover {
+  color:black;
+  text-decoration: underline;
 }

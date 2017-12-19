@@ -79,63 +79,90 @@ $(function(){
 		//pas de rechargement de page
 
 		e.preventDefault();
-		$('#alertFormError').fadeOut();
-
-		spinner_div = $('#spinner-form').get(0);
-		if(spinner == null) {
-		spinner = new Spinner(opts).spin(spinner_div);
-		}else {
-		spinner.spin(spinner_div);
-		}
-		var ok = true;
-
-		// rien n'est renseigné
-		if($('#client').val()==''){
-			spinner.stop(spinner_div);
-			$('#alertFormError').text("Veuillez renseigner le champs...");
-			$('#alertFormError').fadeIn();
-
-		}else{
-
-			//json exist client
-			var iJSON = {
+		var oJSON		={
 				operation: 'core/get',
 				'class': 'Organization',
-				key: "SELECT org FROM Organization AS org WHERE org.name='"+$('#client').val()+"'",
+				key: "SELECT org FROM Organization AS org",
 				output_fields: "name"
 			};
 
-			//si un client est renseigné et que le ci ne l'est pas
-			if($('#client').val()!=''){
+			$.ajax({
+				type: "GET",
+				url: ITOP_WS_URL,
+				dataType: 'jsonp',
+				data: { auth_user: login, auth_pwd: pwd, json_data: JSON.stringify(oJSON)},
+				crossDomain: 'true',
+				success: function (data){
+					// Check code
+					console.log("DATA "+data);
+					console.log("DATA CODE "+data.code);
+					if(data.code!=0){//non connnecté
+						window.location.reload();
+					}else{
+						$('#alertFormError').fadeOut();
 
-				//ajax pour savoir si le client existe
-				$.ajax(
-				{
-					type: "GET",
-					url: ITOP_WS_URL,
-					dataType: 'jsonp',
-					data: { auth_user: login, auth_pwd: pwd, json_data: JSON.stringify(iJSON)},
-					crossDomain: 'true',
-					success: function(data){
-						//le nom du client n'existe pas
-						if(data.message == "Found: 0"){
-							ok = false;
-							$('#alertFormError').text("Désolé, ce client n'existe pas ou n'est pas présent dans iTop");
-							$('#alertFormError').fadeIn();
-							spinner.stop(spinner_div);
-						}else{
-							nomOrg= $('#client').val().toUpperCase();
-							//testOK();
-							CDS();
+						spinner_div = $('#spinner-form').get(0);
+						if(spinner == null) {
+						spinner = new Spinner(opts).spin(spinner_div);
+						}else {
+						spinner.spin(spinner_div);
 						}
-					},
-					error: function(data){
-						ok = false;
-					}
-				});
-			}
+						var ok = true;
 
-		}
+						// rien n'est renseigné
+						if($('#client').val()==''){
+							spinner.stop(spinner_div);
+							$('#alertFormError').text("Veuillez renseigner le champs...");
+							$('#alertFormError').fadeIn();
+
+						}else{
+
+							//json exist client
+							var iJSON = {
+								operation: 'core/get',
+								'class': 'Organization',
+								key: "SELECT org FROM Organization AS org WHERE org.name='"+$('#client').val()+"'",
+								output_fields: "name"
+							};
+
+							//si un client est renseigné et que le ci ne l'est pas
+							if($('#client').val()!=''){
+
+								//ajax pour savoir si le client existe
+								$.ajax(
+								{
+									type: "GET",
+									url: ITOP_WS_URL,
+									dataType: 'jsonp',
+									data: { auth_user: login, auth_pwd: pwd, json_data: JSON.stringify(iJSON)},
+									crossDomain: 'true',
+									success: function(data){
+										//le nom du client n'existe pas
+										if(data.message == "Found: 0"){
+											ok = false;
+											$('#alertFormError').text("Désolé, ce client n'existe pas ou n'est pas présent dans iTop");
+											$('#alertFormError').fadeIn();
+											spinner.stop(spinner_div);
+										}else{
+											nomOrg= $('#client').val().toUpperCase();
+											//testOK();
+											CDS();
+										}
+									},
+									error: function(data){
+										ok = false;
+									}
+								});
+							}
+
+						}
+					}
+				},
+				error: function (data) {
+					console.log("DATA code ERROR");
+				}
+			});
+
 	});
 
 

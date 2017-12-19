@@ -77,9 +77,10 @@
 		// Fonction qui traite l'événement
 		function changementVisibilite() {
 
-			if(!document[hidden] && loginVisible==1) {
-				window.location.reload()
-
+			//if(!document[hidden] && loginVisible==1) {
+			if(!document[hidden]) {
+				//window.location.reload()
+				loadPageSelectInfo();
 			}
 		}
 
