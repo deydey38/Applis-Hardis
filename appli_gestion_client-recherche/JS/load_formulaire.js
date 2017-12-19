@@ -203,6 +203,7 @@ $(function(){
 					data: { auth_user: login, auth_pwd: pwd, json_data: JSON.stringify(jJSON)},
 					crossDomain: 'true',
 					success: function(data){
+						console.log(data);
 						//pas de correspondance
 						if(data.message == "Found: 0"){
 							ok = false;
@@ -215,7 +216,7 @@ $(function(){
 
 								$('#client').val(nomOrg);
 							});
-
+							console.log("nom organisation : " + nomOrg);
 							//testOK();
 							CDS();
 						}
