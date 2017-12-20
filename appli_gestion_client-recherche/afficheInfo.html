@@ -90,6 +90,7 @@
 			   if(e.keyCode == 13) { // KeyCode de la touche entrée
 					//cacher les proposition de lautocompletion
 					$('#ui-id-1').hide();
+					$("#formC").submit();
 			 }
 			});
 		});
@@ -173,7 +174,7 @@
 		<span id="backlogHardisListId">	</span>
 
 		<div id='connected' hidden>
-			<span id='refresh' onclick='reloadOngletActive();'>Actualiser</span>
+			<!--<span id='refresh' onclick='reloadOngletActive();'>Actualiser</span>-->
 
 			<h1>Bienvenue sur l'application de gestion des clients</h1>
 			<h2></h2>
@@ -195,8 +196,8 @@
 			<div class='tabbed_area' hidden>
 				<ul class="tabs">
 					<li><a href="javascript:ChangeOnglet('tab_CIs', 'content_CIs');" id="tab_CIs" class="active">BD/VM</a></li>
-					<li><a href="javascript:ChangeOnglet('tab_interne', 'content_interne');" id="tab_interne">Contacts Internes</a></li>
-					<li><a href="javascript:ChangeOnglet('tab_contact', 'content_contact');" id="tab_contact">Contacts</a></li>
+					<li><a href="javascript:ChangeOnglet('tab_interne', 'content_interne');" id="tab_interne">Contacts Hardis</a></li>
+					<li><a href="javascript:ChangeOnglet('tab_contact', 'content_contact');" id="tab_contact">Contacts Client</a></li>
 					<li><a href="javascript:ChangeOnglet('tab_backlog', 'content_backlog');" id="tab_backlog">Backlog</a></li>
 					<li><a href="javascript:ChangeOnglet('tab_docCo', 'content_docCo');" id="tab_docCo">document de connexion</a></li>
 				</ul>

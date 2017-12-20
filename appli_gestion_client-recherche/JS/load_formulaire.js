@@ -36,7 +36,9 @@ $(function(){
 				}
 			});
 		},
-
+		/*select: function () {
+        $("#formC").submit();
+    },*/
 		minLength : 3,
 		//soumission auto quand click sur proposition
 		// select: function (event, ui){
