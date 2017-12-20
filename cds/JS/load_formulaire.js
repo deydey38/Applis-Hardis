@@ -53,6 +53,7 @@ $(function(){
 				},
 
 				success : function(donnee){
+
 					var lst = new Array;
 					$.each(donnee['objects'], function(index, value){
 						lst.push(value['fields']['name']);

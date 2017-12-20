@@ -419,26 +419,26 @@ function chargementPageCI(dataObjFcis, dataObjLnk){
 
 					console.log("idBD!=null");
 					//si le parametre ci n'est pas null on affiche seulement le ci concerné
-					if($('#ciName').val()!=''){
+					/*if($('#ciName').val()!=''){
 						if(lst_table_db[i+1] == $('#ciName').val().toUpperCase()){
 							var str='<tr><td>'+ lst_table_db[i] +'</td><td><a href="'+ iTopCIUrl+ idDB +'" target="_blank">'+ lst_table_db[i+1] +'</a></td><td>'+ lst_table_db[i+2] +'</td></tr>';
 							$("#table_db tbody:last").append(str);
 						}
-					}else{
+					}else{*/
 						var str='<tr><td>'+ lst_table_db[i] +'</td><td><a href="'+ iTopCIUrl+ idDB +'" target="_blank">'+ lst_table_db[i+1] +'</a></td><td>'+ lst_table_db[i+2] +'</td></tr>';
 						$("#table_db tbody:last").append(str);
-					}
+				//	}
 
 				}else{
-					if($('#ciName').val()!=''){
+					/*if($('#ciName').val()!=''){
 						if(lst_table_db[i+1] == $('#ciName').val().toUpperCase()){
 							var str='<tr><td>'+ lst_table_db[i] +'</td><td>'+ lst_table_db[i+1] +'</td><td>'+ lst_table_db[i+2] +'</td></tr>';
 							$("#table_db tbody:last").append(str);
 						}
-					}else{
+					}else{*/
 						var str='<tr><td>'+ lst_table_db[i] +'</td><td>'+ lst_table_db[i+1] +'</td><td>'+ lst_table_db[i+2] +'</td></tr>';
 						$("#table_db tbody:last").append(str);
-					}
+					//}
 				}
 
 			}
@@ -458,25 +458,25 @@ function chargementPageCI(dataObjFcis, dataObjLnk){
 				//creation de lien VM
 				if(idVM != null){
 					//si le parametre ci n'est pas null on affiche seulement le ci concerné
-					if($('#ciName').val()!=''){
+				/*	if($('#ciName').val()!=''){
 						if(lst_table_vm[i+1] == $('#ciName').val().toUpperCase()){
 							var str='<tr><td>'+ lst_table_vm[i] +'</td><td><a href="'+ iTopCIUrl+ idVM +'" target="_blank">'+ lst_table_vm[i+1] +'</a></td><td>'+ lst_table_vm[i+2] +'</td> <td>'+ lst_table_vm[i+3] +'</td><td>'+ lst_table_vm[i+4] +'</td><td><a href="'+ lst_table_vm[i+5] +'" target="_blank">'+ lst_table_vm[i+5] +'</a></td></tr>';
 							$("#table_vm tbody:last").append(str);
 						}
-					}else{
+					}else{*/
 							var str='<tr><td>'+ lst_table_vm[i] +'</td><td><a href="'+ iTopCIUrl+ idVM +'" target="_blank">'+ lst_table_vm[i+1] +'</a></td><td>'+ lst_table_vm[i+2] +'</td><td>'+ lst_table_vm[i+3] +'</td><td>'+ lst_table_vm[i+4] +'</td><td><a href="'+ lst_table_vm[i+5] +'" target="_blank">'+ lst_table_vm[i+5] +'</a></td></tr>';
 							$("#table_vm tbody:last").append(str);
-					}
+					//}
 				}else{
-					if($('#ciName').val()!=''){
+					/*if($('#ciName').val()!=''){
 						if(lst_table_vm[i+1] == $('#ciName').val().toUpperCase()){
 							var str='<tr><td>'+ lst_table_vm[i] +'</td><td>'+ lst_table_vm[i+1] +'</td><td>'+ lst_table_vm[i+2] +'</td><td>'+ lst_table_vm[i+3] +'</td><td>'+ lst_table_vm[i+4] +'</td><td><a href="'+ lst_table_vm[i+5] +'" target="_blank">'+ lst_table_vm[i+5] +'</a></td></tr>';
 							$("#table_vm tbody:last").append(str);
 						}
-					}else{
+					}else{*/
 						var str='<tr><td>'+ lst_table_vm[i] +'</td><td>'+ lst_table_vm[i+1] +'</td><td>'+ lst_table_vm[i+2] +'</td><td>'+ lst_table_vm[i+3] +'</td><td>'+ lst_table_vm[i+4] +'</td><td><a href="'+ lst_table_vm[i+5] +'" target="_blank">'+ lst_table_vm[i+5] +'</a></td></tr>';
 						$("#table_vm tbody:last").append(str);
-					}
+					//}
 				}
 			}
 
