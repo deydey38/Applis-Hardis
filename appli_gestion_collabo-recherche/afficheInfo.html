@@ -132,7 +132,11 @@
 					$('#ui-id-1').hide();
 			 }
 			});
-
+			$("#collabo").click(function() {
+				if($("#valid").val() == "Actualiser"){
+					$("#valid").val("Rechercher");
+				}
+		  });
 		});
 
 		//en cas de cliquage sur le bouton actualiser

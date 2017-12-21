@@ -8,10 +8,12 @@ $(function(){
 	$('#client').autocomplete({
 		source : function(requete, reponse){ // requete, reponse = données nécessaires au plugin
 			// Json request
+			var str = $('#client').val();
+			var str = str.replace(/'/g, "\\'");
 			var oJSON={
 				operation: 'core/get',
 				'class': 'Organization',
-				key: "SELECT org FROM Organization AS org WHERE( org.name LIKE '%" + $('#client').val() + "%')",
+				key: "SELECT org FROM Organization AS org WHERE( org.name LIKE '%" + str + "%')",
 				output_fields: 'name'
 			};
 
@@ -35,10 +37,15 @@ $(function(){
 					}));
 				}
 			});
+
 		},
 		/*select: function () {
         $("#formC").submit();
     },*/
+		select: function (event, ui) {
+        $("#client").val(ui.item.value);
+        $("#formC").submit();
+    },
 		minLength : 3,
 		//soumission auto quand click sur proposition
 		// select: function (event, ui){
@@ -295,6 +302,13 @@ function CDS(){
 * charge l'onglet CI si formulaire ok
 **/
 function testOK(){
+
+	if($("#valid").val() == "Rechercher"){
+		$("#valid").val("Actualiser");
+		console.log("bouton val rechercher");
+	}
+	$("#client").blur();
+	$("#ciName").blur();
 	ChangeOnglet('tab_CIs', 'content_CIs');
 
 	//affichage des onglets
