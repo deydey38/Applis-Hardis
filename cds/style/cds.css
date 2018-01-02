@@ -212,3 +212,8 @@ label{
   color:black;
   text-decoration: underline;
 }
+
+.exportAll{
+  font-size: 20px;
+  padding-left: 10px;
+}

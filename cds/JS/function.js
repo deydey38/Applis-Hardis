@@ -95,7 +95,7 @@ spinner.spin(spinner_div);
     key: getContactByCDS3(),
     output_fields: "name"
   };
-
+  var dataURLCDS = '';
   var client1 = true;
   var even = true;
   // ajax trouvage du client par rapport au ci
@@ -107,9 +107,14 @@ spinner.spin(spinner_div);
     crossDomain: 'true',
     success: function(data){
       //console.log("data "+data);
+      var dataURL = '';
       $.each(data['objects'], function(index, value){
         //console.log(value);
         nomClient = value['fields']['name'];
+        var dataRow = '';
+        dataRow += nomClient + " ; CDS1;";
+        dataURL += dataRow + '\n';
+        dataURLCDS += dataRow + '\n';
         //console.log(nomClient);
         if(client1){
           //console.log("client 1 "+client1);
@@ -139,6 +144,7 @@ spinner.spin(spinner_div);
           client1=true;
         }
       });
+      $('.export1').attr('href', 'data:text/csv;charset=utf-8;base64,' + btoa(dataURL));
       CDS2();
     },
     error: function(data){
@@ -157,9 +163,15 @@ spinner.spin(spinner_div);
       crossDomain: 'true',
       success: function(data){
         //console.log("data "+data);
+        var dataURL = '';
+        dataURLCDS += '\n';
         $.each(data['objects'], function(index, value){
           //console.log(value);
           nomClient = value['fields']['name'];
+          var dataRow = '';
+          dataRow += nomClient + " ; CDS2;";
+          dataURL += dataRow + '\n';
+          dataURLCDS += dataRow + '\n';
           if(client1){
             //console.log("client 1 "+client1);
             var row = document.createElement("tr");
@@ -189,6 +201,7 @@ spinner.spin(spinner_div);
             client1=true;
           }
         });
+        $('.export2').attr('href', 'data:text/csv;charset=utf-8;base64,' + btoa(dataURL));
         CDS3();
       },
       error: function(data){
@@ -208,9 +221,15 @@ spinner.spin(spinner_div);
       crossDomain: 'true',
       success: function(data){
         //console.log("data "+data);
+        var dataURL = '';
+        dataURLCDS += '\n';
         $.each(data['objects'], function(index, value){
           //console.log(value);
           nomClient = value['fields']['name'];
+          var dataRow = '';
+          dataRow += nomClient + " ; CDS3;";
+          dataURL += dataRow + '\n';
+          dataURLCDS += dataRow + '\n';
           if(client1){
             //console.log("client 1 "+client1);
             var row = document.createElement("tr");
@@ -239,6 +258,8 @@ spinner.spin(spinner_div);
 
             client1=true;
           }
+          $('.export3').attr('href', 'data:text/csv;charset=utf-8;base64,' + btoa(dataURL));
+          $('.exportAll').attr('href', 'data:text/csv;charset=utf-8;base64,' + btoa(dataURLCDS));
           spinner.stop(spinner_div);
         });
       },
@@ -250,7 +271,7 @@ spinner.spin(spinner_div);
 
 
 
-  $(".CDS button").click(function() {
+  $(".CDS .affiche").click(function() {
       	$(this).parent().find('.slide').toggle('show');
 				if($(this).text() === "Afficher"){
 					$(this).html("Masquer");
@@ -258,4 +279,15 @@ spinner.spin(spinner_div);
 					$(this).html("Afficher");
 				}
   });
+
+  $('.export').hover(
+      function() {
+          var text = $(this).text();
+          $(this).data('initialText', text);
+          $(this).html(text + " &raquo;");
+      },
+      function() {
+          $(this).text($(this).data('initialText'));
+      }
+  );
 }

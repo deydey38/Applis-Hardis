@@ -98,6 +98,8 @@
    <!--<iframe src="https://itop.hardis.fr/webservices/export-v2.php?format=html&login_mode=basic&date_format=Y-m-d+H%3Ai%3As&query=376" width="" height="">
   </iframe>-->
   <div class="wrap">
+    <a class=" export exportAll" download="CDS.csv">Exporter tous les CDS</a>
+
     <div class="recherche Client">
       <p class="para test">Recherche par Client</p>
       <form method="get" action="afficheInfo.html" id='formC' >
@@ -112,22 +114,24 @@
       </form>
     </div>
 
-
     <div class="CDS1 CDS">
       <p class="test para">Liste des clients du CDS1</p>
-      <button class="test" type="button" name="button">Afficher</button>
+      <button class="test affiche" type="button" name="button">Afficher</button>
+      <a class="export export1" href="#" download="CDS1.csv">Exporter</a>
       <table class="slide"></table>
     </div>
 
     <div class="CDS2 CDS">
       <p class="test para">Liste des clients du CDS2</p>
-      <button class="test" type="button" name="button">Afficher</button>
+      <button class="test affiche" type="button" name="button">Afficher</button>
+      <a class="export export2" download="CDS2.csv">Exporter</a>
       <table class="slide"></table>
     </div>
 
     <div class="CDS3 CDS">
       <p class="test para">Liste des clients du CDS3</p>
-      <button class="test" type="button" name="button">Afficher</button>
+      <button class="test affiche" type="button" name="button">Afficher</button>
+      <a class="export export3" download="CDS3.csv">Exporter</a>
       <table class="slide"></table>
     </div>
 
