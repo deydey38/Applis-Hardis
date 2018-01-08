@@ -64,6 +64,10 @@ $(function(){
 				}
 			});
 		},
+		select: function (event, ui) {
+        $("#client").val(ui.item.value);
+        $("#formC").submit();
+    },
 
 		minLength : 3,
 		//soumission auto quand click sur proposition

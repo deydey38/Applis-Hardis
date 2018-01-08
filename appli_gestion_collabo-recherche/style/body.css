@@ -53,7 +53,7 @@ a, a:visited {
 
 a:hover {
 	text-decoration:underline;
-	color:#EB8F00!important;
+	color:#EB8F00;
 
 }
 
@@ -151,6 +151,7 @@ ul.tabs li a {
 ul.tabs li a:hover {
     background-color:#2f343a!important;
     border-color:#2f343a;
+		color:#EB8F00!important;
 }
 ul.tabs li a.active {
     background-color:#ffffff!important;

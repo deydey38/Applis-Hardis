@@ -17,7 +17,7 @@
 }
 
 #ticketSpe article,#recapCount article{
-	display: inline-block;
+	display: inline-table;
 }
 
 #ticketSpe article{
@@ -35,9 +35,11 @@
 }
 
 #recapCountInc{
-	border-left: 1px dotted black;
 	border-right: 1px dotted black;
+}
 
+#recapCountDem{
+	border-right: 1px dotted black;
 }
 
 #headerPbAT h3, #headerPbEAT h3{

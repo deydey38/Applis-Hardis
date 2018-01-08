@@ -39,9 +39,6 @@ $(function(){
 			});
 
 		},
-		/*select: function () {
-        $("#formC").submit();
-    },*/
 		select: function (event, ui) {
         $("#client").val(ui.item.value);
         $("#formC").submit();
