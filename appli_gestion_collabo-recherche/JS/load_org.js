@@ -1,6 +1,6 @@
 var login		= '';
 var pwd			= '';
-var first		= true;	
+var first		= true;
 var ITOP_URL	= 'https://itop.hardis.fr';
 var ITOP_WS_URL	= ITOP_URL + "/webservices/rest.php?version=1.3";
 var iTopOrgUrl 	= 'https://itop.hardis.fr/itop/pages/UI.php?operation=details&class=Organization&id=';
@@ -24,7 +24,7 @@ var opts = {
       top: 'auto', // Top position relative to parent in px
       left: 'auto' // Left position relative to parent in px
 };
-	
+
 var spinner = null;
 var spinner_div = 0;
 
@@ -48,7 +48,7 @@ function loadPageOrg(){
 			key: requeteOrgContact(),
 			output_fields: "name"
 		}
-		
+
 	}else{
 		//json test connection user
 		oJSON = {
@@ -58,7 +58,7 @@ function loadPageOrg(){
 			output_fields: "name"
 		};
 	}
-	
+
 	//ajax pour avoir un objet Contat
 	$.ajax(
 	{
@@ -68,15 +68,15 @@ function loadPageOrg(){
 		data: { auth_user: login, auth_pwd: pwd, json_data: JSON.stringify(bJSON)},
 		crossDomain: 'true',
 		success: function (data) {
-			org = data["objects"];	
-			refreshSuccessfullOrg(data);							
+			org = data["objects"];
+			refreshSuccessfullOrg(data);
 		},
 		error: function (data) {
 			document.getElementById("backlogHardisListId").innerHTML = "Erreur. Connectez-vous sur iTop";
-						
+
 		}
-	});	
-	
+	});
+
 }
 
 /**
@@ -89,16 +89,16 @@ function refreshSuccessfullOrg(data){
 		if(page=='afficheSelectInfo')
 			//stop chargement animation
 			spinner.stop(spinner_div);
-		
+
 		// Missing password -> itop not connect
 		// Open login form
 		if (!first)
 		{
-			document.getElementById("errorMessage").innerHTML = data.message + ' ';							
+			document.getElementById("errorMessage").innerHTML = data.message + ' ';
 		}
-		
+
 		first = false;
-		
+
 		$("#login").show();
 		if(page=='afficheSelectInfo')
 			$("#connected").hide();
@@ -106,35 +106,35 @@ function refreshSuccessfullOrg(data){
 			$("#form").hide();
 	}
 	else
-	{	
+	{
 		$("#login").hide();
 		document.getElementById("errorMessage").innerHTML = '';
-		
+
 		if(page=='afficheSelectInfo'){
-						
-			$("#connected").show();	
-			
+
+			$("#connected").show();
+
 		}else{
-	
-			$("#form").show();	
+
+			$("#form").show();
 			document.getElementById("client").value = '';
-			document.getElementById('alertFormError').value = '';			
+			document.getElementById('alertFormError').value = '';
 		}
-		
+
 		//stop chargement animation
 		spinner.stop(spinner_div);
-		
-		//vidage la liste 
+
+		//vidage la liste
 		$("#listeOrg").empty();
 		var listOrg = $('#listeOrg');
-		
-		
+
+
 		console.log('org: ');
 		console.log(org);
-	
-		
+
+
 		//affichage des org
-		if(org!=null){	
+		if(org!=null){
 			lesClients = [];
 			//parcours de tout les org
 			$.each(org, function(i, v){
@@ -143,54 +143,55 @@ function refreshSuccessfullOrg(data){
 					//remplissage de la liste des clients
 					lesClients.push(v['fields']['friendlyname']);
 				}
-							
+
 				// creation d'une ligne + ajout a la liste
 				var li = document.createElement('li');
 				listOrg.append(li);
-							
+
 				// creation d'un lien + ajout a la ligne
 				var a = document.createElement('a');
-				a.href=iTopOrgUrl+v['key'];
+				//a.href=iTopOrgUrl+v['key'];
+        a.href="../appli_gestion_client/afficheInfo.html?client="+v['fields']['friendlyname'];
 				a.innerHTML = v['fields']['friendlyname'];
 				a.target= '_BLANK';
-				
-				li.append(a);			
+
+				li.append(a);
 			});
-			
+
 			$('#tab_CIOrg').click(function(){
 				ChangeOnglet('tab_CIOrg', 'content_CIOrg');
 			});
-			
+
 			$("#tab_CIOrg").css("color", "#1c94c4");
 			$("#tab_CIOrg").css("cursor", "pointer");
-			$("#tab_CIOrg").css("background-color", "#464c54");	
-			
+			$("#tab_CIOrg").css("background-color", "#464c54");
+
 		}//si le collabo n'a pas de client
 		else{
 			// creation d'une ligne + ajout a la liste
 			var li = document.createElement('li');
 			listOrg.append(li);
 			li.innerHTML = "Ce collaborateur n'a pas de client";
-			
+
 
 			$('#tab_CIOrg').click(function(){
 				console.log('NOPE');
 				$("#content_CIOrg").empty();
-				return false;					
+				return false;
 			});
-		
+
 			$("#tab_CIOrg").css("color", "#7D8080");
 			$("#tab_CIOrg").css("cursor", "default");
-			$("#tab_CIOrg").css("background-color", "#2f343a");	
+			$("#tab_CIOrg").css("background-color", "#2f343a");
 		}
 	}
 }
 
 /****
 ** REQUETES
-******/	
+******/
 
-//pour un objet de type Contact 
+//pour un objet de type Contact
 function requeteOrgContact(){
 	var request = 'SELECT org';
 	request+= ' FROM Organization AS org';
@@ -221,8 +222,3 @@ function cleanArray(array) {
   }
   return out;
 }
-
-
-
-
-
