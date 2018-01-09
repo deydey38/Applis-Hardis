@@ -549,6 +549,7 @@ function remplirTableauATEA(object, vidageTab){
 		var idTicket= value['key'];
 		var statut=getStatusLabel(value['fields']['status']);
 		var team = getTeamName(value['fields']);
+    console.log("nom de service "+value['fields']['service_name']+value['fields']['ref']);
 		var rawTeam = value['fields']['team_name'];
 		var datePlan = value['fields']['expected_request_date'];
 		var typeTicket = getTypeTicketName(value['class']);
@@ -579,13 +580,13 @@ function remplirTableauATEA(object, vidageTab){
 		if(typeTicket=="Problème"){
 
 			//incrementation des nb de demande pour chaque equipe pour les probleme
-			if(team.startsWith('Hotline')){
+			if(team.startsWith('Support')){
 				nbPbHotline++;
 				var class_name = 'hotline';
 			}else if(team=='R&D'){
 				nbPbRetD++;
 				var class_name = 'retd';
-			}else if(team=='TMA'){
+			}else if(team=='Maintenance'){
 				nbPbTMA++;
 				var class_name = 'tma';
 			}else if(team.startsWith('Support')){
@@ -615,13 +616,13 @@ function remplirTableauATEA(object, vidageTab){
 				nbDemandeTicketAT++;
 
 				//incrementation des nb de demande pour chaque equipe
-				if(team.startsWith('Hotline')){
+				if(team.startsWith('Support')){
 					nbDemandeHotline++;
 					var class_name = 'hotline';
 				}else if(team=='R&D'){
 					nbDemandeRetD++;
 					var class_name = 'retd';
-				}else if(team=='TMA'){
+				}else if(team=='Maintenance'){
 					nbDemandeTMA++;
 					var class_name = 'tma';
 				}else if(team.startsWith('Support')){
@@ -641,13 +642,13 @@ function remplirTableauATEA(object, vidageTab){
 				nbIncidentTicketAT++;
 
 				//incrementation des nb d'incident pour chaque equipe
-				if(team.startsWith('Hotline')){
+				if(team.startsWith('Support')){
 					nbIncidentHotline++;
 					var class_name = 'hotline';
 				}else if(team=='R&D'){
 					nbIncidentRetD++;
 					var class_name = 'retd';
-				}else if(team=='TMA'){
+				}else if(team=='Maintenance'){
 					nbIncidentTMA++;
 					var class_name = 'tma';
 				}else if(team.startsWith('Support')){
@@ -694,13 +695,13 @@ function remplirTableauATEA(object, vidageTab){
 					typeTicket='Demande';
 				nbDemande++;
 				nbDemandeTicketEAT++;
-				if(team.startsWith('Hotline')){
+				if(team.startsWith('Support')){
 					nbDemandeHotline++;
 					var class_name = 'hotline';
 				}else if(team=='R&D'){
 					nbDemandeRetD++;
 					var class_name = 'retd';
-				}else if(team=='TMA'){
+				}else if(team=='Maintenance'){
 					nbDemandeTMA++;
 					var class_name = 'tma';
 				}else if(team.startsWith('Support')){
@@ -719,13 +720,13 @@ function remplirTableauATEA(object, vidageTab){
 					typeTicket='Incident';
 				nbIncident++;
 				nbIncidentTicketEAT++;
-				if(team.startsWith('Hotline')){
+				if(team.startsWith('Support')){
 					nbIncidentHotline++;
 					var class_name = 'hotline';
 				}else if(team=='R&D'){
 					nbIncidentRetD++;
 					var class_name = 'retd';
-				}else if(team=='TMA'){
+				}else if(team=='Maintenance'){
 					nbIncidentTMA++;
 					var class_name = 'tma';
 				}else if(team.startsWith('Support')){
@@ -784,11 +785,11 @@ function remplirTableauATEA(object, vidageTab){
 	reIndexage(tabTicketAT);
 	triTabBy('prio', tabTicketAT);
 	$.each(tabTicketAT, function(index, value){
-		if(value['team'].startsWith('Hotline')){
+		if(value['team'].startsWith('Support')){
 			var class_name = 'hotline';
 		}else if(value['team']=='R&D'){
 			var class_name = 'retd';
-		}else if(value['team']=='TMA'){
+		}else if(value['team']=='Maintenance'){
 			var class_name = 'tma';
 		}else if(value['team']=='H2i'){
 			var class_name = 'h2i';
@@ -827,11 +828,11 @@ function remplirTableauATEA(object, vidageTab){
 	//ticket en attente
 	triTabBy('prio', lesTicketsEnAtt);
 	$.each(lesTicketsEnAtt, function(index, value){
-		if(value['team'].startsWith('Hotline')){
+		if(value['team'].startsWith('Support')){
 			var class_name = 'hotline';
 		}else if(value['team']=='R&D'){
 			var class_name = 'retd';
-		}else if(value['team']=='TMA'){
+		}else if(value['team']=='Maintenance'){
 			var class_name = 'tma';
 		}else if(value['team'].startsWith('Support')){
 			var class_name = 'h2i';
@@ -917,11 +918,11 @@ function remplirTableauTicketFerme(object, vidageTab){
 		if(value['fields']['request_type']=='service_request'){
 			if(typeTicket!='Problème')
 				typeTicket='Demande';
-			if(team.startsWith('Hotline')){
+			if(team.startsWith('Support')){
 				var class_name = 'hotline';
 			}else if(team=='R&D'){
 				var class_name = 'retd';
-			}else if(team=='TMA'){
+			}else if(team=='Maintenance'){
 				var class_name = 'tma';
 			}else if(team.startsWith('Support')){
 				var class_name = 'h2i';
@@ -934,11 +935,11 @@ function remplirTableauTicketFerme(object, vidageTab){
 		}else if(value['fields']['request_type']!='service_request'){
 			if(typeTicket!='Problème')
 				typeTicket='Incident';
-			if(team.startsWith('Hotline')){
+			if(team.startsWith('Support')){
 				var class_name = 'hotline';
 			}else if(team=='R&D'){
 				var class_name = 'retd';
-			}else if(team=='TMA'){
+			}else if(team=='Maintenance'){
 				var class_name = 'tma';
 			}else if(team.startsWith('Support')){
 				var class_name = 'h2i';
@@ -977,11 +978,11 @@ function remplirTableauTicketFerme(object, vidageTab){
 	//ticket a traiter
 	triTabBy('dateferm', lesTicketsF);
 	$.each(lesTicketsF, function(index, value){
-		if(value['team'].startsWith('Hotline')){
+		if(value['team'].startsWith('Support')){
 			var class_name = 'hotline';
 		}else if(value['team']=='R&D'){
 			var class_name = 'retd';
-		}else if(value['team']=='TMA'){
+		}else if(value['team']=='Maintenance'){
 			var class_name = 'tma';
 		}else if(value['team'].startsWith('Support')){
 			var class_name = 'h2i';
@@ -1081,11 +1082,11 @@ function remplirTableauTicketP1SLSA(object, vidageTab){
 		//remplissage du tableau P1
 		if(value['fields']['priority'] == "2"){
 			nbTicketP1++;
-			if(team.startsWith('Hotline')){
+			if(team.startsWith('Support')){
 				var class_name = 'hotline';
 			}else if(team=='R&D'){
 				var class_name = 'retd';
-			}else if(team=='TMA'){
+			}else if(team=='Maintenance'){
 				var class_name = 'tma';
 			}else if(team.startsWith('Support')){
 				var class_name = 'h2i';
@@ -1144,11 +1145,11 @@ function remplirTableauTicketP1SLSA(object, vidageTab){
 	triTabBy('sla', lesSla);
 	$.each(lesSla, function(index, value){
 
-		if(value['team'].startsWith('Hotline')){
+		if(value['team'].startsWith('Support')){
 			var class_name = 'hotline';
 		}else if(value['team']=='R&D'){
 			var class_name = 'retd';
-		}else if(value['team']=='TMA'){
+		}else if(value['team']=='Maintenance'){
 			var class_name = 'tma';
 		}else if(value['team'].startsWith('Support')){
 			var class_name = 'h2i';
@@ -1295,19 +1296,27 @@ function getTeamName(fields){
 
 	if (fields['status'] == 'pending_bugfix' && fields['ref_ticket_bug'] != '' && (fields['ref_ticket_bug'].startsWith('WRD') || fields['ref_ticket_bug'].startsWith('RD-'))){
 		team_name = 'R&D';
-	}else if (fields['team_name'] == 'Reflex CDS FM' || fields['team_name'] == 'Reflex WMS TMA'){
+	}
+  else if (fields['service_name'] == 'Reflex Maintenance spécifique' ){
+		team_name = 'Maintenance';
+	}else if (fields['service_name'] == 'Reflex Support WMS' ){
+		team_name = 'Support';
+	}/*
+  else if (fields['team_name'] == 'Reflex CDS FM' || fields['team_name'] == 'Reflex WMS TMA'){
 		team_name = 'TMA';
 	}else if (fields['team_name'] == 'Reflex WMS N1'){
 		team_name = 'Hotline N1';
 	}else if(fields['team_name'] == 'Reflex WMS N2'){
 		team_name = 'Hotline N2';
-	}//h2i
-	else if (fields['team_name'] == 'Support Niveau 1' ){
+	}*/
+  //h2i
+	/*else if (fields['team_name'] == 'Support Niveau 1' ){
 		team_name = 'Support Niveau 1';
 	}//h2i
 	else if( fields['team_name'] == 'Support Niveau 2 Iseries' || fields['team_name'] == 'Support Niveau 2 Xseries'){
 		team_name = 'Support Niveau 2';
-	}else if(fields['team_name'] == 'Reflex AT'){
+	}*/
+  else if(fields['team_name'] == 'Reflex AT'){
 		team_name = 'AT';
 	}else
 		team_name = fields['team_name'];
