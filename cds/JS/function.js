@@ -34,7 +34,7 @@ spinner.spin(spinner_div);
   var ITOP_URL	= 'https://itop.hardis.fr';
   var ITOP_WS_URL	= ITOP_URL + "/webservices/rest.php?version=1.3";
 
-  $('ul li a').on('click', function (e) {
+  $('.sidelink').on('click', function (e) {
     var targetSec = $(this).text();
     var off = $('.'+targetSec).offset();
     console.log("offset "+off);
@@ -280,7 +280,7 @@ spinner.spin(spinner_div);
 				}
   });
 
-  $('.export').hover(
+/*  $('.export').hover(
       function() {
           var text = $(this).text();
           $(this).data('initialText', text);
@@ -289,5 +289,5 @@ spinner.spin(spinner_div);
       function() {
           $(this).text($(this).data('initialText'));
       }
-  );
+  );*/
 }

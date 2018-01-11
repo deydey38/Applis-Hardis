@@ -3,7 +3,7 @@ html{
 }
 
 body{
-	background-color: #efefef;
+	//background-color: #efefef;
 }
 
 h1 {
@@ -53,12 +53,12 @@ h1 ~ h2{
 	text-decoration:underline;
 	color:#EB8F00;
 }
-
+/*
 a, a:visited {
 	text-decoration:none;
 	color: #1C94C4;
-}
-
+}*/
+/*
 #valid, button{
 	border      : 0;
 	background  : transparent;
@@ -90,7 +90,7 @@ a, a:visited {
   background-image: -ms-linear-gradient(top, #EB8F00, #d96e34);
   background-image: -o-linear-gradient(top, #EB8F00, #d96e34);
   background-image: linear-gradient(to bottom, #EB8F00, #d96e34);
-}
+}*/
 
 /* login */
 

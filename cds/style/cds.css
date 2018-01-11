@@ -7,6 +7,22 @@ body{
   font-family: Arial, sans-serif;
 }
 
+#login{
+  display: none;
+}
+
+.contenu{
+  display: none;
+}
+
+.erase{
+  position: absolute;
+  margin-bottom: 50px;
+  display: none;
+  left:47%;
+  margin-left: -22px;
+}
+
 h1{
   text-align: center;
   margin-bottom: 20px;
@@ -27,7 +43,7 @@ h1{
 
 .test{
   display: inline;
-  margin-bottom: 10px;
+  //margin-bottom: 10px;
 }
 
 
@@ -37,7 +53,7 @@ h1{
 }
 
 .CDS1, .CDS2{
-  border-bottom : 1px solid black;
+  border-bottom : 1px solid #164463;
 }
 
 .wrap{
@@ -52,6 +68,10 @@ h1{
 
 }
 
+.CDS table{
+  margin-top: 10px;
+}
+
 .CDS1 .slide, .CDS2 .slide{
   padding-bottom: 10px;
 }
@@ -59,14 +79,13 @@ h1{
 .sidebar{
   width: auto;
   position: fixed;
-  margin-left: 88%;
-  background-color: #009ee0;
+  margin-left: 91%;
+  //background-color: #009ee0;
   color:white;
 }
 
-.sidebar ul{
-  padding:20px 30px;;
-  margin:0;
+.sidebar ul li{
+  //padding-top: 10px;
 }
 
 label{
@@ -82,22 +101,19 @@ label{
   display:inline-grid;
 }
 
-#valid{
-}
-
 .left{
   display: inline-grid;
 }
 
 .right{
   display:inline-block;
-  margin-left: 15px;
+  margin-left: 20px;
   margin-bottom: 5px;
 }
 
 .recherche{
   margin-top: 40px;
-  margin-bottom: 40px;
+  margin-bottom: 80px;
 }
 
 .ui-autocomplete {
@@ -105,12 +121,13 @@ label{
 	width: 100px;
 	overflow-y: scroll;
 	overflow-x: hidden;
-  border:1px solid black;
+  border:1px solid #164463;
   z-index: 2;
   background-color: white;
 }
 
 #alertFormError{
+  display: none;
 	color: red;
   text-align: center;
   margin-top: 10px;
@@ -125,14 +142,12 @@ label{
 	font-size: 14px;
 }
 
+input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: searchfield-cancel-button;
+  }
+
 .sidebar ul li, .sidelink, .sidelink:visited{
   list-style:none;
-  color:white;
-  text-decoration: none;
-}
-
-.sidelink:hover{
-  color:#06587a;
   text-decoration: none;
 }
 
@@ -167,15 +182,19 @@ label{
 }
 
 .reponse{
+  display: none;
   text-align: left;
   font-size: 15px;
   height: 100px;
-  border: 1px grey solid;
+  border: 1px rgb(206, 212, 218) solid;
+  border-radius: 4px;
   background-color: white;
   color:#164463;
   overflow-y:auto;
+
 }
 
+/*
 .navbar {
   overflow: hidden;
   background-color: #009ee0;
@@ -201,19 +220,24 @@ label{
 
 .active{
   background-color: #06587a;
-}
+}*/
 
 .slide tbody tr td a {
-  color:black;
+  color:#212529;
 
 }
 
 .slide tbody tr td a:hover {
-  color:black;
+  color:#212529;
   text-decoration: underline;
 }
 
 .exportAll{
+  //color: #007bff;
   font-size: 20px;
   padding-left: 10px;
+}
+
+.export:hover{
+  text-decoration: none;
 }

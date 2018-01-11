@@ -35,10 +35,12 @@ $(function(){
 	$('#client').autocomplete({
 		source : function(requete, reponse){ // requete, reponse = données nécessaires au plugin
 			// Json request
+			var str = $('#client').val();
+			var str = str.replace(/'/g, "\\'");
 			var oJSON={
 				operation: 'core/get',
 				'class': 'Organization',
-				key: "SELECT org FROM Organization AS org WHERE( org.name LIKE '%" + $('#client').val() + "%')",
+				key: "SELECT org FROM Organization AS org WHERE( org.name LIKE '%" + str + "%')",
 				output_fields: 'name'
 			};
 
