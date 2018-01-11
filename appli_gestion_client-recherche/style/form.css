@@ -1,9 +1,9 @@
-#formC{
+/*#formC{
 	margin: 0 auto;
-	width: 400px;	
+	width: 400px;
 	padding: 20px;
 	text-align: center;
-	background-color: #C1C3C3; 
+	background-color: #C1C3C3;
 	margin-top: 13%;
 	-webkit-box-shadow: -1px 2px 13px 0px rgba(0,0,0,0.75);
 	-moz-box-shadow: -1px 2px 13px 0px rgba(0,0,0,0.75);
@@ -11,8 +11,8 @@
 	border-radius: 5px 5px 5px 5px;
 	-moz-border-radius: 5px 5px 5px 5px;
 	-webkit-border-radius: 5px 5px 5px 5px;
-}
-
+}*/
+/*
 #ou{
 	margin: 0 auto;
 	color: #1C94C4;
@@ -20,8 +20,8 @@
     width: 250px;
 	font-size: 20px;
 	font-weight: bold;
-	margin-bottom:15px;	
-}
+	margin-bottom:15px;
+}*/
 
 #formC label{
 	margin: 0 auto;
@@ -32,11 +32,19 @@
 	font-weight: bold;
 }
 
+input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: searchfield-cancel-button;
+}
 
+#formC{
+	margin-top: 50px;
+}
+
+/*
 #formC #client{
 	display: block;
 	margin: 0 auto;
-	margin-top: 25px; 
+	margin-top: 25px;
 	width: 210px;
 	margin-bottom: 15px;
 }
@@ -44,7 +52,7 @@
 #formC #ciName{
 	display: block;
 	margin: 0 auto;
-	margin-top: 25px; 
+	margin-top: 25px;
 	width: 210px;
 	margin-bottom: 25px;
 }
@@ -74,12 +82,12 @@
 	-webkit-box-shadow: 0px 1px 3px #666666;
 	-moz-box-shadow: 0px 1px 3px #666666;
 	box-shadow: 0px 1px 3px #666666;
-}
+}*/
 
-.ui-autocomplete { 
+.ui-autocomplete {
 	height: 70px;
 	width: 100px;
-	overflow-y: scroll; 
+	overflow-y: scroll;
 	overflow-x: hidden;
 }
 
@@ -88,8 +96,10 @@
 }
 
 #alertFormError{
+	margin-top: 20px;
+	display: none;
 	color: red;
 	padding-top: 15px;
 	padding-bottom: 25px;
-	
+
 }

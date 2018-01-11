@@ -54,7 +54,7 @@
 
 
 /* tableau */
-
+/*
 table{
 	margin-bottom: 35px;
 	width: 100%;
@@ -71,8 +71,8 @@ tfoot {
 
 th {
 	font-family: Tahoma, Verdana, Arial, Helvetica;
-	font-size: 8pt;
-	color: #1C94C4;
+	//font-size: 8pt;
+	//color: #1C94C4;
 	height:20px;
 	background-color: #EEEEEE;
 	width: 70px;
@@ -84,7 +84,7 @@ td{
 	font-family: Tahoma, Verdana, Arial, Helvetica;
 	font-size: 12px;
 	color:#696969;
-	nobackground-color: #ffffff;
+	background-color: #ffffff;
 	padding: 6px;
 
 
@@ -94,7 +94,7 @@ td img{
 	 display: block;
     margin-left: auto;
     margin-right: auto;
-}
+}*/
 
 /* colorer les td et th selon les teams */
 .tma{

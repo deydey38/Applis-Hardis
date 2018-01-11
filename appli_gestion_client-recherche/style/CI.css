@@ -1,13 +1,13 @@
 /* AFFICHE CI*/
-
+/*
 table{
 	width: 100%;
 
-	border: 4px solid #EEEEEE; 
+	border: 4px solid #EEEEEE;
 }
 
 td, th{
-    border: 1px solid white; 
+    border: 1px solid white;
 	width: 300px;
 }
 
@@ -19,7 +19,7 @@ td{
 	padding: 3px;
 }
 
-/*color le backgroud des lignes impaires*/
+color le backgroud des lignes impaires
 .table tr:nth-child(even) {
 	background-color: #EDF1F7;
 }
@@ -27,10 +27,10 @@ td{
 th{
 	background-color: #EEEEEE ;
 	color: #1C94C4;
-}
+}*/
 
 #connected .details{
-	width: 50%;	
+	width: 50%;
 	display: inline-block;
 	float: right;
 	height: 200px;
@@ -39,7 +39,7 @@ th{
 #connected .details h2{
 	font-size: 18px;
 	font-weight: bold;
-	color: #436372; 
+	color: #436372;
 	margin-top: 12px;
 	margin-bottom: 8px;
 }
@@ -55,18 +55,19 @@ th{
 	text-shadow: -1px -1px 1px rgba(150, 150, 150, 1);
 }
 
-#connected #div_db, #connected #div_vm, #div_contact{
-	display: block;
+#connected #div_db, #connected #div_vm, #div_contact, #content_contact{
 	margin-top: 50px;
+	/*display: block;
+
 	width: auto;
 	padding: 15px;
-	background-color: white; 
+	background-color: white;
 	-webkit-box-shadow: -1px 2px 13px 0px rgba(0,0,0,0.75);
 	-moz-box-shadow: -1px 2px 13px 0px rgba(0,0,0,0.75);
 	box-shadow: -1px 2px 13px 0px rgba(0,0,0,0.75);
 	border-radius: 5px 5px 5px 5px;
 	-moz-border-radius: 5px 5px 5px 5px;
-	-webkit-border-radius: 5px 5px 5px 5px;
+	-webkit-border-radius: 5px 5px 5px 5px;*/
 }
 
 
@@ -80,5 +81,3 @@ th{
 #div_contact ul li{
 	height: 20px;
 }
-
-

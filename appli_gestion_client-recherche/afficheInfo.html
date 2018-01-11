@@ -3,7 +3,7 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<title id='title'>Gestion clients</title>
-
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
 	<script type="text/javascript" src="./JS/JQuery/jquery_1.9.1.js"></script>
 	<script type="text/javascript" src="./JS/JQuery/jquery_1.6.2.js"></script>
 	<script type="text/javascript" src="./JS/JQuery/jquery_1.12.4.js"></script>
@@ -18,6 +18,9 @@
 	<script type="text/javascript" src="./JS/get_param.js"></script>
 	<script type="text/javascript" src="./JS/spin.js"></script>
 	<script type="text/javascript" src="./JS/load_rapport.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.bundle.min.js" integrity="sha384-VspmFJ2uqRrKr3en+IG0cIq1Cl/v/PHneDw6SQZYgrcr8ZZmZoQ3zhuGfMnSR/F2" crossorigin="anonymous"></script>
+
 
 	<link rel="stylesheet" href="style/body.css">
 	<link rel="stylesheet" href="style/selectInfo.css">
@@ -94,13 +97,13 @@
 			});
 
 			$("#client").click(function() {
-				if($("#valid").val() == "Actualiser"){
-					$("#valid").val("Rechercher");
+				if($("#valid").html() == "Actualiser"){
+					$("#valid").html("Rechercher");
 				}
 		  });
 			$("#ciName").click(function() {
-				if($("#valid").val() == "Actualiser"){
-					$("#valid").val("Rechercher");
+				if($("#valid").html() == "Actualiser"){
+					$("#valid").html("Rechercher");
 				}
 		  });
 		});
@@ -132,16 +135,19 @@
 			document.getElementById('content_docCo').style.display = 'none';
 			document.getElementById('content_backlog').style.display = 'none';
 			document.getElementById(contenu).style.display = 'block';
-
+/*
 			document.getElementById('tab_CIs').className = '';
 			document.getElementById('tab_interne').className = '';
 			document.getElementById('tab_contact').className = '';
 			document.getElementById('tab_docCo').className = '';
 			document.getElementById('tab_backlog').className = '';
-			document.getElementById(onglet).className = 'active';
+			document.getElementById(onglet).className = 'active';*/
+			console.log("onglet = "+onglet);
+			$('.nav-tabs .nav-item').removeClass("active");
+			$('#'+onglet).addClass("active");
 		}
 
-		function reloadOngletActive(){
+		/*function reloadOngletActive(){
 			var ongletActif= document.getElementsByClassName("active");
 
 			if(ongletActif[0].id == 'tab_CIs'){
@@ -157,21 +163,30 @@
 				dejaVisiteBacklog=0;
 				ChangeOnglet('tab_backlog', 'content_backlog');
 			}
-
-		}
+		}*/
 
 	</script>
 </head>
 <!-- onload='loadPageSelectInfo(); loadPageAfficheCI(); ' -->
 <body onload='loadPageSelectInfo();'>
-	<div class="navbar">
-		<a href="../menu/menu.html">Menu</a>
-		<a class="active" href="#">Recherche Client</a>
-		<a href="../appli_gestion_collabo-recherche/afficheInfo.html">Recherche Collaborateur</a>
-		<a href="../cds/cds.html">CDS </a>
-	</div>
+	<nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-primary">
+		<ul class="navbar-nav">
+			<li class="nav-item">
+				<a class="nav-link" href="../menu/menu.html">Menu</a>
+			</li>
+			<li class="nav-item active">
+				<a class="nav-link" href="#">Recherche Client</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="../appli_gestion_collabo-recherche/afficheInfo.html">Recherche Collaborateur</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="../cds/cds.html">CDS </a>
+			</li>
+		</ul>
+	</nav>
 	<div id="main_div">
-		<div id='login' hidden>
+		<div id='login' >
 			<h2>Authentification iTop</h2>
 
 			<p>
@@ -183,42 +198,48 @@
 		</div>
 		<span id="backlogHardisListId">	</span>
 
-		<div id='connected' hidden>
+		<div id='connected' >
 			<!--<span id='refresh' onclick='reloadOngletActive();'>Actualiser</span>-->
 
 			<h1>Bienvenue sur l'application de gestion des clients</h1>
 			<h2></h2>
 			<h2 class="cds"></h2>
 
-			<form method="get" action="afficheInfo.html" id='formC' autocomplete="on">
-
-				<label for="client">Entrez le nom du client </label>
-				<input type="search" name="client" id='client' autofocus />
-				<p id="ou">ou</p>
-				<label for="ciName">Entrez le nom d'un CI </label>
-				<input type="search" name="ciName" id='ciName'/>
-
-				<span id='alertFormError' hidden></span>
-				<input type="submit" value="Rechercher" id='valid' />
-
+			<form class="d-flex justify-content-center align-items-end" method="get" action="afficheInfo.html" id='formC' autocomplete="on">
+			  <div class="row ">
+			    <div class="col">
+						<input type="search" class="form-control" name="client" id='client' placeholder="Nom du client" autofocus />
+			    </div>
+					<div class="col-1 p-2">
+						<p id="ou">ou</p>
+					</div>
+			    <div class="col">
+						<input type="search" class="form-control" name="ciName" id='ciName' placeholder="Nom du CI"/>
+			    </div>
+					<div class="col-2">
+			      <button type="submit" class="btn btn-primary d-flex align-items-center" id='valid'>Rechercher</button>
+			    </div>
+			  </div>
 			</form>
+			<div class="alert alert-danger justify-content-center" role="alert" id='alertFormError'></div>
 
-			<div class='tabbed_area' hidden>
-				<ul class="tabs">
-					<li><a href="javascript:ChangeOnglet('tab_CIs', 'content_CIs');" id="tab_CIs" class="active">BD/VM</a></li>
-					<li><a href="javascript:ChangeOnglet('tab_interne', 'content_interne');" id="tab_interne">Contacts Hardis</a></li>
-					<li><a href="javascript:ChangeOnglet('tab_contact', 'content_contact');" id="tab_contact">Contacts Client</a></li>
-					<li><a href="javascript:ChangeOnglet('tab_backlog', 'content_backlog');" id="tab_backlog">Backlog</a></li>
-					<li><a href="javascript:ChangeOnglet('tab_docCo', 'content_docCo');" id="tab_docCo">document de connexion</a></li>
-				</ul>
+			<div class='tabbed_area'>
+
+				<nav class="nav nav-tabs nav-fill">
+				  <a class="nav-item nav-link active" href="javascript:ChangeOnglet('tab_CIs', 'content_CIs');" id="tab_CIs">BD/VM</a>
+				  <a class="nav-item nav-link" href="javascript:ChangeOnglet('tab_interne', 'content_interne');" id="tab_interne">Contacts Hardis</a>
+				  <a class="nav-item nav-link" href="javascript:ChangeOnglet('tab_contact', 'content_contact');" id="tab_contact">Contacts Client</a>
+				  <a class="nav-item nav-link" href="javascript:ChangeOnglet('tab_backlog', 'content_backlog');" id="tab_backlog">Backlog</a>
+				  <a class="nav-item nav-link" href="javascript:ChangeOnglet('tab_docCo', 'content_docCo');" id="tab_docCo">Document de connexion</a>
+				</nav>
 
 
 				<div id="content_CIs" class="content">
 					<div id='div_db'>
 						<div class='div_table'>
-							<table id='table_db' class='table'>
+							<table id='table_db' class='table table-hover table-bordered'>
 								<caption>Liste des bases de données du client (Adélia et SQL)</caption>
-								<thead>
+								<thead class="thead-light">
 									<tr>
 										<th>Utilisation</th>
 										<th>CI</th>
@@ -251,9 +272,9 @@
 
 						<div id='div_vm'>
 							<div class='div_table'>
-								<table id='table_vm' class='table'>
+								<table id='table_vm' class='table table-hover table-bordered'>
 									<caption>Liste des machines virtuelles du client </caption>
-									<thead>
+									<thead class="thead-light">
 										<tr>
 											<th>Utilisation</th>
 											<th>CI</th>
@@ -273,9 +294,9 @@
 
 				<div id="content_interne" class="content">
 					<div id='div_contact'>
-						<table id='table_contact' class='table'>
+						<table id='table_contact' class='table table-hover table-bordered'>
 							<caption>Contact Hardis du client</caption>
-							<thead>
+							<thead class="thead-light">
 								<tr>
 									<th>Agent</th>
 									<th>Fonction</th>
@@ -289,10 +310,10 @@
 					</div>
 				</div>
 
-				<div id="content_contact" class="content"hidden>
-					<table id='table_contactC' class='table'>
+				<div id="content_contact" class="content">
+					<table id='table_contactC' class='table table-hover table-bordered'>
 						<caption>Contact du client</caption>
-						<thead>
+						<thead class="thead-light">
 							<tr>
 								<th>Nom</th>
 								<th>Site</th>
@@ -305,7 +326,7 @@
 						</tbody>
 					</table>
 				</div>
-				<div id="content_backlog" class="content"hidden>
+				<div id="content_backlog" class="content">
 					<p id='lastExtractDate'></p>
 					<section id='header'>
 						<article id='ticketOuvert'>
@@ -334,7 +355,7 @@
 					</section>
 					<section id='recapCount'>
 						<article id='recapCountInc'>
-							<table id='tableRecapCountInc'>
+							<table id='tableRecapCountInc' class='table table-hover table-sm table-bordered'>
 								<caption>Incidents</caption>
 								<thead>
 									<tr>
@@ -352,7 +373,7 @@
 						</article>
 
 						<article id="recapCountDem">
-							<table id='tableRecapCountDem'>
+							<table id='tableRecapCountDem' class='table table-hover table-sm table-bordered'>
 								<caption>Demandes</caption>
 								<thead>
 									<tr>
@@ -370,7 +391,7 @@
 						</article>
 
 						<article id="recapCountProblem">
-							<table id='tableRecapCountProblem'>
+							<table id='tableRecapCountProblem' class='table table-hover table-sm table-bordered'>
 								<caption>Problèmes</caption>
 								<thead>
 									<tr>
@@ -388,9 +409,9 @@
 						</article>
 					</section>
 					<section id='ticketAT'>
-						<table id='tableTicketAT'>
+						<table id='tableTicketAT'class='table table-hover table-bordered'>
 							<caption>Liste des tickets à traiter</caption>
-							<thead>
+							<thead class="thead-light">
 								<tr>
 									<th>Type du ticket</th>
 									<th>Priorité</th>
@@ -409,9 +430,9 @@
 						</table>
 					</section>
 					<section id='ticketEA'>
-						<table id='tableTicketEA'>
+						<table id='tableTicketEA' class='table table-hover table-bordered'>
 							<caption>Liste des tickets en attente</caption>
-							<thead>
+							<thead class="thead-light">
 								<tr>
 									<th>Type du ticket</th>
 									<th>Priorité</th>
@@ -443,9 +464,9 @@
 							   <input id="displayTF" type="checkbox" checked="checked" onclick='if($("#displayTF").is(":checked")){$("#tableTicketF").show();}else{$("#tableTicketF").hide();}'/>
 						   </p>
 						</form>
-						<table id='tableTicketF'>
+						<table id='tableTicketF'class='table table-hover table-bordered'>
 							<caption>Liste des tickets fermés/résolus/rejetés sur la période</caption>
-							<thead>
+							<thead class="thead-light">
 								<tr>
 									<th>Type du ticket</th>
 									<th>Type</th>
@@ -464,9 +485,9 @@
 					</section>
 					<section id='ticketSpe'>
 						<article id='ticketP1'>
-							<table id='tableTicketP1'>
+							<table id='tableTicketP1'class='table table-hover table-sm table-bordered'>
 							<caption>Liste des tickets P1 sur la période</caption>
-								<thead>
+								<thead class="thead-light">
 									<tr>
 										<th>Type du ticket</th>
 										<th>Réfèrence iTop</th>
@@ -482,9 +503,9 @@
 							</table>
 						</article>
 						<article id='SLA'>
-							<table id='tableSLA'>
+							<table id='tableSLA'class='table table-hover table-sm table-bordered'>
 								<caption>Liste des SLA dépassées sur la période</caption>
-								<thead>
+								<thead class="thead-light">
 									<tr>
 										<th>Type du ticket</th>
 										<th>Réfèrence iTop</th>
@@ -503,7 +524,7 @@
 					</section>
 
 				</div>
-				<div id="content_docCo" class="content"hidden>
+				<div id="content_docCo" class="content">
 					<h3 id='nomDoc'>Nom du document:</h3><p id='nomDocp'></p>
 					<h3 id="lienitop">Lien iTop:</h3> <p id="lienitopp"></p>
 					<h3 id='statDoc'>Statut:</h3><p id='statDocp'></p>

@@ -1,8 +1,9 @@
 body{
-	background-color: #efefef;
+	//background-color: #efefef;
 		margin-top: 30px;
 		font-family: arial, sans-serif;
 }
+
 
 h1 {
 	font-family: Tahoma, Verdana, Arial, Helvetica;
@@ -46,8 +47,8 @@ h1 ~ h2{
   filter: alpha(opacity=50);
 }
 
-
 #connected{
+	display: none;
 	padding: 40px;
 }
 
@@ -56,7 +57,7 @@ h1 ~ h2{
 	text-decoration:none;
 	color: #1C94C4;
 }
-
+/*
 a, a:visited {
 	text-decoration:none;
 	color: #1C94C4;
@@ -66,7 +67,7 @@ a:hover {
 	text-decoration:underline;
 	color:#EB8F00;
 	cursor: pointer;
-}
+}*/
 
 #refresh{
 	display: inline-block;
@@ -108,7 +109,7 @@ a:hover {
 /* login */
 
 #login{
-
+	display: none;
 	margin: 0 auto;
 	width: 350px;
 	padding: 20px;
@@ -135,10 +136,11 @@ a:hover {
 /* onglet */
 
 .tabbed_area {
-    border:1px solid #BCBCBC;
-    background-color:#D3D4D4;
-    padding: 15px 25px;
-	margin-top: 1%;
+	display: none;
+  /*border:1px solid #BCBCBC;
+  background-color:#D3D4D4;
+  padding: 15px 25px;
+	margin-top: 1%;*/
 }
 ul.tabs {
     margin:0px; padding:0px;
@@ -168,11 +170,13 @@ ul.tabs li a.active {
     border:1px solid #464c54;
     border-bottom: 1px solid #ffffff;
 }
+/*
 .content {
+		display: none;
     background-color:#ffffff;
     padding:10px;
     border:1px solid #464c54;
-}
+}*/
 
 ul.tabs {
     margin:0px; padding:0px;
@@ -216,11 +220,12 @@ ul.tabs li a.active {
     background-repeat:repeat-x;
     background-position:top;
 }
+/*
 .content {
     background-image:url(images/content_bottom.jpg);
     background-repeat:repeat-x;
     background-position:bottom;
-}
+}*/
 
 caption{
 	color: #436372;
@@ -230,7 +235,12 @@ caption{
     text-align: left;
 }
 
+.nav-link{
+	font-size: 16px;
+	font-family: arial;
+}
 
+/*
 .navbar {
   overflow: hidden;
   background-color: #009ee0;
@@ -257,4 +267,4 @@ caption{
 
 .active{
   background-color: #06587a;
-}
+}*/

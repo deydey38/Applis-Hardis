@@ -300,8 +300,8 @@ function CDS(){
 **/
 function testOK(){
 
-	if($("#valid").val() == "Rechercher"){
-		$("#valid").val("Actualiser");
+	if($("#valid").html() == "Rechercher"){
+		$("#valid").html("Actualiser");
 		console.log("bouton val rechercher");
 	}
 	$("#client").blur();
@@ -325,7 +325,7 @@ function testOK(){
 	loadPageAfficheCI();
 
 	//changer le style du formulaire
-	$('#formC').css('background-color', '#efefef');
+/*	$('#formC').css('background-color', '#efefef');
 	$('#formC').css('margin-top', '2%');
 	$('#formC').css('width', 'auto');
 	$('#formC').css('box-shadow', 'none');
@@ -347,6 +347,6 @@ function testOK(){
 	$('#formC #valid').css('margin', 'auto');
 	$('#formC #valid').css('padding', '3px 10px');
 	$('#formC #valid').css('position', 'relative');
-	$('#formC #valid').css('left', '1%');
+	$('#formC #valid').css('left', '1%');*/
 	$("#refresh").show();
 }
