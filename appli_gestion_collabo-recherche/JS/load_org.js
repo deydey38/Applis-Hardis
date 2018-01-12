@@ -162,9 +162,9 @@ function refreshSuccessfullOrg(data){
 				ChangeOnglet('tab_CIOrg', 'content_CIOrg');
 			});
 
-			$("#tab_CIOrg").css("color", "#1c94c4");
-			$("#tab_CIOrg").css("cursor", "pointer");
-			$("#tab_CIOrg").css("background-color", "#464c54");
+			//$("#tab_CIOrg").css("color", "#1c94c4");
+			//$("#tab_CIOrg").css("cursor", "pointer");
+			//$("#tab_CIOrg").css("background-color", "#464c54");
 
 		}//si le collabo n'a pas de client
 		else{

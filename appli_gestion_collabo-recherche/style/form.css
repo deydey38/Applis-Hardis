@@ -1,9 +1,9 @@
-#formC{
+/*#formC{
 	margin: 0 auto;
-	width: 400px;	
+	width: 400px;
 	padding: 20px;
 	text-align: center;
-	background-color: #C1C3C3; 
+	background-color: #C1C3C3;
 	margin-top: 15%;
 	-webkit-box-shadow: -1px 2px 13px 0px rgba(0,0,0,0.75);
 	-moz-box-shadow: -1px 2px 13px 0px rgba(0,0,0,0.75);
@@ -26,7 +26,7 @@
 #formC #collabo{
 	display: block;
 	margin: 0 auto;
-	margin-top: 25px; 
+	margin-top: 25px;
 	width: 210px;
 	margin-bottom: 25px;
 }
@@ -56,12 +56,16 @@
 	-webkit-box-shadow: 0px 1px 3px #666666;
 	-moz-box-shadow: 0px 1px 3px #666666;
 	box-shadow: 0px 1px 3px #666666;
+}*/
+
+#formC{
+	margin-top: 50px;
 }
 
-.ui-autocomplete { 
+.ui-autocomplete {
 	height: 70px;
 	width: 100px;
-	overflow-y: scroll; 
+	overflow-y: scroll;
 	overflow-x: hidden;
 }
 
@@ -70,8 +74,9 @@
 }
 
 #alertFormError{
+	margin-top: 20px;
 	color: red;
 	padding-top: 15px;
 	padding-bottom: 25px;
-	
+
 }

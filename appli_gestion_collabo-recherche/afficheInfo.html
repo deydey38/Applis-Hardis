@@ -3,7 +3,7 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<title id='title'>Gestion collaborateurs</title>
-
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
 	<script type="text/javascript" src="./JS/JQuery/jquery_1.9.1.js"></script>
 	<script type="text/javascript" src="./JS/JQuery/jquery_1.6.2.js"></script>
 	<script type="text/javascript" src="./JS/JQuery/jquery_1.12.4.js"></script>
@@ -15,6 +15,9 @@
 	<script type="text/javascript" src="./JS/load_backlog.js"></script>
 	<script type="text/javascript" src="./JS/get_param.js"></script>
 	<script type="text/javascript" src="./JS/spin.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.bundle.min.js" integrity="sha384-VspmFJ2uqRrKr3en+IG0cIq1Cl/v/PHneDw6SQZYgrcr8ZZmZoQ3zhuGfMnSR/F2" crossorigin="anonymous"></script>
+
 
 	<link rel="stylesheet" href="style/body.css">
 	<link rel="stylesheet" href="style/selectInfo.css">
@@ -100,11 +103,13 @@
 			document.getElementById('content_CIOrg').style.display = 'none';
 			document.getElementById('content_backlog').style.display = 'none';
 			document.getElementById(contenu).style.display = 'block';
-
+/*
 			document.getElementById('tab_org').className = '';
 			document.getElementById('tab_CIOrg').className = '';
 			document.getElementById('tab_backlog').className = '';
-			document.getElementById(onglet).className = 'active';
+			document.getElementById(onglet).className = 'active';*/
+			$('.nav-tabs .nav-item').removeClass("active");
+			$('#'+onglet).addClass("active");
 		}
 
 		function reloadOngletActive(){
@@ -133,8 +138,8 @@
 			 }
 			});
 			$("#collabo").click(function() {
-				if($("#valid").val() == "Actualiser"){
-					$("#valid").val("Rechercher");
+				if($("#valid").html() == "Actualiser"){
+					$("#valid").html("Rechercher");
 					dejaVisiteCIsOrg=0;
 					dejaVisiteOrg=0;
 					dejaVisiteBacklog=0;
@@ -200,15 +205,26 @@
 </head>
 <!-- onload='loadPageSelectInfo(); loadPageAfficheCI(); ' -->
 <body onload='loadPageSelectInfo();'>
-	<div class="navbar">
-		<a href="../menu/menu.html">Menu</a>
-		<a href="../appli_gestion_client-recherche/afficheInfo.html">Recherche Client</a>
-		<a class="active" href="#">Recherche Collaborateur</a>
-		<a href="../cds/cds.html">CDS</a>
-	</div>
+
+	<nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-primary">
+		<ul class="navbar-nav">
+			<li class="nav-item">
+				<a class="nav-link" href="../menu/menu.html">Menu</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="../appli_gestion_client-recherche/afficheInfo.html">Recherche Client</a>
+			</li>
+			<li class="nav-item active">
+				<a class="nav-link" href="#">Recherche Collaborateur</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="../cds/cds.html">CDS</a>
+			</li>
+		</ul>
+	</nav>
 
 	<div id="main_div">
-		<div id='login' hidden>
+		<div id='login'>
 			<h2>Authentification iTop</h2>
 
 			<p>
@@ -220,23 +236,26 @@
 		</div>
 		<span id="backlogHardisListId">	</span>
 
-		<div id='connected' hidden>
+		<div id='connected'>
 			<!--<span id='refresh' onclick='reloadOngletActive();'>Actualiser</span>-->
 
 			<h1>Bienvenue sur l'application de gestion des collaborateurs</h1>
 			<h2></h2>
 
-			<form method="get" action="afficheInfo.html" id='formC' >
-
-				<label for="collabo">Entrez le nom du collaborateur </label>
-				<input type="search" name="collabo" id='collabo' required autofocus/>
-
-				<span id='alertFormError' hidden></span>
-				<input type="submit" value="Rechercher" id='valid' />
-
+			<form class="d-flex justify-content-center align-items-end" method="get" action="afficheInfo.html" id='formC' autocomplete="on">
+			  <div class="row ">
+			    <div class="col">
+						<input type="search" class="form-control" name="collabo" id='collabo' placeholder="Nom du collaborateur" autofocus />
+			    </div>
+					<div class="col-2">
+			      <button type="submit" class="btn btn-primary d-flex align-items-center" id='valid'>Rechercher</button>
+			    </div>
+			  </div>
 			</form>
+			<div class="alert alert-danger justify-content-center" role="alert" id='alertFormError'></div>
 
-			<div id="infoCollabo" hidden>
+
+			<div id="infoCollabo">
 				<div id="infoC1">
 					<h3>Nom: </h3><p id='nom'></p><br>
 					<h3>Prénom: </h3><p  id='prenom'></p>
@@ -260,13 +279,14 @@
 				</div>
 			</div>
 
-			<div class='tabbed_area' hidden>
-				<ul class="tabs">
-					<li><a href="javascript:ChangeOnglet('tab_org', 'content_org');" id="tab_org" class="active">Clients du collaborateur</a></li>
-					<li><a href="javascript:ChangeOnglet('tab_CIOrg', 'content_CIOrg');" id="tab_CIOrg">CIs des clients</a></li>
-					<li><a href="javascript:ChangeOnglet('tab_backlog', 'content_backlog');" id="tab_backlog">Backlog</a></li>
-				</ul>
-				<div id="content_org" class="content"hidden>
+			<div class='tabbed_area'>
+
+				<nav class="nav nav-tabs nav-fill">
+				  <a class="nav-item nav-link active" href="javascript:ChangeOnglet('tab_org', 'content_org');" id="tab_org">Clients du collaborateur</a>
+				  <a class="nav-item nav-link" href="javascript:ChangeOnglet('tab_CIOrg', 'content_CIOrg');" id="tab_CIOrg">CIs des clients</a>
+				  <a class="nav-item nav-link" href="javascript:ChangeOnglet('tab_backlog', 'content_backlog');" id="tab_backlog">Backlog</a>
+				</nav>
+				<div id="content_org" class="content">
 					<ul id='listeOrg'>
 					</ul>
 				</div>
@@ -275,13 +295,13 @@
 
 				</div>
 
-				<div id="content_backlog" class="content"hidden>
+				<div id="content_backlog" class="content">
 					<p id='lastExtractDate'></p>
 					<section id='recapCount'>
 						<article id='recapCountIncDem'>
-							<table id='tableRecapCountIncDem'>
+							<table id='tableRecapCountIncDem' class='table table-hover table-bordered'>
 								<caption>Tickets</caption>
-								<thead>
+								<thead class="thead-light">
 									<tr>
 										<th>Incidents</th>
 										<th>Demandes</th>
@@ -296,9 +316,9 @@
 
 					</section>
 					<section id='ticketP1Open'>
-						<table id='tableTicketP1Open'>
+						<table id='tableTicketP1Open' class='table table-hover table-bordered'>
 							<caption>Liste des tickets P1</caption>
-							<thead>
+							<thead class="thead-light">
 								<tr>
 									<th>Type du ticket</th>
 									<th>Type</th>
@@ -315,9 +335,9 @@
 						</table>
 					</section>
 					<section id='ticketAT'>
-						<table id='tableTicketAT'>
+						<table id='tableTicketAT' class='table table-hover table-bordered'>
 							<caption>Liste des tickets à traiter</caption>
-							<thead>
+							<thead class="thead-light">
 								<tr>
 									<th>Type du ticket</th>
 									<th>Priorité</th>
@@ -335,9 +355,9 @@
 						</table>
 					</section>
 					<section id='ticketEA'>
-						<table id='tableTicketEA'>
+						<table id='tableTicketEA' class='table table-hover table-bordered'>
 							<caption>Liste des tickets en attente</caption>
-							<thead>
+							<thead class="thead-light">
 								<tr>
 									<th>Type du ticket</th>
 									<th>Priorité</th>
@@ -368,9 +388,9 @@
 						   		 <input id="displayTF" type="checkbox" checked="checked" onclick='if($("#displayTF").is(":checked")){$("#tableTicketF").show();}else{$("#tableTicketF").hide();}'/>
 						   </p>
 						</form>
-						<table id='tableTicketF'>
+						<table id='tableTicketF' class='table table-hover table-bordered'>
 							<caption>Liste des tickets fermés sur la période</caption>
-							<thead>
+							<thead class="thead-light">
 								<tr>
 									<th>Type du ticket</th>
 									<th>Type</th>
@@ -388,9 +408,9 @@
 					</section>
 					<section id='ticketSpe'>
 						<article id='ticketP1'>
-							<table id='tableTicketP1'>
+							<table id='tableTicketP1' class='table table-hover table-bordered'>
 							<caption>Liste des tickets P1 sur la période</caption>
-								<thead>
+								<thead class="thead-light">
 									<tr>
 										<th>Type du ticket</th>
 										<th>Réfèrence iTop</th>
@@ -405,9 +425,9 @@
 							</table>
 						</article>
 						<article id='SLA'>
-							<table id='tableSLA'>
+							<table id='tableSLA' class='table table-hover table-bordered'>
 								<caption>Liste des SLA dépassées sur la période</caption>
-								<thead>
+								<thead class="thead-light">
 									<tr>
 										<th>Type du ticket</th>
 										<th>Réfèrence iTop</th>
@@ -431,7 +451,7 @@
 		</div>
 	<!--Pour l'annimation du chargement--->
 	<div id='spinner' class='spinner'>
-		<div class="popup" hidden>
+		<div class="popup">
 			<div id="popup_name" class="popup_block">
 				<div class="popup_head">
 				  <h2>Avertissement</h2>

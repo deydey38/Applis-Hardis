@@ -10,7 +10,7 @@
 
 	padding-left: 5.8%;
 	padding-right: 10.8%;
-} 
+}
 
 #ticketSpe article,#recapCount article{
 	display: inline-block;
@@ -33,7 +33,7 @@
 #recapCountInc{
 	border-left: 1px dotted black;
 	border-right: 1px dotted black;
-	
+
 }
 
 
@@ -44,7 +44,7 @@
 #ticketOuvert, #liens{
 	width: 49%;
 	display: inline-block;
-	
+
 }
 
 #liens{
@@ -55,7 +55,7 @@
 
 
 /* tableau */
-
+/*
 table{
 	margin-bottom: 35px;
 	width: 100%;
@@ -65,9 +65,9 @@ table tr:nth-child(even) {
 	background-color: #EDF1F7;
 }
 
-tfoot { 			
+tfoot {
 	font-weight: bold;
-	background-color: #EEEEEE;	
+	background-color: #EEEEEE;
 }
 
 th {
@@ -75,7 +75,7 @@ th {
 	font-size: 8pt;
 	color: #1C94C4;
 	height:20px;
-	background-color: #EEEEEE;	
+	background-color: #EEEEEE;
 	width: 70px;
 }
 
@@ -96,7 +96,7 @@ td img{
     margin-left: auto;
     margin-right: auto;
 }
-
+*/
 /* colorer les td et th selon les teams */
 .tma{
 	background-color: #FF0066;
@@ -136,5 +136,3 @@ ul li{
 ul{
 	display: inline-block;
 }
-
-
