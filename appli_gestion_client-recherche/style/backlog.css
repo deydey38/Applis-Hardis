@@ -1,5 +1,5 @@
 #content_backlog h3 {
-	font-family: Tahoma, Verdana, Arial, Helvetica;
+	font-family:  arial, sans-serif;
 	color: #000;
 	font-weight: normal;
 	font-size: 10pt;
@@ -31,15 +31,15 @@
 
 /* delimitation border */
 #recapCount, #ticketSpe, #ticketF, #ticketEA, #ticketAT, #header{
-	border: 1px dotted black;
+	border: 1px solid #dee2e6;
 }
 
 #recapCountInc{
-	border-right: 1px dotted black;
+	border-right: 1px solid #dee2e6;
 }
 
 #recapCountDem{
-	border-right: 1px dotted black;
+	border-right: 1px solid #dee2e6;
 }
 
 #headerPbAT h3, #headerPbEAT h3{

@@ -39,7 +39,7 @@ spinner.spin(spinner_div);
     var off = $('.'+targetSec).offset();
     console.log("offset "+off);
     e.preventDefault();
-    $('html, body').animate({scrollTop: off.top-65}, 500, 'swing');
+    $('html, body').animate({scrollTop: off.top-55}, 500, 'swing');
   });
 
   function getContactByCDS1(){

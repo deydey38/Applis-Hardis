@@ -4,9 +4,12 @@ body{
 		font-family: arial, sans-serif;
 }
 
+.pencil{
+	float:right;
+}
 
 h1 {
-	font-family: Tahoma, Verdana, Arial, Helvetica;
+	font-family:  arial, sans-serif;
 	color: #164463;
 	font-weight: bold;
 	font-size: 24px;
@@ -16,7 +19,7 @@ h1 {
 }
 
 h1 ~ h2{
-	font-family: Tahoma, Verdana, Arial, Helvetica;
+	font-family:  arial, sans-serif;
 	color: #164463;
 	font-weight: bold;
 	font-size: 24px;
