@@ -3,27 +3,22 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<title id='title'>Gestion client</title>
-
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
 	<script type="text/javascript" src="./JS/JQuery/jquery_1.9.1.js"></script>
 	<script type="text/javascript" src="./JS/JQuery/jquery_1.6.2.js"></script>
 	<script type="text/javascript" src="./JS/JQuery/jquery_1.12.4.js"></script>
 	<script type="text/javascript" src="./JS/JQuery/jquery-ui-1.12.1.js"></script>
 	<script type="text/javascript" src="./JS/load_selectInfo.js"></script>
-	<script type="text/javascript" src="./JS/load_formulaire.js"></script>
 	<script type="text/javascript" src="./JS/load_CI.js"></script>
 	<script type="text/javascript" src="./JS/load_Contact.js"></script>
 	<script type="text/javascript" src="./JS/load_docCo.js"></script>
 	<script type="text/javascript" src="./JS/load_backlog.js"></script>
 	<script type="text/javascript" src="./JS/get_param.js"></script>
-	<script type="text/javascript" src="./JS/load_formulaire-backlog.js"></script>
-	<script type="text/javascript" src="./JS/load_rapport.js"></script>
 	<script type="text/javascript" src="./JS/spin.js"></script>
 
 	<link rel="stylesheet" href="style/body.css">
-	<link rel="stylesheet" href="style/selectInfo.css">
 	<link rel="stylesheet" href="style/CI.css">
 	<link rel="stylesheet" href="style/backlog.css">
-	<link rel="stylesheet" href="style/form.css">
 	<link rel="stylesheet" href="style/docCo.css">
 	<link rel="stylesheet" href="style/form-edit-backlog.css">
 	<link rel="stylesheet" href="style/tooltip.css">
@@ -104,7 +99,10 @@
 				dejaVisiteDocCo=1;
 				loadPageAfficheDocCo();
 			}else if(onglet=='tab_CIs' && dejaVisiteCIs!=1){
-				dejaVisiteCIs=1;
+				dejaVisiteCIs=1;dejaVisiteInterne=1;
+				loadPageAfficheCI();
+			}else if(onglet=='tab_interne' && dejaVisiteInterne!=1){
+				dejaVisiteInterne=1;
 				loadPageAfficheCI();
 			}else if(onglet=='tab_backlog' && dejaVisiteBacklog!=1){
 				dejaVisiteBacklog=1;
@@ -112,16 +110,22 @@
 			}
 
 			document.getElementById('content_CIs').style.display = 'none';
+			document.getElementById('content_interne').style.display = 'none';
 			document.getElementById('content_contact').style.display = 'none';
 			document.getElementById('content_docCo').style.display = 'none';
 			document.getElementById('content_backlog').style.display = 'none';
 			document.getElementById(contenu).style.display = 'block';
 
+			/*
 			document.getElementById('tab_CIs').className = '';
+			document.getElementById('tab_interne').className = '';
 			document.getElementById('tab_contact').className = '';
 			document.getElementById('tab_docCo').className = '';
 			document.getElementById('tab_backlog').className = '';
-			document.getElementById(onglet).className = 'active';
+			document.getElementById(onglet).className = 'active';*/
+			console.log("onglet = "+onglet);
+			$('.nav-tabs .nav-item').removeClass("active");
+			$('#'+onglet).addClass("active");
 		}
 
 		function reloadOngletActive(){
@@ -148,7 +152,7 @@
 <!-- onload='loadPageSelectInfo(); loadPageAfficheCI(); ' -->
 <body onload='CDS();'>
 	<div id="main_div">
-		<div id='login' hidden>
+		<div id='login'>
 			<h2>Authentification iTop</h2>
 
 			<p>
@@ -160,27 +164,28 @@
 		</div>
 		<span id="backlogHardisListId">	</span>
 
-		<div id='connected' hidden>
-			<span id='refresh' onclick='reloadOngletActive();'>Actualiser</span>
-
+		<div id='connected'>
+			<button type="button" class="float-right btn btn-primary" id='refresh' onclick='location.reload();'>Actualiser</button>
 			<h1>Bienvenue sur l'application de gestion des clients</h1>
 			<h1 class="cds"></h1>
 
-			<div class='tabbed_area' hidden>
-				<ul class="tabs">
-					<li><a href="javascript:ChangeOnglet('tab_CIs', 'content_CIs');" id="tab_CIs" class="active">CIs</a></li>
-					<li><a href="javascript:ChangeOnglet('tab_contact', 'content_contact');" id="tab_contact">Contacts</a></li>
-					<li><a href="javascript:ChangeOnglet('tab_backlog', 'content_backlog');" id="tab_backlog">Backlog</a></li>
-					<li><a href="javascript:ChangeOnglet('tab_docCo', 'content_docCo');" id="tab_docCo">document de connexion</a></li>
-				</ul>
+			<div class='tabbed_area'>
+
+				<nav class="nav nav-tabs nav-fill">
+				  <a class="nav-item nav-link active" href="javascript:ChangeOnglet('tab_CIs', 'content_CIs');" id="tab_CIs">BD/VM</a>
+				  <a class="nav-item nav-link" href="javascript:ChangeOnglet('tab_interne', 'content_interne');" id="tab_interne">Contacts Hardis</a>
+				  <a class="nav-item nav-link" href="javascript:ChangeOnglet('tab_contact', 'content_contact');" id="tab_contact">Contacts Client</a>
+				  <a class="nav-item nav-link" href="javascript:ChangeOnglet('tab_backlog', 'content_backlog');" id="tab_backlog">Backlog</a>
+				  <a class="nav-item nav-link" href="javascript:ChangeOnglet('tab_docCo', 'content_docCo');" id="tab_docCo">Document de connexion</a>
+				</nav>
 
 
 				<div id="content_CIs" class="content">
 					<div id='div_db'>
 						<div class='div_table'>
-							<table id='table_db' class='table'>
+							<table id='table_db' class='table table-hover table-bordered'>
 								<caption>Liste des bases de données du client (Adélia et SQL)</caption>
-								<thead>
+								<thead class="thead-light">
 									<tr>
 										<th>Utilisation</th>
 										<th>CI</th>
@@ -195,9 +200,9 @@
 
 					<div id='div_vm'>
 						<div class='div_table'>
-							<table id='table_vm' class='table'>
+							<table id='table_vm' class='table table-hover table-bordered'>
 								<caption>Liste des machines virtuelles du client </caption>
-								<thead>
+								<thead class="thead-light">
 									<tr>
 										<th>Utilisation</th>
 										<th>CI</th>
@@ -212,26 +217,31 @@
 							</table>
 						</div>
 					</div>
-					<div id='div_contact'>
-						<table id='table_contact' class='table'>
-							<caption>Contact internes du client</caption>
-							<thead>
-								<tr>
-									<th>Agent</th>
-									<th>Fonction</th>
-									<th>E-mail</th>
-									<th>Téléphone</th>
-								</tr>
-							</thead>
-							<tbody>
-							</tbody>
-						</table>
-					</div>
 				</div>
-				<div id="content_contact" class="content"hidden>
-					<table id='table_contactC' class='table'>
+
+					<div id="content_interne" class="content">
+						<div id='div_contact'>
+							<table id='table_contact' class='table table-hover table-bordered'>
+								<caption>Contact Hardis du client</caption>
+								<thead class="thead-light">
+									<tr>
+										<th>Agent</th>
+										<th>Fonction</th>
+										<th>E-mail</th>
+										<th>Téléphone</th>
+									</tr>
+								</thead>
+								<tbody>
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+
+				<div id="content_contact" class="content">
+					<table id='table_contactC' class='table table-hover table-bordered'>
 						<caption>Contact du client</caption>
-						<thead>
+						<thead class="thead-light">
 							<tr>
 								<th>Nom</th>
 								<th>Site</th>
@@ -244,7 +254,7 @@
 						</tbody>
 					</table>
 				</div>
-				<div id="content_backlog" class="content"hidden>
+				<div id="content_backlog" class="content">
 					<p id='lastExtractDate'></p>
 					<section id='header'>
 						<article id='ticketOuvert'>
@@ -273,7 +283,7 @@
 					</section>
 					<section id='recapCount'>
 						<article id='recapCountInc'>
-							<table id='tableRecapCountInc'>
+							<table id='tableRecapCountInc' class='table table-hover table-sm table-bordered'>
 								<caption>Incidents</caption>
 								<thead>
 									<tr>
@@ -291,7 +301,7 @@
 						</article>
 
 						<article id="recapCountDem">
-							<table id='tableRecapCountDem'>
+							<table id='tableRecapCountDem' class='table table-hover table-sm table-bordered'>
 								<caption>Demandes</caption>
 								<thead>
 									<tr>
@@ -309,7 +319,7 @@
 						</article>
 
 						<article id="recapCountProblem">
-							<table id='tableRecapCountProblem'>
+							<table id='tableRecapCountProblem' class='table table-hover table-sm table-bordered'>
 								<caption>Problèmes</caption>
 								<thead>
 									<tr>
@@ -327,9 +337,9 @@
 						</article>
 					</section>
 					<section id='ticketAT'>
-						<table id='tableTicketAT'>
+						<table id='tableTicketAT' class='table table-hover table-bordered'>
 							<caption>Liste des tickets à traiter</caption>
-							<thead>
+							<thead class="thead-light">
 								<tr>
 									<th>Type du ticket</th>
 									<th>Priorité</th>
@@ -348,9 +358,9 @@
 						</table>
 					</section>
 					<section id='ticketEA'>
-						<table id='tableTicketEA'>
+						<table id='tableTicketEA' class='table table-hover table-bordered'>
 							<caption>Liste des tickets en attente</caption>
-							<thead>
+							<thead class="thead-light">
 								<tr>
 									<th>Type du ticket</th>
 									<th>Priorité</th>
@@ -382,9 +392,9 @@
 							   <input id="displayTF" type="checkbox" checked="checked" onclick='if($("#displayTF").is(":checked")){$("#tableTicketF").show();}else{$("#tableTicketF").hide();}'/>
 						   </p>
 						</form>
-						<table id='tableTicketF'>
+						<table id='tableTicketF' class='table table-hover table-bordered'>
 							<caption>Liste des tickets fermés/résolus/rejetés sur la période</caption>
-							<thead>
+							<thead class="thead-light">
 								<tr>
 									<th>Type du ticket</th>
 									<th>Type</th>
@@ -403,9 +413,9 @@
 					</section>
 					<section id='ticketSpe'>
 						<article id='ticketP1'>
-							<table id='tableTicketP1'>
+							<table id='tableTicketP1' class='table table-hover table-sm table-bordered'>>
 							<caption>Liste des tickets P1 sur la période</caption>
-								<thead>
+								<thead class="thead-light">
 									<tr>
 										<th>Type du ticket</th>
 										<th>Réfèrence iTop</th>
@@ -421,9 +431,9 @@
 							</table>
 						</article>
 						<article id='SLA'>
-							<table id='tableSLA'>
+							<table id='tableSLA' class='table table-hover table-sm table-bordered'>
 								<caption>Liste des SLA dépassées sur la période</caption>
-								<thead>
+								<thead class="thead-light">
 									<tr>
 										<th>Type du ticket</th>
 										<th>Réfèrence iTop</th>
@@ -443,7 +453,7 @@
 
 				</div>
 
-				<div id="content_docCo" class="content"hidden>
+				<div id="content_docCo" class="content">
 					<h3 id='nomDoc'>Nom du document:</h3><p id='nomDocp'></p>
 					<h3 id="lienitop">Lien iTop:</h3> <p id="lienitopp"></p>
 					<h3 id='statDoc'>Statut:</h3><p id='statDocp'></p>
@@ -456,16 +466,16 @@
 
 	</div>
 	<!-- popup de modification du backlog -->
-	<div id='popupTicket' hidden>
+	<div id='popupTicket' >
 		<div id="popup_name" class="popup_block">
 			<div class="popup_head">
 			  <h2>Ticket</h2>
 			  <img src="./img/croix.png" onclick='$("#popupTicket").fadeOut(); $("#shadowing").hide(); $("#errorMessageAgent").text("");' alt='croixQuitterPopup'>
 			</div>
 			<div class="popup_body">
-				<p id="chrmtTexte" hidden>Chargement en cour....</p>
+				<p id="chrmtTexte">Chargement en cour....</p>
 				<form method="get" action="afficheInfo.html" id='formTicket' >
-					<input type="text" name="idTicket" id="idTicket" disabled="disabled" hidden />
+					<input type="text" name="idTicket" id="idTicket" disabled="disabled"/>
 					<fieldset>
 						<legend>Informations ticket</legend>
 						<div class='dateTicket'>
@@ -476,7 +486,7 @@
 							<label for="dmaj" >Date de dernière mise à jour: </label>
 							<input type="text" name="dmaj" id="dmaj" disabled="disabled" />
 						</div>
-						<div class='dateTicket' id="divdf" hidden>
+						<div class='dateTicket' id="divdf">
 							<label for="df" class='df' id="dfl">Date de résolution: </label>
 							<input type="text" name="df" id="df" class='df' disabled="disabled" />
 						</div>
@@ -495,7 +505,7 @@
 						<img src="./img/croix.png" alt="Supprimer agent" onclick='$("#agent").val("");' />
 						<span class='errorMessage' id='errorMessageAgent'></span><br>
 					</fieldset>
-					<fieldset id='div_resolved' hidden>
+					<fieldset id='div_resolved'>
 						<legend>Résolution</legend>
 						<div class='div_resolvedItem' id='divSol'>
 							<label for='codReso' >Code de résolution:</label>
@@ -570,7 +580,7 @@
 
 	</div>
 
-	<div id="popupMessage" class="popup" hidden >
+	<div id="popupMessage" class="popup">
 			<div id="popup_name" class="popup_block">
 				<div class="popup_head">
 				  <h2>Avertissement</h2>
