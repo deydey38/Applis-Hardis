@@ -3,6 +3,7 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<title id='title'>Gestion collaborateurs</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
 	<script type="text/javascript" src="./JS/JQuery/jquery_1.9.1.js"></script>
 	<script type="text/javascript" src="./JS/JQuery/jquery_1.6.2.js"></script>
@@ -137,6 +138,23 @@
 					$('#ui-id-1').hide();
 			 }
 			});
+
+			$(".arrow").click(function(){
+				//var targetSec = "#groupe";
+	      //var off = $(targetSec).offset();
+	      $('html').animate({ scrollTop: 0 }, 'fast');
+			});
+
+			window.onscroll = function() {myFunction()};
+
+			function myFunction() {
+				if (window.pageYOffset >= 10) {
+					$(".arrow").show();
+				} else {
+					$(".arrow").hide();
+				}
+			}
+
 			$("#collabo").click(function() {
 				if($("#valid").html() == "Actualiser"){
 					$("#valid").html("Rechercher");
@@ -449,6 +467,9 @@
 
 			</div>
 		</div>
+
+		<button type="button" class="btn btn-primary arrow btn-sm"><i class="fa fa-angle-double-up" style="font-size:30px;color:white"></i></button>
+
 	<!--Pour l'annimation du chargement--->
 	<div id='spinner' class='spinner'>
 		<div class="popup">

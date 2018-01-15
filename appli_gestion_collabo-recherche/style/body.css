@@ -8,6 +8,13 @@ body{
 	font-family: Arial, sans-serif;
 }
 
+.arrow{
+	display: none;
+	position: fixed;
+	bottom: 10px;
+	right: 10px;
+}
+
 #login{
 	display: none;
 }

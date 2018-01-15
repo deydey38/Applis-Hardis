@@ -4,6 +4,13 @@ body{
 		font-family: arial, sans-serif;
 }
 
+.arrow{
+	display: none;
+	position: fixed;
+	bottom: 10px;
+	right: 10px;
+}
+
 .pencil{
 	float:right;
 }

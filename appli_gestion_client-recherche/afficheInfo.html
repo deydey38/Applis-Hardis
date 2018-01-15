@@ -99,6 +99,22 @@
 			 }
 			});
 
+			$(".arrow").click(function(){
+				//var targetSec = "#groupe";
+	      //var off = $(targetSec).offset();
+	      $('html').animate({ scrollTop: 0 }, 'fast');
+			});
+
+			window.onscroll = function() {myFunction()};
+
+			function myFunction() {
+				if (window.pageYOffset >= 10) {
+					$(".arrow").show();
+				} else {
+					$(".arrow").hide();
+				}
+			}
+
 			$("#client").click(function() {
 				if($("#valid").html() == "Actualiser"){
 					$("#valid").html("Rechercher");
@@ -563,6 +579,8 @@
 		</div>
 
 	</div>
+
+	<button type="button" class="btn btn-primary arrow btn-sm"><i class="fa fa-angle-double-up" style="font-size:30px;color:white"></i></button>
 
 	<!--Pour l'annimation du chargement--->
 	<div id='spinner' class='spinner'>
