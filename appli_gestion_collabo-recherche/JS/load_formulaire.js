@@ -53,7 +53,9 @@ $(function(){
 
 	$("#formC").submit(function(e){
 		lesClients=null;
-
+		dejaVisiteCIsOrg=0;
+		dejaVisiteOrg=0;
+		dejaVisiteBacklog=0;
 		//pas de rechargement de page
 		e.preventDefault();
 
