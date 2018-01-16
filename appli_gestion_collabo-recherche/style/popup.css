@@ -4,6 +4,10 @@
 	left:50%;
 }
 
+.alert{
+	margin-bottom: 0px!important;
+}
+
 .popup_block{
 	position: fixed;
     width:250px;
@@ -15,7 +19,7 @@
 //	border-color:#3498db;
     transform-style: preserve-3d;
 	box-shadow: 0px 20px 100px #aaa;
-	background-color: white;
+	//background-color: white;
 }
 
 .popup_head{
@@ -25,7 +29,7 @@
 }
 
 .popup_body{
-	padding:0px 10px;
+	padding:0px 0px;
 }
 
 .popup_head h2{
