@@ -500,7 +500,9 @@ function chargementPageCI(dataObjFcis, dataObjLnk){
 	}
   $(".pencil").click(function(){
     var ci = $(this).parent().next("td").text();
-    
+    var utilisationExistante = $(this).parent().text();
+    $("#inputModif").val(utilisationExistante);
+    console.log("utilisation existante : "+utilisationExistante);
     ciModif=ci;
     dbOrVm = $(this).parent().parent().parent().parent().attr('id');
     console.log("DB OR VM : "+dbOrVm);
