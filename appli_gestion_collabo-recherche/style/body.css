@@ -23,7 +23,7 @@ html{
 /* hover tab color */
 .nav-tabs>a:hover {
   //border-color: #000000;
-  background-color: #111111!important;
+  background-color: #007bff!important;
 }
 
 body{

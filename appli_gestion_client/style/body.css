@@ -23,7 +23,7 @@ body{
 /* hover tab color */
 .nav-tabs>a:hover {
   //border-color: #000000;
-  background-color: #111111;
+  background-color: #007bff;
 }
 
 h1 {
