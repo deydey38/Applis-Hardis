@@ -4,6 +4,10 @@ body{
 		font-family: arial, sans-serif;
 }
 
+.nav-link{
+	padding:0.3rem 1rem!important; 
+}
+
 /* tab color */
 .nav-tabs>a {
   background-color: #666;

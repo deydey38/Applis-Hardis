@@ -2,7 +2,10 @@ html{
 	width:100%;
 }
 
-/* tab color */
+.nav-link{
+	padding:0.3rem 1rem!important;
+}
+
 /* tab color */
 .nav-tabs>a {
   background-color: #666!important;

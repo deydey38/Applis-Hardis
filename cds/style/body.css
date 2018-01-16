@@ -2,6 +2,10 @@ html{
 	width:100%;
 }
 
+.nav-link{
+	padding:0.3rem 1rem!important;
+}
+
 body{
 	//background-color: #efefef;
 }
