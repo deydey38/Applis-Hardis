@@ -40,6 +40,7 @@
 
 		var hidden, visibilityChange, fcis;
 		var ciModif = 'undefined';
+		var dbOrVm = 'undefined';
 		var nomOrg = 'undefined';
 		var nomCI = 'undefined';
 		var cds = 'undefined';
@@ -280,7 +281,7 @@
 				<div id="content_CIs" class="content">
 					<div id='div_db'>
 						<div class='div_table'>
-							<table id='table_db' class='table table-hover table-bordered'>
+							<table id='table_db' class='table table-hover table-bordered table-sm'>
 								<caption>Liste des bases de données du client (Adélia et SQL)</caption>
 								<thead class="thead-light">
 									<tr>
@@ -315,7 +316,7 @@
 
 						<div id='div_vm'>
 							<div class='div_table'>
-								<table id='table_vm' class='table table-hover table-bordered'>
+								<table id='table_vm' class='table table-hover table-bordered table-sm'>
 									<caption>Liste des machines virtuelles du client </caption>
 									<thead class="thead-light">
 										<tr>
@@ -337,7 +338,7 @@
 
 				<div id="content_interne" class="content">
 					<div id='div_contact'>
-						<table id='table_contact' class='table table-hover table-bordered'>
+						<table id='table_contact' class='table table-hover table-bordered table-sm'>
 							<caption>Contact Hardis du client</caption>
 							<thead class="thead-light">
 								<tr>
@@ -354,7 +355,7 @@
 				</div>
 
 				<div id="content_contact" class="content">
-					<table id='table_contactC' class='table table-hover table-bordered'>
+					<table id='table_contactC' class='table table-hover table-bordered table-sm'>
 						<caption>Contact du client</caption>
 						<thead class="thead-light">
 							<tr>
@@ -452,7 +453,7 @@
 						</article>
 					</section>
 					<section id='ticketAT'>
-						<table id='tableTicketAT'class='table table-hover table-bordered'>
+						<table id='tableTicketAT'class='table table-hover table-bordered table-sm'>
 							<caption>Liste des tickets à traiter</caption>
 							<thead class="thead-light">
 								<tr>
@@ -473,7 +474,7 @@
 						</table>
 					</section>
 					<section id='ticketEA'>
-						<table id='tableTicketEA' class='table table-hover table-bordered'>
+						<table id='tableTicketEA' class='table table-hover table-bordered table-sm'>
 							<caption>Liste des tickets en attente</caption>
 							<thead class="thead-light">
 								<tr>
@@ -507,7 +508,7 @@
 							   <input id="displayTF" type="checkbox" checked="checked" onclick='if($("#displayTF").is(":checked")){$("#tableTicketF").show();}else{$("#tableTicketF").hide();}'/>
 						   </p>
 						</form>
-						<table id='tableTicketF'class='table table-hover table-bordered'>
+						<table id='tableTicketF'class='table table-hover table-bordered table-sm'>
 							<caption>Liste des tickets fermés/résolus/rejetés sur la période</caption>
 							<thead class="thead-light">
 								<tr>

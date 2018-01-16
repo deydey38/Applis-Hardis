@@ -1,8 +1,10 @@
 var login		= '';
 var pwd			= '';
 var first		= true;
-var ITOP_URL	= 'https://itop.hardis.fr';
-var ITOP_WS_URL	= ITOP_URL + "/webservices/rest.php?version=1.3";
+/*var ITOP_URL 				= 'https://itop.hardis.fr';
+var ITOP_WS_URL 			= ITOP_URL + "/webservices/rest.php?version=1.3";*/
+var ITOP_URL 				= 'https://itoprec.hardis.fr/itop';
+var ITOP_WS_URL 			= ITOP_URL + "/webservices/rest.php?version=1.3";
 var lst_org;
 var oJSON		={
 		operation: 'core/get',

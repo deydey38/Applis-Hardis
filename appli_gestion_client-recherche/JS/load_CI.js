@@ -1,8 +1,10 @@
 var login		= '';
 var pwd			= '';
 var first		= true;
-var ITOP_URL	= 'https://itop.hardis.fr';
-var ITOP_WS_URL	= ITOP_URL + "/webservices/rest.php?version=1.3";
+/*var ITOP_URL 				= 'https://itop.hardis.fr';
+var ITOP_WS_URL 			= ITOP_URL + "/webservices/rest.php?version=1.3";*/
+var ITOP_URL 				= 'https://itoprec.hardis.fr/itop';
+var ITOP_WS_URL 			= ITOP_URL + "/webservices/rest.php?version=1.3";
 var iTopCIUrl 	= 'https://itop.hardis.fr/pages/UI.php?operation=details&class=FunctionalCI&id=';
 var iTopContactUrl 	= 'https://itop.hardis.fr/pages/UI.php?operation=details&class=Contact&id=';
 
@@ -501,6 +503,8 @@ function chargementPageCI(dataObjFcis, dataObjLnk){
   $(".pencil").click(function(){
     var ci = $(this).parent().next("td").text();
     ciModif=ci;
+    dbOrVm = $(this).parent().parent().parent().parent().attr('id');
+    console.log("DB OR VM : "+dbOrVm);
     $("#exampleModalLabel").text("Modifier CI "+ci);
   });
 
