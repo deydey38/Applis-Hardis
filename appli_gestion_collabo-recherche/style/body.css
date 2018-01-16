@@ -5,9 +5,9 @@ html{
 /* tab color */
 /* tab color */
 .nav-tabs>a {
-  background-color: #666;
+  background-color: #666!important;
   border-color: black!important;
-  color:#fff;
+  color:#fff!important;
 }
 
 /* active tab color */
@@ -20,7 +20,7 @@ html{
 /* hover tab color */
 .nav-tabs>a:hover {
   //border-color: #000000;
-  background-color: #111111;
+  background-color: #111111!important;
 }
 
 body{
@@ -270,7 +270,7 @@ ul.tabs li a.active {
     background-position:bottom;
 }
 
-caption{
+.caption{
 		color: #164463;
 		font-size: 20px;
     font-weight: bold;

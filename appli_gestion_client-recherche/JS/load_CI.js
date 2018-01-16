@@ -426,7 +426,7 @@ function chargementPageCI(dataObjFcis, dataObjLnk){
 							$("#table_db tbody:last").append(str);
 						}
 					}else{*/
-						var str='<tr><td>'+ lst_table_db[i] +'<button type="button" class="btn btn-primary pencil" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-pencil"></i></button></td><td><a href="'+ iTopCIUrl+ idDB +'" target="_blank">'+ lst_table_db[i+1] +'</a></td><td>'+ lst_table_db[i+2] +'</td></tr>';
+						var str='<tr><td>'+ lst_table_db[i] +'<button type="button" class="btn btn-primary btn-sm pencil" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-pencil"></i></button></td><td><a href="'+ iTopCIUrl+ idDB +'" target="_blank">'+ lst_table_db[i+1] +'</a></td><td>'+ lst_table_db[i+2] +'</td></tr>';
 						$("#table_db tbody:last").append(str);
 				//	}
 
@@ -465,7 +465,7 @@ function chargementPageCI(dataObjFcis, dataObjLnk){
 							$("#table_vm tbody:last").append(str);
 						}
 					}else{*/
-							var str='<tr><td>'+ lst_table_vm[i] +'<button type="button" class="btn btn-primary pencil" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-pencil"></i></button></td><td><a href="'+ iTopCIUrl+ idVM +'" target="_blank">'+ lst_table_vm[i+1] +'</a></td><td>'+ lst_table_vm[i+2] +'</td><td>'+ lst_table_vm[i+3] +'</td><td>'+ lst_table_vm[i+4] +'</td><td><a href="'+ lst_table_vm[i+5] +'" target="_blank">'+ lst_table_vm[i+5] +'</a></td></tr>';
+							var str='<tr><td>'+ lst_table_vm[i] +'<button type="button" class="btn btn-primary btn-sm pencil" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-pencil"></i></button></td><td><a href="'+ iTopCIUrl+ idVM +'" target="_blank">'+ lst_table_vm[i+1] +'</a></td><td>'+ lst_table_vm[i+2] +'</td><td>'+ lst_table_vm[i+3] +'</td><td>'+ lst_table_vm[i+4] +'</td><td><a href="'+ lst_table_vm[i+5] +'" target="_blank">'+ lst_table_vm[i+5] +'</a></td></tr>';
 							$("#table_vm tbody:last").append(str);
 					//}
 				}else{
@@ -500,6 +500,7 @@ function chargementPageCI(dataObjFcis, dataObjLnk){
 	}
   $(".pencil").click(function(){
     var ci = $(this).parent().next("td").text();
+    
     ciModif=ci;
     dbOrVm = $(this).parent().parent().parent().parent().attr('id');
     console.log("DB OR VM : "+dbOrVm);
