@@ -2,6 +2,26 @@ body{
 	//background-color: #efefef;
 }
 
+/* tab color */
+.nav-tabs>a {
+  background-color: #666;
+  border-color: black!important;
+  color:#fff;
+}
+
+/* active tab color */
+.nav-tabs>a.active, .nav-tabs>a.active:hover, .nav-tabs>a.active:focus {
+  color: #fff!important;
+  background-color: #007bff!important;
+  border-bottom: 1px solid #007bff!important;
+}
+
+/* hover tab color */
+.nav-tabs>a:hover {
+  //border-color: #000000;
+  background-color: #111111;
+}
+
 h1 {
 	font-family: arial, sans-serif;
 	color: #164463;
