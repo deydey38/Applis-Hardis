@@ -11,9 +11,9 @@ body{
 
 /* active tab color */
 .nav-tabs>a.active, .nav-tabs>a.active:hover, .nav-tabs>a.active:focus {
-  color: #fff!important;
-  background-color: #007bff!important;
-  border-bottom: 1px solid #007bff!important;
+  color: #007bff!important;
+  background-color: #fff!important;
+  border-bottom: 1px solid #fff!important;
 }
 
 /* hover tab color */
