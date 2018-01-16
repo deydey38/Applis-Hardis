@@ -4,8 +4,12 @@ body{
 		font-family: arial, sans-serif;
 }
 
+.pencil{
+	padding:1px 6px!important;
+}
+
 .nav-link{
-	padding:0.3rem 1rem!important; 
+	padding:0.3rem 1rem!important;
 }
 
 /* tab color */
