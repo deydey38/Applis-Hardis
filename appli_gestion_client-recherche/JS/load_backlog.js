@@ -3,9 +3,7 @@ var pwd = '';
 var first = true;
 var iTOP_TEAM_NAME_H2i_N2_iSeries 	= 'Support Niveau 2 Iseries';
 var iTOP_TEAM_NAME_H2i_N2_Xseries 	= 'Support Niveau 2 Xseries';
-/*var ITOP_URL 				= 'https://itop.hardis.fr';
-var ITOP_WS_URL 			= ITOP_URL + "/webservices/rest.php?version=1.3";*/
-var ITOP_URL 				= 'https://itoprec.hardis.fr/itop';
+var ITOP_URL 				= 'https://itop.hardis.fr';
 var ITOP_WS_URL 			= ITOP_URL + "/webservices/rest.php?version=1.3";
 var iTopTicketUrl 			= 'https://itop.hardis.fr/pages/UI.php?operation=details&class=UserRequest&id=';
 var iTopPbUrl				= 'https://itop.hardis.fr/pages/UI.php?operation=details&class=Problem&id=';
