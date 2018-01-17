@@ -23,7 +23,7 @@ function checkConnection(){
         if(data.code!=0){//non connnecté
           loginVisible=1;
           $("#login").show();
-          $("header").hide();
+          //$("header").hide();
           $(".contenu").hide();
         }else{
           $("#login").hide();

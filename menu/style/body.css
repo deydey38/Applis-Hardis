@@ -6,7 +6,7 @@ body{
 	--background-color: #efefef;
 }
 
-.header, .contenu, .row1, .choix, #login{
+ .contenu, .row1, .choix, #login{
 	display: none;
 }
 
@@ -102,7 +102,7 @@ a:hover {
 	margin: 0 auto;
 	width: 350px;
 	text-align: center;
-	margin-top: 20%;
+	//margin-top: 0%;
 }
 
 /*
