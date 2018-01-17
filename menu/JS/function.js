@@ -31,7 +31,7 @@ function checkConnection(){
           $(".contenu").show();
           $("h1").show();
           $(".contenu p").show();
-          $(".row").show();
+          $(".row1").show();
           $(".choix").show();
         }
       },

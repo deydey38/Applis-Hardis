@@ -47,7 +47,7 @@ h1 ~ h2{
 	text-decoration:none;
 	color: #1C94C4;
 }
-
+/*
 #login a, #login a:visited {
 	text-decoration:none;
 	color: #1C94C4;
@@ -56,7 +56,7 @@ h1 ~ h2{
 #login a:hover {
 	text-decoration:underline;
 	color:#EB8F00;
-}
+}*/
 /*
 a, a:visited {
 	text-decoration:none;
@@ -99,6 +99,14 @@ a, a:visited {
 /* login */
 
 #login{
+	margin: 0 auto;
+	width: 350px;
+	text-align: center;
+	margin-top: 20%;
+}
+
+/*
+#login{
 
 	margin: 0 auto;
 	width: 350px;
@@ -112,7 +120,7 @@ a, a:visited {
 	border-radius: 5px 5px 5px 5px;
 	-moz-border-radius: 5px 5px 5px 5px;
 	-webkit-border-radius: 5px 5px 5px 5px;
-}
+}*/
 
 #login h2{
 	margin: 0;

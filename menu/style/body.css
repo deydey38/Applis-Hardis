@@ -6,6 +6,10 @@ body{
 	--background-color: #efefef;
 }
 
+.header, .contenu, .row1, .choix, #login{
+	display: none;
+}
+
 h1 {
 	font-family: Tahoma, Verdana, Arial, Helvetica;
 	color: #164463;
@@ -44,7 +48,7 @@ h1 ~ h2{
 	color: #1C94C4;
 }
 
-a, a:visited {
+.choix a, .choix a:visited {
 	text-decoration:none;
 	color: #1C94C4;
 }
@@ -95,6 +99,14 @@ a:hover {
 /* login */
 
 #login{
+	margin: 0 auto;
+	width: 350px;
+	text-align: center;
+	margin-top: 20%;
+}
+
+/*
+#login{
 
 	margin: 0 auto;
 	width: 350px;
@@ -108,7 +120,7 @@ a:hover {
 	border-radius: 5px 5px 5px 5px;
 	-moz-border-radius: 5px 5px 5px 5px;
 	-webkit-border-radius: 5px 5px 5px 5px;
-}
+}*/
 
 #login h2{
 	margin: 0;
