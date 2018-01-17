@@ -8,7 +8,7 @@ html{
 
 /* tab color */
 .nav-tabs>a {
-  background-color: #666!important;
+  background-color: #007bff!important;
   border-color: black!important;
   color:#fff!important;
 }
@@ -23,7 +23,7 @@ html{
 /* hover tab color */
 .nav-tabs>a:hover {
   //border-color: #000000;
-  background-color: #007bff!important;
+  background-color: #0069d9!important;
 }
 
 body{
