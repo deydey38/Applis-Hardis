@@ -2,6 +2,10 @@ html{
 	width:100%;
 }
 
+.card h5{
+	margin-bottom: 0px;
+}
+
 .nav-link{
 	padding:0.3rem 2rem!important;
 }

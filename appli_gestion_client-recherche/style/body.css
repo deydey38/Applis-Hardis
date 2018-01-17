@@ -4,6 +4,10 @@ body{
 		font-family: arial, sans-serif;
 }
 
+.card h5{
+	margin-bottom: 0px;
+}
+
 .pencil{
 	padding:1px 6px!important;
 }

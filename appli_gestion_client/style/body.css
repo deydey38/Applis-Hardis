@@ -2,6 +2,10 @@ body{
 	//background-color: #efefef;
 }
 
+.card h5{
+	margin-bottom: 0px;
+}
+
 .nav-link{
 	padding:0.3rem 1rem!important;
 }

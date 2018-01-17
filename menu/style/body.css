@@ -2,6 +2,10 @@ html{
 	width:100%;
 }
 
+.card h5{
+	margin-bottom: 0px;
+}
+
 body{
 	--background-color: #efefef;
 }
