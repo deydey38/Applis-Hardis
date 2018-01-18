@@ -6,6 +6,10 @@ body{
 	margin-bottom: 0px;
 }
 
+section{
+	margin-bottom: 50px;
+}
+
 .nav-link{
 	padding:0.3rem 1rem!important;
 }

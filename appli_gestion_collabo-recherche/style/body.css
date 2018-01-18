@@ -2,6 +2,10 @@ html{
 	width:100%;
 }
 
+section{
+	margin-bottom: 50px;
+}
+
 .card h5{
 	margin-bottom: 0px;
 }
