@@ -263,6 +263,7 @@ ul.tabs li a.active {
     font-weight: bold;
     padding: 10px 10px 10px 0;
     text-align: left;
+		margin-bottom: 0px;
 }
 
 /*popup message*/
