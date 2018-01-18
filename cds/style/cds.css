@@ -130,8 +130,8 @@ label{
   display: none;
 	color: red;
   text-align: center;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin:10px auto 10px;
+  width: 500px;
 }
 
 .ui-menu{
@@ -177,7 +177,6 @@ input[type="search"]::-webkit-search-cancel-button {
 
 #formC{
   margin-top: 40px;
-  margin-bottom: 40px;
   text-align: center;
 }
 

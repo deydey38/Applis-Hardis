@@ -74,9 +74,7 @@
 }
 
 #alertFormError{
-	margin-top: 20px;
 	color: red;
-	padding-top: 15px;
-	padding-bottom: 25px;
-
+	width: 350px;
+	margin: 20px auto 0px;
 }

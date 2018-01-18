@@ -96,10 +96,8 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 #alertFormError{
-	margin-top: 20px;
 	display: none;
 	color: red;
-	padding-top: 15px;
-	padding-bottom: 25px;
-
+	width:500px;
+	margin: auto;
 }
