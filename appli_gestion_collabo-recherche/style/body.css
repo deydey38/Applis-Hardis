@@ -12,9 +12,10 @@ html{
 
 /* tab color */
 .nav-tabs>a {
-  background-color: #6b8094!important;
-  border-color: black!important;
-  color:#fff!important;
+  background-color:rgba(40,44,42,0.05);
+  border-color:rgba(40,44,42,0.1)!important;
+  color:#74777b;
+	border-radius: 0px!important;
 }
 
 /* active tab color */
@@ -22,12 +23,14 @@ html{
   color: #007bff!important;
   background-color: #fff!important;
   border-bottom: 1px solid #fff!important;
+	border-top:1px solid #007bff!important;
+	box-shadow:inset 0 2px 0 #007bff;
 }
 
 /* hover tab color */
 .nav-tabs>a:hover {
   //border-color: #000000;
-  background-color: #2b333b!important;
+  color: #007bff;
 }
 
 body{
