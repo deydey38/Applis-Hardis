@@ -11,11 +11,14 @@
 	<script type="text/javascript" src="./JS/JQuery/jquery-ui-1.12.1.js"></script>
 	<script type="text/javascript" src="./JS/load_selectInfo.js"></script>
 	<script type="text/javascript" src="./JS/load_CI.js"></script>
+	<script type="text/javascript" src="./JS/modif_utilisation.js"></script>
 	<script type="text/javascript" src="./JS/load_Contact.js"></script>
 	<script type="text/javascript" src="./JS/load_docCo.js"></script>
 	<script type="text/javascript" src="./JS/load_backlog.js"></script>
 	<script type="text/javascript" src="./JS/get_param.js"></script>
 	<script type="text/javascript" src="./JS/spin.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.bundle.min.js" integrity="sha384-VspmFJ2uqRrKr3en+IG0cIq1Cl/v/PHneDw6SQZYgrcr8ZZmZoQ3zhuGfMnSR/F2" crossorigin="anonymous"></script>
 
 	<link rel="stylesheet" href="style/body.css">
 	<link rel="stylesheet" href="style/CI.css">
@@ -189,6 +192,30 @@
 				  <a class="nav-item nav-link" href="javascript:ChangeOnglet('tab_backlog', 'content_backlog');" id="tab_backlog">Backlog</a>
 				  <a class="nav-item nav-link" href="javascript:ChangeOnglet('tab_docCo', 'content_docCo');" id="tab_docCo">Document de connexion</a>
 				</nav>
+
+
+				<!-- Modal -->
+				<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				          <span aria-hidden="true">&times;</span>
+				        </button>
+				      </div>
+				      <div class="modal-body">
+								<form id="formModif" autocomplete="off">
+								  <div class="form-group">
+								    <input type="text" class="form-control" id="inputModif" placeholder="Nouveau nom d'utilisation" autofocus>
+								  </div>
+					        <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
+					        <button type="submit" class="float-right btn btn-primary">Sauvegarder</button>
+								</form>
+				      </div>
+				    </div>
+				  </div>
+				</div>
 
 
 				<div id="content_CIs" class="content">

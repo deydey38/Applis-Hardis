@@ -2,6 +2,11 @@ body{
 	//background-color: #efefef;
 }
 
+.pencil{
+	padding:1px 6px!important;
+	float:right;
+}
+
 .arrow{
 	display: none;
 	position: fixed;
