@@ -7,6 +7,10 @@ body{
   font-family: Arial, sans-serif;
 }
 
+.export{
+  color:white!important;
+}
+
 #login{
   display: none;
 }

@@ -35,13 +35,36 @@ spinner.spin(spinner_div);
   var ITOP_URL	= 'https://itop.hardis.fr';
   var ITOP_WS_URL	= ITOP_URL + "/webservices/rest.php?version=1.3";
 
-  $('.sidelink').on('click', function (e) {
-    var targetSec = $(this).text();
+  $('#linkRechClient').on('click', function (e) {
+    var targetSec = "Client";
     var off = $('.'+targetSec).offset();
     console.log("offset "+off);
     e.preventDefault();
     $('html, body').animate({scrollTop: off.top-55}, 500, 'swing');
   });
+
+  $('#linkCDSR1').on('click', function (e) {
+    var targetSec = "CDS1";
+    var off = $('.'+targetSec).offset();
+    console.log("offset "+off);
+    e.preventDefault();
+    $('html, body').animate({scrollTop: off.top-55}, 500, 'swing');
+  });
+  $('#linkCDSR2').on('click', function (e) {
+    var targetSec = "CDS2";
+    var off = $('.'+targetSec).offset();
+    console.log("offset "+off);
+    e.preventDefault();
+    $('html, body').animate({scrollTop: off.top-55}, 500, 'swing');
+  });
+  $('#linkCDSR3').on('click', function (e) {
+    var targetSec = "CDS3";
+    var off = $('.'+targetSec).offset();
+    console.log("offset "+off);
+    e.preventDefault();
+    $('html, body').animate({scrollTop: off.top-55}, 500, 'swing');
+  });
+
 
   function getContactByCDS1(){
     requete= 'SELECT org FROM Organization AS org '
@@ -97,6 +120,7 @@ spinner.spin(spinner_div);
     output_fields: "name"
   };
   var dataURLCDS = '';
+  dataURLCDS += "Client ;CDS;" + '\n';
   var client1 = true;
   var even = true;
   // ajax trouvage du client par rapport au ci
@@ -109,11 +133,12 @@ spinner.spin(spinner_div);
     success: function(data){
       //console.log("data "+data);
       var dataURL = '';
+      dataURL += "Client ;CDS;" + '\n';
       $.each(data['objects'], function(index, value){
         //console.log(value);
         nomClient = value['fields']['name'];
         var dataRow = '';
-        dataRow += nomClient + " ; CDS1;";
+        dataRow += nomClient + " ;CDS1;";
         dataURL += dataRow + '\n';
         dataURLCDS += dataRow + '\n';
         //console.log(nomClient);
@@ -165,12 +190,12 @@ spinner.spin(spinner_div);
       success: function(data){
         //console.log("data "+data);
         var dataURL = '';
-        dataURLCDS += '\n';
+        dataURL += "Client ;CDS;" + '\n';
         $.each(data['objects'], function(index, value){
           //console.log(value);
           nomClient = value['fields']['name'];
           var dataRow = '';
-          dataRow += nomClient + " ; CDS2;";
+          dataRow += nomClient + " ;CDS2;";
           dataURL += dataRow + '\n';
           dataURLCDS += dataRow + '\n';
           if(client1){
@@ -223,12 +248,12 @@ spinner.spin(spinner_div);
       success: function(data){
         //console.log("data "+data);
         var dataURL = '';
-        dataURLCDS += '\n';
+        dataURL += "Client ;CDS;" + '\n';
         $.each(data['objects'], function(index, value){
           //console.log(value);
           nomClient = value['fields']['name'];
           var dataRow = '';
-          dataRow += nomClient + " ; CDS3;";
+          dataRow += nomClient + " ;CDS3;";
           dataURL += dataRow + '\n';
           dataURLCDS += dataRow + '\n';
           if(client1){

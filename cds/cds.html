@@ -91,21 +91,20 @@
     </nav>
 
     <div class="contenu" >
-    <h1>Répartition des clients par CDS</h1>
+    <h1>Répartition des clients par CDS <a class="btn btn-primary btn-lg export exportAll" download="CDS.csv">Exporter tous les clients (.CSV)</a></h1>
+
 
 
     <div class="sidebar btn-group-vertical">
-      <a class="sidelink btn btn-outline-primary " href="#">Client</a>
-      <a class="sidelink btn btn-outline-primary " href="#".CDS"">CDS1</a>
-      <a class="sidelink btn btn-outline-primary " href="#">CDS2</a>
-      <a class="sidelink btn btn-outline-primary " href="#">CDS3</a>
+      <a class="sidelink btn btn-outline-primary " id="linkRechClient" href="#">Client</a>
+      <a class="sidelink btn btn-outline-primary " id="linkCDSR1" href="#">CDS R1</a>
+      <a class="sidelink btn btn-outline-primary " id="linkCDSR2" href="#">CDS R2</a>
+      <a class="sidelink btn btn-outline-primary " id="linkCDSR3" href="#">CDS R3</a>
     </div>
 
-   <!--<iframe src="https://itop.hardis.fr/webservices/export-v2.php?format=html&login_mode=basic&date_format=Y-m-d+H%3Ai%3As&query=376" width="" height="">
-  </iframe>-->
-  <div class="wrap">
-    <a class="btn btn-outline-primary btn-lg export exportAll" download="CDS.csv">Exporter tous les CDS au format CSV</a>
 
+
+  <div class="wrap">
 
     <div class="recherche Client">
       <p class="para test">Recherche par Client</p>
@@ -128,23 +127,23 @@
     </div>
 
     <div class="CDS1 CDS">
-      <p class="test para">Liste des clients du CDS1</p>
+      <p class="test para">Liste des clients du CDS R1</p>
       <button class="btn btn-primary test affiche" type="button" name="button">Afficher</button>
-      <a class="export export1 btn btn-outline-primary" href="#" download="CDS1.csv">Exporter CDS1 au format CSV</a>
+      <a class="export export1 btn btn-primary" download="CDSR1.csv">Exporter CDS R1 (.CSV)</a>
       <table class="slide table table-striped table-sm"></table>
     </div>
 
     <div class="CDS2 CDS">
-      <p class="test para">Liste des clients du CDS2</p>
+      <p class="test para">Liste des clients du CDS R2</p>
       <button class="btn btn-primary test affiche" type="button" name="button">Afficher</button>
-      <a class="export export2 btn btn-outline-primary" download="CDS2.csv">Exporter CDS2 au format CSV</a>
+      <a class="export export2 btn btn-primary" download="CDSR2.csv">Exporter CDS R2 (.CSV)</a>
       <table class="slide table table-striped table-sm"></table>
     </div>
 
     <div class="CDS3 CDS">
-      <p class="test para">Liste des clients du CDS3</p>
+      <p class="test para">Liste des clients du CDS R3</p>
       <button class="btn btn-primary test affiche" type="button" name="button">Afficher</button>
-      <a class="export export3 btn btn-outline-primary" download="CDS3.csv">Exporter CDS3 au format CSV</a>
+      <a class="export export3 btn btn-primary" download="CDSR3.csv">Exporter CDS R3 (.CSV)</a>
       <table class="slide table table-striped table-sm"></table>
     </div>
 
