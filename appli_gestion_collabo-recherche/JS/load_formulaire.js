@@ -49,8 +49,6 @@ $(function(){
 
 	});
 
-
-
 	$("#formC").submit(function(e){
 		lesClients=null;
 		dejaVisiteCIsOrg=0;
@@ -174,6 +172,17 @@ $(function(){
 		});
 
 	});
+
+
+	if(collaboGet==null){
+		console.log("get collabo null");
+	}else{
+		console.log("get collabo : "+collaboGet);
+		var nomCollabo = collaboGet.replace(/%20/g, " ");
+		$("#collabo").val(nomCollabo);
+		console.log("nom collabo : "+nomCollabo);
+		$("#formC").submit();
+	}
 
 	$( "#collabo" ).click(function() {
 	  $( "#alertFormError" ).fadeOut();

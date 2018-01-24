@@ -218,7 +218,8 @@ function chargementPageCI(dataObjFcis, dataObjLnk){
 
 					//creation d'un lien
 					var a = document.createElement('a');
-					a.href=iTopContactUrl+val['fields']['contact_id'];
+					//a.href=iTopContactUrl+val['fields']['contact_id'];
+          a.href="../appli_gestion_collabo-recherche/afficheInfo.html?collabo="+val['fields']['contact_id_friendlyname'];
 					a.innerHTML = val['fields']['contact_id_friendlyname'];
 					a.target="_blank"
 
