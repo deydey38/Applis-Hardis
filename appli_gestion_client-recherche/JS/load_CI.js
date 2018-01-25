@@ -700,6 +700,7 @@ function GetBacklogRequestLnkCI(){
 	request = request + ' JOIN Environment AS env ON aps.environment_id = env.id';
 	request = request + ' JOIN Organization AS org ON aps.org_id = org.id';
 	request = request + ' WHERE (env.name = "Développement")';
+  request = request + ' AND (aps.name LIKE "%'+ nomOrg +' HARDIS%")';
 	request = request + ' AND (fci.finalclass="databasecluster" OR fci.finalclass="VirtualMachine" OR fci.finalclass="DatabaseSchema")';
 	// request = request + ' AND (fci.owner_name = "HARDIS GROUPE" OR fci.owner_name = "Reflex")';
 	request = request + ' AND (org.name = "'+ nomOrg +'")';
