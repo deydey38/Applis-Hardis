@@ -21,23 +21,38 @@
 }
 
 #ticketSpe article{
-	width: 49.8%;
+	width: 100%;
 }
 
 #recapCount article{
 	width: 33%;
 }
 
+#ticketP1, #SLA{
+	border:none!important;
+}
+
 
 /* delimitation border */
 #recapCount, #ticketSpe, #ticketF, #ticketEA, #ticketAT, #header{
-	//border: 1px dotted black;
+	border: 1px solid rgba(0,0,0,.125);
+	padding:10px;
+	border-radius: 0.25rem;
+	-webkit-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
+box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
 }
 
 #recapCountInc{
-	//border-left: 1px dotted black;
-	//border-right: 1px dotted black;
+	border-right: 1px solid rgba(0,0,0,.125);
+	padding:10px;
+	border-radius: 0.25rem;
+}
 
+#recapCountDem{
+	border-right: 1px solid rgba(0,0,0,.125);
+	padding:10px;
+	border-radius: 0.25rem;
 }
 
 #headerPbAT h3, #headerPbEAT h3{
