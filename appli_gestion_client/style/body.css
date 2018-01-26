@@ -1,5 +1,6 @@
 body{
 	//background-color: #efefef;
+	font-size: 0.8rem!important;
 }
 
 .pencil{
@@ -53,7 +54,7 @@ h1 {
 	font-family: arial, sans-serif;
 	color: #164463;
 	font-weight: bold;
-	font-size: 24px;
+	font-size: 20px;
 	text-align: center;
 	width: 700px;
 	margin: auto;
@@ -271,7 +272,7 @@ ul.tabs li a.active {
 
 .caption{
 		color: #164463;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: bold;
     padding: 10px 10px 10px 0;
     text-align: left;
@@ -339,4 +340,8 @@ ul.tabs li a.active {
   z-index:5;
   opacity:0.1;
   filter: alpha(opacity=50);
+}
+
+#content_docCo h3{
+	font-size: 20px!important;
 }

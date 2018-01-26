@@ -367,13 +367,14 @@ function chargementPageCI(dataObjFcis, dataObjLnk, no){
 	table_db.id= 'table_db_'+currentIndex;
 	div_table.append(table_db);
 
-	var caption= document.createElement('caption');
+	var caption= document.createElement('p');
+  caption.className= 'caption';
 	caption.innerHTML="Liste des bases de données du client (Adélia et SQL)";
-	table_db.append(caption);
+	div_table.prepend(caption);
 
 	var thead = document.createElement('thead');
   $(thead).addClass("thead-light");
-	caption.after(thead);
+	table_db.append(thead);
 
 	var tr = document.createElement('tr');
 	thead.append(tr);
@@ -410,13 +411,14 @@ function chargementPageCI(dataObjFcis, dataObjLnk, no){
 	table_vm.id= 'table_vm_'+currentIndex;
 	div_table_vm.append(table_vm);
 
-	var caption= document.createElement('caption');
+	var caption= document.createElement('p');
+  caption.className= 'caption';
 	caption.innerHTML="Liste des machines virtuelles du client";
-	table_vm.append(caption);
+	div_table_vm.prepend(caption);
 
 	var thead = document.createElement('thead');
   $(thead).addClass("thead-light");
-	caption.after(thead);
+	table_vm.append(thead);
 
 	var tr = document.createElement('tr');
 	thead.append(tr);

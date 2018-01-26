@@ -2,6 +2,7 @@ body{
 	//background-color: #efefef;
 		margin-top: 30px;
 		font-family: arial, sans-serif;
+		font-size: 0.8rem!important;
 }
 
 section{
@@ -86,17 +87,18 @@ h1 {
 	font-family:  arial, sans-serif;
 	color: #164463;
 	font-weight: bold;
-	font-size: 24px;
+	font-size: 20px;
 	display: block;
 	margin: auto;
 	width: 596px;
+	text-align: center;
 }
 
 h1 ~ h2{
 	font-family:  arial, sans-serif;
 	color: #164463;
 	font-weight: bold;
-	font-size: 24px;
+	font-size: 20px;
 	display: block;
 	margin: auto;
 	width: 800px;
@@ -314,7 +316,7 @@ ul.tabs li a.active {
 
 .caption{
 		color: #164463;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: bold;
     padding: 10px 10px 10px 0;
     text-align: left;
@@ -322,7 +324,7 @@ ul.tabs li a.active {
 }
 
 .nav-link{
-	font-size: 16px;
+	font-size: 0.8rem;
 	font-family: arial;
 }
 
@@ -354,3 +356,7 @@ ul.tabs li a.active {
 .active{
   background-color: #06587a;
 }*/
+
+#content_docCo h3{
+	font-size: 20px!important;
+}
