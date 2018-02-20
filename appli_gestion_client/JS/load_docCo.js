@@ -153,30 +153,66 @@ function refreshSuccessfullDocCo(data){
 
 			doc = data["objects"];
 
-			//vidage de la page
-			$("#nomDocp").html("");
-			$("#statDocp").html("");
-			$("#majByDocp").html("");
-			$("#lienitopp").html("");
-
+      $("#content_docCo").html("");
+      var nombreDocument = 0;
 			$.each(data['objects'], function(index, value){
+        nombreDocument++;
 
-				$("#nomDocp").html(value['fields']['name']);
-				$("#statDocp").html(convertStatut(value['fields']['status']));
-				$("#majByDocp").html(value['fields']['modifiedby_id_friendlyname']);
-				var desc = value['fields']['description'];
+        var documentConnexion = document.createElement("div");
+        var nameDocument = document.createElement("button");
+        var infoDocument = document.createElement("div");
+        var lienItop = document.createElement("p");
+        var statut = document.createElement("p");
+        var maj = document.createElement("p");
+        var contenuDocument = document.createElement("p");
 
+        $(nameDocument).addClass("btn btn-primary btn-sm showInfo");
+        $(documentConnexion).addClass("doc");
+        $(infoDocument).addClass("slide");
+
+        $(infoDocument).css("padding-top", "10px");
+			  $(documentConnexion).css("padding", "20px 0px");
+			  $(documentConnexion).css("border-bottom", "1px solid black");
+
+        $(nameDocument).html(value['fields']['name']);
+        $(lienItop).html("<strong>Lien iTop : </strong><a onclick=\"window.open('"+iTopDocCo_URL+value['key']+"')\">"+iTopDocCo_URL+value['key']+'</a>');
+        $(statut).html("<strong>Statut : </strong>"+convertStatut(value['fields']['status']));
+        $(maj).html("<strong>Mise à jour par :</strong>"+value['fields']['modifiedby_id_friendlyname']);
+        var desc = value['fields']['description'];
+        console.log("<strong>Description  = </strong>"+desc);
 				//pour les saut de lignes
 				i=desc.indexOf("\n");
 				while (i >= 0) {
 					desc=desc.replace("\n","<br>");
 					i=desc.indexOf("\n");
 				}
+				$(contenuDocument).html("<strong>Contenu : </strong></br>"+desc);
 
-				$("#contentDoc").html(desc);
-				$("#lienitopp").html("<a href='"+iTopDocCo_URL+value['key']+"' target='_blank'>"+iTopDocCo_URL+value['key']+'</a>');
+
+        $("#content_docCo").append(documentConnexion);
+        $(documentConnexion).append(nameDocument);
+        $(documentConnexion).append(infoDocument);
+        $(infoDocument).append(lienItop);
+        $(infoDocument).append(statut);
+        $(infoDocument).append(maj);
+        $(infoDocument).append(contenuDocument);
+
 
 			});
+      console.log("nombre de documents : " + nombreDocument);
+
+      $("#content_docCo .doc").last().css("border-bottom", "none");
+      $(".showInfo").click(function(){
+        $(this).parent().find('.slide').toggle('show');
+      });
+
+      if(nombreDocument == 2){
+        $(".slide").css("display", "none");
+        console.log("1 nombre de documents : " + nombreDocument);
+      }else{
+        $(".slide").css("display", "block");
+        console.log("2 nombre de documents : " + nombreDocument);
+      }
 
 
 			document.getElementById("connected").style.display = 'block';
