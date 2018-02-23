@@ -200,7 +200,10 @@ function refreshSuccessfullDocCo(data){
 
 			});
       console.log("nombre de documents : " + nombreDocument);
-
+      if(nombreDocument == 0){
+        console.log("0 documents la putain de ta grand mère");
+        $("#content_docCo").html("<strong>Pas de document disponible pour ce client !</strong>");
+      }
       $("#content_docCo .doc").last().css("border-bottom", "none");
       $(".showInfo").click(function(){
         $(this).parent().find('.slide').toggle('show');
