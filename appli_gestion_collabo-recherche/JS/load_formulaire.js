@@ -122,8 +122,10 @@ $(function(){
 					console.log("localisation :"+localisation);
 					if(localisation == ""){
 						$(".map-button").hide();
+						$("#position").hide();
 					}else{
 						$(".map-button").show();
+						$("#position").show();
 						$(".material-icons").removeClass("active-icon");
 						var idRoom = localisation.replace("B1-","");
 						console.log("idRoom :"+idRoom);

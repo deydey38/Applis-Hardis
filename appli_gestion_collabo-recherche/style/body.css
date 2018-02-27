@@ -25,9 +25,16 @@ html{
   position:relative;
 }
 
+.btn .material-icons{
+	opacity:1;
+}
+
 .material-icons{
   opacity:0;
-	animation: allblink 1s infinite;
+	}
+
+	.map .material-icons{
+		animation: allblink 1s infinite;
 	}
 
 @keyframes allblink {
