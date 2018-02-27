@@ -2,6 +2,134 @@ html{
 	width:100%;
 }
 
+.modal-map{
+  background-color: rgba(0,0,0,0.4);
+  position: fixed;
+  top:0px;
+  left: 0px;
+  width:100%;
+  height:100%;
+  overflow: auto;
+  z-index: 3;
+  padding-top: 100px;
+  display: none;
+}
+
+.map{
+  background-image: url("../img/plan-B1.png");
+  width:1000px;
+  height:500px;
+  margin: auto;
+  background-size:contain;
+  background-repeat: no-repeat;
+  position:relative;
+}
+
+.material-icons{
+  opacity:0;
+	animation: allblink 1s infinite;
+	}
+
+@keyframes allblink {
+	0% { }
+	50% { color:black;}
+}
+
+.active-icon{
+  opacity:1;
+}
+
+#icon01{
+  position:absolute;
+  top:50px;
+  right:400px;
+}
+
+#icon02{
+  position:absolute;
+  top:30px;
+  left:440px;
+}
+
+#icon03{
+  position:absolute;
+  top:50px;
+  left:290px;
+}
+
+#icon04{
+  position:absolute;
+  top:50px;
+  left:150px;
+}
+
+#icon05{
+  position:absolute;
+  top:100px;
+  left:50px;
+}
+
+#icon06{
+  position:absolute;
+  top:300px;
+  left:50px;
+}
+
+#icon07{
+  position:absolute;
+  bottom:50px;
+  left:200px;
+}
+
+#icon08{
+  position:absolute;
+  bottom:50px;
+  left:310px;
+}
+
+#icon09{
+  position:absolute;
+  bottom:50px;
+  left:450px;
+}
+
+#icon10{
+  position:absolute;
+  bottom:50px;
+  left:650px;
+}
+
+#icon11{
+  position:absolute;
+  bottom:50px;
+  left:850px;
+}
+
+#icon12{
+  position:absolute;
+  bottom:140px;
+  right:50px;
+}
+
+#icon13{
+  position:absolute;
+  top:100px;
+  right:50px;
+}
+
+#icon14{
+  position:absolute;
+  top:50px;
+  right:200px;
+}
+
+#icon15{
+  position:absolute;
+  bottom:40px;
+  left:40px;
+}
+
+
 body{
 	font-size: 0.8rem!important;
 }
@@ -333,7 +461,7 @@ ul.tabs li a.active {
 	display: block;
 	text-align: center;
 	margin-top: 1.5%;
-	margin-left: 33%;
+	margin: auto;
 	padding: 1%;
 	-webkit-box-shadow: 0px 1px 3px #666666;
 	-moz-box-shadow: 0px 1px 3px #666666;

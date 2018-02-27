@@ -66,7 +66,7 @@ $(function(){
 			operation: 'core/get',
 			'class': 'Person',
 			key: 'SELECT ctc FROM Contact AS ctc WHERE ctc.status = "Active" AND ctc.finalclass="Person" AND ctc.email LIKE "%hardis%" AND ctc.friendlyname = "'+$('#collabo').val()+'"',
-			output_fields: "name, email, phone, first_name, mobile_phone, short_phone, site_name, function, team_list, org_name"
+			output_fields: "name, email, phone, first_name, mobile_phone, short_phone, site_name, function, team_list, org_name, information"
 		};
 
 		//ajax pour savoir si le collabo existe
@@ -116,6 +116,20 @@ $(function(){
 						$("#valid").html("Actualiser");
 						console.log("bouton val rechercher");
 					}
+
+					//gestion de la localisation
+					var localisation = fields['information'];
+					console.log("localisation :"+localisation);
+					if(localisation == ""){
+						$(".map-button").hide();
+					}else{
+						$(".map-button").show();
+						$(".material-icons").removeClass("active-icon");
+						var idRoom = localisation.replace("B1-","");
+						console.log("idRoom :"+idRoom);
+						document.querySelector('#icon'+idRoom).classList.add("active-icon");
+					}
+
 
 					$("#collabo").blur();
 

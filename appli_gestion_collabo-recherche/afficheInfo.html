@@ -3,6 +3,7 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<title id='title'>Gestion collaborateurs</title>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
 	<script type="text/javascript" src="./JS/JQuery/jquery_1.9.1.js"></script>
@@ -31,6 +32,14 @@
 
 	<script>
 
+		function showMap(){
+			document.getElementById('modal-map').style.display='block';
+		}
+
+		function hideMap(){
+			document.getElementById('modal-map').style.display='none';
+		}
+		
 		var hidden, visibilityChange, fcis;
 		var collaboGet = $_GET('collabo');
 		//pour les espaces
@@ -294,7 +303,29 @@
 				<div id="infoC5">
 					<h3>Organisation:</h3><p id='org'></p>
 					<h3>Équipe:</h3><p id='equipe'></p>
+					<button class="btn btn-primary map-button" onclick="showMap()"><i class="fa fa-map-o" style="font-size:36px"></i></button>
 				</div>
+			</div>
+
+			<div onclick="hideMap()" class="modal-map" id="modal-map">
+				<p class="map">
+					<i class="material-icons" id="icon01" style="font-size:45px;color:#007bff">room</i>
+					<i class="material-icons" id="icon02" style="font-size:45px;color:#007bff">room</i>
+					<i class="material-icons" id="icon03" style="font-size:45px;color:#007bff">room</i>
+					<i class="material-icons" id="icon04" style="font-size:45px;color:#007bff">room</i>
+					<i class="material-icons" id="icon05" style="font-size:45px;color:#007bff">room</i>
+					<i class="material-icons" id="icon06" style="font-size:45px;color:#007bff">room</i>
+					<i class="material-icons" id="icon07" style="font-size:45px;color:#007bff">room</i>
+					<i class="material-icons" id="icon08" style="font-size:45px;color:#007bff">room</i>
+					<i class="material-icons" id="icon09" style="font-size:45px;color:#007bff">room</i>
+					<i class="material-icons" id="icon10" style="font-size:45px;color:#007bff">room</i>
+					<i class="material-icons" id="icon11" style="font-size:45px;color:#007bff">room</i>
+					<i class="material-icons" id="icon12" style="font-size:45px;color:#007bff">room</i>
+					<i class="material-icons" id="icon13" style="font-size:45px;color:#007bff">room</i>
+					<i class="material-icons" id="icon14" style="font-size:45px;color:#007bff">room</i>
+					<i class="material-icons" id="icon15" style="font-size:45px;color:#007bff">room</i>
+
+				</p>
 			</div>
 
 			<div class='tabbed_area'>
