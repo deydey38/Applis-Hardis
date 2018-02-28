@@ -102,10 +102,8 @@ $(function(){
 							team= getTeamName(fields['team_list'][0]);
 						}
 					});
+					console.log("team :"+team);
 					var orgn=fields['org_name'];
-					if(fields['org_name']=='Utilisateur Hardis'){
-						orgn='Hardis'
-					}
 
 
 					console.log("id collabo "+idCollabo);
@@ -154,7 +152,7 @@ $(function(){
 					$('body h1').css("width", "665");
 					$('h1 ~ h2').text(" ");
 					$('h1 ~ h2').text(fields['first_name'] +" "+ fields['name']);
-					$("#equipe").html("");
+					$("#equipe").html("Aucune d'équipe");
 					$("#nom").html(fields['name']);
 					$("#prenom").html(fields['first_name']);
 					$("#mail").html(fields['email']);
