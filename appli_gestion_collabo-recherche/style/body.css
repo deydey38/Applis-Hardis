@@ -16,7 +16,7 @@ html{
 }
 
 .map{
-  background-image: url("../img/plan-B1.png");
+  background-image: url("../img/plan-B1-nomBureau.png");
   width:1000px;
   height:500px;
   margin: auto;
@@ -51,30 +51,30 @@ html{
 #icon01{
   position:absolute;
   top:-250px;
-  right:400px;
+  right:395px;
 }
 
 #icon02{
   position:absolute;
   top:-270px;
-  left:440px;
+  left:425px;
 }
 
 #icon03{
   position:absolute;
   top:-250px;
-  left:290px;
+  left:280px;
 }
 
 #icon04{
   position:absolute;
   top:-250px;
-  left:150px;
+  left:145px;
 }
 
 #icon05{
   position:absolute;
-  top:-200px;
+  top:-220px;
   left:50px;
 }
 
@@ -86,38 +86,38 @@ html{
 
 #icon07{
   position:absolute;
-  bottom:350px;
-  left:200px;
+  bottom:360px;
+  left:180px;
 }
 
 #icon08{
   position:absolute;
-  bottom:350px;
-  left:310px;
+  bottom:355px;
+  left:320px;
 }
 
 #icon09{
   position:absolute;
-  bottom:350px;
-  left:450px;
+  bottom:360px;
+  left:460px;
 }
 
 #icon10{
   position:absolute;
-  bottom:350px;
+  bottom:352px;
   left:650px;
 }
 
 #icon11{
   position:absolute;
-  bottom:350px;
-  left:850px;
+  bottom:352px;
+  left:842px;
 }
 
 #icon12{
   position:absolute;
-  bottom:440px;
-  right:50px;
+  bottom:452px;
+  right:60px;
 }
 
 #icon13{
@@ -129,7 +129,7 @@ html{
 #icon14{
   position:absolute;
   top:-250px;
-  right:200px;
+  right:190px;
 }
 
 #icon15{
