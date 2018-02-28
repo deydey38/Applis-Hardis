@@ -129,6 +129,12 @@ $(function(){
 						$(".material-icons").removeClass("active-icon");
 						var idRoom = localisation.replace("B1-","");
 						console.log("idRoom :"+idRoom);
+						$( ".map-button" ).click(function() {
+					    $('.map .material-icons').css("transform","translate(0,300px)");
+					  });
+						$( ".modal-map" ).click(function() {
+					    $('.map .material-icons').css("transform","translate(0,-300px)");
+					  });
 						document.querySelector('#icon'+idRoom).classList.add("active-icon");
 					}
 
@@ -148,7 +154,7 @@ $(function(){
 					$('body h1').css("width", "665");
 					$('h1 ~ h2').text(" ");
 					$('h1 ~ h2').text(fields['first_name'] +" "+ fields['name']);
-
+					$("#equipe").html("");
 					$("#nom").html(fields['name']);
 					$("#prenom").html(fields['first_name']);
 					$("#mail").html(fields['email']);
