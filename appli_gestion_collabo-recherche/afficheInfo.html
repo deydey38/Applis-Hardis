@@ -40,6 +40,14 @@
 			document.getElementById('modal-map').style.display='none';
 		}
 
+		function showFloor(){
+			document.getElementById('modal-floor').style.display='block';
+		}
+
+		function hideFloor(){
+			document.getElementById('modal-floor').style.display='none';
+		}
+
 		var hidden, visibilityChange, fcis;
 		var collaboGet = $_GET('collabo');
 		//pour les espaces
@@ -329,6 +337,28 @@
 			</div>
 
 			<div class='tabbed_area'>
+
+				<button class="btn btn-primary floor-button" onclick="showFloor()">Afficher le plan de l'étage</button>
+
+				<div onclick="hideFloor()" class="modal-floor" id="modal-floor">
+					<div class="floor">
+						<div class="room" id="room01"></div>
+						<div class="room" id="room02"></div>
+						<div class="room" id="room03"></div>
+						<div class="room" id="room04"></div>
+						<div class="room" id="room05"></div>
+						<div class="room" id="room06"></div>
+						<div class="room" id="room07"></div>
+						<div class="room" id="room08"></div>
+						<div class="room" id="room09"></div>
+						<div class="room" id="room10"></div>
+						<div class="room" id="room11"></div>
+						<div class="room" id="room12"></div>
+						<div class="room" id="room13"></div>
+						<div class="room" id="room14"></div>
+						<div class="room" id="room15"></div>
+				</div>
+			</div>
 
 				<nav class="nav nav-tabs nav-fill">
 				  <a class="nav-item nav-link active" href="javascript:ChangeOnglet('tab_org', 'content_org');" id="tab_org">Clients du collaborateur</a>

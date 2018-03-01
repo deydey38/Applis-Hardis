@@ -137,6 +137,35 @@ $(function(){
 					}
 
 
+					var floorJSON = {
+						operation: 'core/get',
+						'class': 'Person',
+						key: 'SELECT Person AS B WHERE B.information LIKE "%B1-%"',
+						output_fields: "name, information"
+					};
+
+
+					$.ajax({
+						type: "GET",
+						url: ITOP_WS_URL,
+						dataType: 'jsonp',
+						data: { auth_user: login, auth_pwd: pwd, json_data: JSON.stringify(floorJSON)},
+						crossDomain: 'true',
+						success: function(data){
+							console.log(data);
+							console.log(data[0]);
+							$.each(data['objects'], function(index, value){
+								//console.log(value['fields']['name']);
+								var numRoom = value['fields']['information'].replace("B1-","");
+
+								console.log(numRoom);
+								var room = document.querySelector('#room'+numRoom);
+								$(room).append(value['fields']['name']+"\n");
+							});
+						}
+					});
+
+
 					$("#collabo").blur();
 
 					//affichage des onglets
@@ -152,7 +181,7 @@ $(function(){
 					$('body h1').css("width", "665");
 					$('h1 ~ h2').text(" ");
 					$('h1 ~ h2').text(fields['first_name'] +" "+ fields['name']);
-					$("#equipe").html("Aucune d'équipe");
+					$("#equipe").html("");
 					$("#nom").html(fields['name']);
 					$("#prenom").html(fields['first_name']);
 					$("#mail").html(fields['email']);
