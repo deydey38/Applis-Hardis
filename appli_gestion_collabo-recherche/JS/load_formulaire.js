@@ -141,7 +141,7 @@ $(function(){
 						operation: 'core/get',
 						'class': 'Person',
 						key: 'SELECT Person AS B WHERE B.information LIKE "%B1-%"',
-						output_fields: "name, information"
+						output_fields: "name, first_name, information"
 					};
 
 
@@ -160,7 +160,10 @@ $(function(){
 
 								console.log(numRoom);
 								var room = document.querySelector('#room'+numRoom);
-								$(room).append(value['fields']['name']+"\n");
+								if($(room).html() != ""){
+									$(room).append("/ ")
+								}
+								$(room).append(value['fields']['name']+" "+value['fields']['first_name']+" ");
 							});
 						}
 					});

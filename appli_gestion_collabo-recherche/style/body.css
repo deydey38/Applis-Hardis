@@ -153,8 +153,8 @@ html{
 
 .floor{
   background-image: url("../img/plan-B1-floor.png");
-  width:90%;
-  height:100%;
+  width:1367px;
+  height:709px;
   margin: auto;
   background-size:contain;
   background-repeat: no-repeat;
@@ -168,28 +168,32 @@ html{
 	top:200px;
 	right:435px;
 	position: absolute;
-	//background-color: rgba(255, 0, 0, 0.5);
+	font-weight: bold;
+	background-color: rgba(255, 255, 255, 0.5);
+	padding: 1px;
+	vertical-align: middle;
+	text-align: center;
 }
 
 #room01{
-	top:50px;
+	top:60px;
   right:435px;
 	width: 260px;
-	height:120px;
-}
-
-#room02{
-	top:50px;
-  right:705px;
-	width: 90px;
 	height:110px;
 }
 
+#room02{
+	top:65px;
+  right:705px;
+	width: 90px;
+	height:70px;
+}
+
 #room03{
-	top:50px;
+	top:60px;
   left:280px;
 	width: 280px;
-	height:150px;
+	height:140px;
 }
 
 #room04{
@@ -200,73 +204,73 @@ html{
 }
 
 #room05{
-	top:60px;
-  left:30px;
-	width: 148px;
-	height:210px;
+	top:70px;
+  left:34px;
+	width: 140px;
+	height:200px;
 }
 
 #room06{
-	top:342px;
-  left:30px;
-	width: 140px;
-	height:245px;
+	top:352px;
+  left:32px;
+	width: 138px;
+	height:235px;
 }
 
 #room07{
-	top:550px;
+	top:560px;
   left:171px;
 	width:250px;
-	height:115px;
+	height:105px;
 }
 
 #room08{
-	top:565px;
+	top:575px;
   left:425px;
 	width: 90px;
-	height:100px;
+	height:90px;
 }
 
 #room09{
-	top:555px;
+	top:565px;
   left:525px;
 	width: 280px;
-	height:110px;
+	height:100px;
 }
 
 #room10{
-	top:555px;
+	top:565px;
   left:813px;
 	width: 240px;
-	height:110px;
+	height:100px;
 }
 
 #room11{
-	top:535px;
+	top:545px;
   left:1055px;
 	width: 295px;
-	height:130px;
+	height:120px;
 }
 
 #room12{
-	top:440px;
+	top:450px;
   left:1185px;
 	width: 165px;
-	height:70px;
+	height:60px;
 }
 
 #room13{
-	top:50px;
+	top:70px;
   left:1200px;
 	width: 150px;
-	height:270px;
+	height:250px;
 }
 
 #room14{
-	top:50px;
+	top:60px;
   left:960px;
 	width: 235px;
-	height:120px;
+	height:110px;
 }
 
 #room15{
@@ -597,6 +601,11 @@ ul.tabs li a.active {
 	font-size: 16px;
 }
 
+#infoRow{
+	margin: auto;
+	text-align: center;
+}
+
 #infoC1,#infoC2,#infoC3,#infoC4{
 	width: 24.2%;
 	display: inline-block;
@@ -604,7 +613,7 @@ ul.tabs li a.active {
 
 #infoC5{
 	width: 600px;
-	display: block;
+	display: inline-block;
 	text-align: center;
 	margin-top: 1.5%;
 	margin: auto;

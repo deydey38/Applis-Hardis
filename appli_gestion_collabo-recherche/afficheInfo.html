@@ -308,11 +308,15 @@
 					<h3>Fonction:</h3><p id='fonction'></p><br>
 					<h3>Site:</h3><p id='site'></p>
 				</div>
-				<div id="infoC5">
-					<h3>Organisation:</h3><p id='org'></p>
-					<h3>Équipe:</h3><p id='equipe'></p>
-					<h3 id="position">Localisation:</h3></p><button class="btn btn-primary map-button" onclick="showMap()"><i class="material-icons" style="font-size:36px;color:white">my_location</i></button>
+				<div id="infoRow">
+					<div id="infoC5">
+						<h3>Organisation:</h3><p id='org'></p>
+						<h3>Équipe:</h3><p id='equipe'></p>
+						<h3 id="position">Localisation:</h3></p><button class="btn btn-primary map-button" onclick="showMap()"><i class="material-icons" style="font-size:36px;color:white">my_location</i></button>
+					</div>
+						<button class="btn btn-primary floor-button" onclick="showFloor()">Afficher le plan de l'étage</button>
 				</div>
+
 			</div>
 
 			<div onclick="hideMap()" class="modal-map" id="modal-map">
@@ -338,7 +342,7 @@
 
 			<div class='tabbed_area'>
 
-				<button class="btn btn-primary floor-button" onclick="showFloor()">Afficher le plan de l'étage</button>
+
 
 				<div onclick="hideFloor()" class="modal-floor" id="modal-floor">
 					<div class="floor">
@@ -357,8 +361,8 @@
 						<div class="room" id="room13"></div>
 						<div class="room" id="room14"></div>
 						<div class="room" id="room15"></div>
+					</div>
 				</div>
-			</div>
 
 				<nav class="nav nav-tabs nav-fill">
 				  <a class="nav-item nav-link active" href="javascript:ChangeOnglet('tab_org', 'content_org');" id="tab_org">Clients du collaborateur</a>
