@@ -20,7 +20,6 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.bundle.min.js" integrity="sha384-VspmFJ2uqRrKr3en+IG0cIq1Cl/v/PHneDw6SQZYgrcr8ZZmZoQ3zhuGfMnSR/F2" crossorigin="anonymous"></script>
 
-
 	<link rel="stylesheet" href="style/body.css">
 	<link rel="stylesheet" href="style/selectInfo.css">
 	<link rel="stylesheet" href="style/CI.css">
@@ -31,6 +30,14 @@
 	<style type="text/css" src="https://itop.hardis.fr/css/light-grey.css"></style>
 
 	<script>
+
+		function copyToClipboard(element) {
+			var $temp = $("<input>");
+			$("body").append($temp);
+			$temp.val($(element).text()).select();
+			document.execCommand("copy");
+			$temp.remove();
+		}
 
 		function showMap(){
 			document.getElementById('modal-map').style.display='block';
@@ -47,9 +54,16 @@
 		function hideFloor(){
 			document.getElementById('modal-floor').style.display='none';
 		}
-
+		var getMapVisibility = $_GET('map');
+		if(getMapVisibility != null){
+			getMapVisibility = getMapVisibility.replace("#","");
+		}
+		console.log(getMapVisibility);
 		var hidden, visibilityChange, fcis;
-		var collaboGet = $_GET('collabo');
+		var collaboGet = $_GET('collab');
+		if(collaboGet != null){
+			collaboGet = collaboGet.replace("#","");
+		}
 		//pour les espaces
 
 		var nomCollabo = 'undefined';
@@ -316,7 +330,10 @@
 					</div>
 						<button class="btn btn-primary floor-button" onclick="showFloor()">Afficher le plan de l'étage</button>
 				</div>
-
+				<p id="p1" style="display:none">P1: I am paragraph 1</p>
+				<button class="btn btn-primary clip" onclick="copyToClipboard('#p1')">Copier le lien de votre position</button>
+				<p id="p2" style="display:none">P1: I am paazeazegraph 1</p>
+				<button class="btn btn-primary clip" onclick="copyToClipboard('#p2')">Copier le lien de cette page</button>
 			</div>
 
 			<div onclick="hideMap()" class="modal-map" id="modal-map">
@@ -548,5 +565,21 @@
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript">
+	/*var clipboard = new ClipboardJS('.btn-clip');
+
+	clipboard.on('success', function(e) {
+	  console.info('Action:', e.action);
+	  console.info('Text:', e.text);
+	  console.info('Trigger:', e.trigger);
+
+	  e.clearSelection();
+	});
+
+	clipboard.on('error', function(e) {
+	  console.error('Action:', e.action);
+	  console.error('Trigger:', e.trigger);
+	});*/
+	</script>
 </body>
 </html>

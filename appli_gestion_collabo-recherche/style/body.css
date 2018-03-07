@@ -604,6 +604,7 @@ ul.tabs li a.active {
 #infoRow{
 	margin: auto;
 	text-align: center;
+	margin-bottom:20px;
 }
 
 #infoC1,#infoC2,#infoC3,#infoC4{

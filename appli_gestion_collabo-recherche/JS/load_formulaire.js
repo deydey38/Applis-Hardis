@@ -121,9 +121,11 @@ $(function(){
 					if(localisation == ""){
 						$(".map-button").hide();
 						$("#position").hide();
+						$(".clip").hide();
 					}else{
 						$(".map-button").show();
 						$("#position").show();
+						$(".clip").show();
 						$(".material-icons").removeClass("active-icon");
 						var idRoom = localisation.replace("B1-","");
 						console.log("idRoom :"+idRoom);
@@ -134,6 +136,21 @@ $(function(){
 					    $('.map .material-icons').css("transform","translate(0,-300px)");
 					  });
 						document.querySelector('#icon'+idRoom).classList.add("active-icon");
+						var nomCollab = $("#collabo").val();
+						console.log("nom du collab: "+nomCollab);
+						console.log("nom du collab%20: "+nomCollab.replace(/ /g, "%20"));
+						var currentUrl = $(location).attr('href').replace("#", "");
+						currentUrl = currentUrl.split("?", 1);
+						console.log("get collab"+ collaboGet);
+						console.log("get map"+ getMapVisibility);
+						console.log("ulr "+ currentUrl);
+						nomCollab = nomCollab.replace(/ /g, "%20");
+						var copyurl = currentUrl+"?collab="+nomCollab+"&map=no";
+						var copyurlmap = currentUrl+"?collab="+nomCollab+"&map=yes";
+						$("#p1").html(copyurlmap);
+						$("#p2").html(copyurl);
+
+
 					}
 
 
@@ -143,7 +160,7 @@ $(function(){
 						key: 'SELECT Person AS B WHERE B.information LIKE "%B1-%"',
 						output_fields: "name, first_name, information"
 					};
-
+					$(".room").html("");
 
 					$.ajax({
 						type: "GET",
@@ -158,7 +175,7 @@ $(function(){
 								//console.log(value['fields']['name']);
 								var numRoom = value['fields']['information'].replace("B1-","");
 
-								console.log(numRoom);
+								//console.log(numRoom);
 								var room = document.querySelector('#room'+numRoom);
 								if($(room).html() != ""){
 									$(room).append("/ ")
@@ -234,7 +251,13 @@ $(function(){
 		$("#collabo").val(nomCollabo);
 		console.log("nom collabo : "+nomCollabo);
 		$("#formC").submit();
+		if(getMapVisibility == "yes"){
+			$(".map-button").click();
+			$('.map .material-icons').css("transform","translate(0,300px)");
+		}
 	}
+
+
 
 	$( "#collabo" ).click(function() {
 	  $( "#alertFormError" ).fadeOut();
