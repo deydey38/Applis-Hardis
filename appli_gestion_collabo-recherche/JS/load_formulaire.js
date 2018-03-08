@@ -1,6 +1,12 @@
 $(function(){
 	$('#collabo').val('');
-
+	$("#displayTF").click(function(){
+		if($("#displayTF").is(":checked")){
+			$("#tableTicketF").show();
+		}else{
+			$("#tableTicketF").hide();
+		}
+	});
 	// autocompletion pour les collabo
 	$('#collabo').autocomplete({
 		source : function(requete, reponse){ // requete, reponse = données nécessaires au plugin

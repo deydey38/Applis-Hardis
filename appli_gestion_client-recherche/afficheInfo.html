@@ -508,10 +508,10 @@
 							   </select>
 							   <br>
 							    <label for='displayTF'>Afficher les tickets fermés</label>
-							   <input id="displayTF" type="checkbox" checked="checked" onclick='if($("#displayTF").is(":checked")){$("#tableTicketF").show();}else{$("#tableTicketF").hide();}'/>
+							   <input id="displayTF" type="checkbox" />
 						   </p>
 						</form>
-						<table id='tableTicketF'class='table table-hover table-bordered table-sm'>
+						<table id='tableTicketF'class='table table-hover table-bordered table-sm' style="display:none">
 							<p class="caption">Liste des tickets fermés/résolus/rejetés sur la période</p>
 							<thead class="thead-light">
 								<tr>

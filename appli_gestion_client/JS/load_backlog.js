@@ -114,6 +114,14 @@ function  loadPageAfficheBacklog(){
 		output_fields: GetWSColumnsAsString()+ ',request_type'
 	};
 
+  $("#displayTF").click(function(){
+		if($("#displayTF").is(":checked")){
+			$("#tableTicketF").show();
+		}else{
+			$("#tableTicketF").hide();
+		}
+	});
+
 
 	$.ajax({
 		type: "POST",

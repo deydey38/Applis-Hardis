@@ -1,5 +1,12 @@
 
 $(function(){
+	$("#displayTF").click(function(){
+		if($("#displayTF").is(":checked")){
+			$("#tableTicketF").show();
+		}else{
+			$("#tableTicketF").hide();
+		}
+	});
 
 	$('#client').val('');
 	$('#ciName').val('');
