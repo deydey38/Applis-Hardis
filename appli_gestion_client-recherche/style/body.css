@@ -5,6 +5,11 @@ body{
 		font-size: 0.8rem!important;
 }
 
+.table-contrat{
+	margin-top: 50px;
+	box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
+}
+
 section{
 	margin-bottom: 50px;
 }

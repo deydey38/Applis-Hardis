@@ -293,7 +293,7 @@ function CDS(){
 			}else{
 				cds="PAS DE CDS";
 			}
-			contractClient();
+			testOK();
 		},
 		error: function(data){
 			console.log("cds error");
@@ -313,7 +313,7 @@ function contractClient(){
 		operation: 'core/get',
 		'class': 'CustomerContract',
 		key: getContratWMS(),
-		output_fields: "name, status, provider_name, auto_close_ticket, closure_delay, start_date, end_date"
+		output_fields: "name, status, provider_name, auto_close_ticket, closure_delay, start_date, end_date, services_list"
 	}
 
 	$.ajax({
@@ -332,7 +332,7 @@ function contractClient(){
 				/*console.log(data);
 				console.log(rep);*/
 				$.each(rep, function(index, value){
-					//console.log("contrat : "+value['fields']['name']);
+					//console.log("contrat : "+value['fields']['services_list']);
 					var tr_contrat = document.createElement("tr");
 					var nom = document.createElement("td");
 					var statut = document.createElement("td");
@@ -349,7 +349,7 @@ function contractClient(){
 					var service = document.createElement("th");
 					var heure = document.createElement("th");
 					var sla = document.createElement("th");
-					var body = document.createElement("tbody");
+					var body_service = document.createElement("tbody");
 
 					$(tab_service).addClass("table table-bordered table-service");
 					$(tr_head_service).addClass("thead-light");
@@ -388,7 +388,19 @@ function contractClient(){
 					$(tr_head_service).append(service);
 					$(tr_head_service).append(heure);
 					$(tr_head_service).append(sla);
-					$(tab_service).append(body);
+					$(tab_service).append(body_service);
+
+					var list_services = value['fields']['services_list'];
+
+					$.each(list_services, function(index, value){
+						var service_name = value['service_name'];
+						var heures_ouvrees = value['coveragewindow_id_friendlyname'];
+						var sla = value['sla_id_friendlyname'];
+						console.log(service_name+" ; "+heures_ouvrees+" ; "+sla);
+						var service_tr = document.createElement("tr");
+						$(service_tr).html("<td>"+service_name+"</td><td>"+heures_ouvrees+"</td><td>"+sla+"</td>");
+						$(body_service).append(service_tr);
+					});
 				});
 
 				$('.contrat-row').hover(function() {
@@ -407,7 +419,7 @@ function contractClient(){
 			console.log("contrat error");
 		}
 	});
-	testOK();
+
 }
 
 
@@ -431,6 +443,7 @@ function testOK(){
 	dejaVisiteContact=0;
 	dejaVisiteBacklog=0;
 	dejaVisiteDocCo=0;
+	dejaVisiteContracts=0;
 
 	$('body h1').text(" ");
 	$('body h1').text("Bienvenue sur l'application de gestion du client " );
