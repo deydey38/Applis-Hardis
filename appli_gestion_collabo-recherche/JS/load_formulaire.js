@@ -127,8 +127,11 @@ $(function(){
 					if(localisation == ""){
 						$(".map-button").hide();
 						$("#position").hide();
-						$(".clip").hide();
+						$(".clip").show();
+						$(".clip2").hide();
+						$(".floor-button").hide();
 					}else{
+						$(".floor-button").show();
 						$(".map-button").show();
 						$("#position").show();
 						$(".clip").show();
