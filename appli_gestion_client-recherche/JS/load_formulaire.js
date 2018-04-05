@@ -244,6 +244,16 @@ $(function(){
 	});
 
 
+	if(clientGet==null){
+		console.log("get clientGet null");
+	}else{
+		console.log("get collabo : "+clientGet);
+		var nomClient = clientGet.replace(/%20/g, " ");
+		$("#client").val(nomClient);
+		console.log("nom collabo : "+nomClient);
+		$("#formC").submit();
+	}
+
 	//faire disparaitre le message d'erreur
 	$( "#client" ).click(function() {
 	  $( "#alertFormError" ).fadeOut();

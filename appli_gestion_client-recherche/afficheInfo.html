@@ -47,6 +47,11 @@
 		var cds = 'undefined';
 		var utilisationExistante = 'undefined';
 
+		var clientGet = $_GET('client');
+		if(clientGet != null){
+			clientGet = clientGet.replace("#","");
+		}
+
 		var page='afficheSelectInfo';
 		var modifClient= 0;
 		var loginVisible= 0;

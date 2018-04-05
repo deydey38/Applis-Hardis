@@ -152,7 +152,7 @@ function refreshSuccessfullOrg(data){
 				// creation d'un lien + ajout a la ligne
 				var a = document.createElement('a');
 				//a.href=iTopOrgUrl+v['key'];
-        a.href="../appli_gestion_client/afficheInfo.html?client="+v['fields']['friendlyname'];
+        a.href="../appli_gestion_client-recherche/afficheInfo.html?client="+v['fields']['friendlyname'];
 				a.innerHTML = v['fields']['friendlyname'];
 				a.target= '_BLANK';
 
