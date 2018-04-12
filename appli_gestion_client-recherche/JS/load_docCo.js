@@ -172,7 +172,7 @@ function refreshSuccessfullDocCo(data){
 			  $(documentConnexion).css("border-bottom", "1px solid black");
 
         $(nameDocument).html(value['fields']['name']);
-        $(lienItop).html("<strong>Lien iTop : </strong><a onclick=\"window.open('"+iTopDocCo_URL+value['key']+"')\">"+iTopDocCo_URL+value['key']+'</a>');
+        $(lienItop).html("<strong>Lien iTop : </strong><a class=\"shake-chunk\" style=\"cursor:pointer\" onclick=\"window.open('"+iTopDocCo_URL+value['key']+"')\">"+iTopDocCo_URL+value['key']+'</a>');
         $(statut).html("<strong>Statut : </strong>"+convertStatut(value['fields']['status']));
         $(maj).html("<strong>Mise à jour par :</strong>"+value['fields']['modifiedby_id_friendlyname']);
         var desc = value['fields']['description'];
@@ -198,7 +198,7 @@ function refreshSuccessfullDocCo(data){
 			});
       console.log("nombre de documents : " + nombreDocument);
       if(nombreDocument == 0){
-        console.log("0 documents la putain de ta grand mère");
+        console.log("0 ");
         $("#content_docCo").html("<strong>Pas de document disponible pour ce client !</strong>");
       }
       $("#content_docCo .doc").last().css("border-bottom", "none");

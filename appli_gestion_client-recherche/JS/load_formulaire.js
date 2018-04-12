@@ -453,6 +453,7 @@ function testOK(){
 	dejaVisiteContact=0;
 	dejaVisiteBacklog=0;
 	dejaVisiteDocCo=0;
+	dejaVisiteInterne=0;
 	dejaVisiteContracts=0;
 
 	$('body h1').text(" ");
