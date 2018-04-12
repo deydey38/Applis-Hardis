@@ -4,7 +4,7 @@
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<title id='title'>Gestion backlog client éditable</title>
 
-	<script type="text/javascript" src="./JS/JQuery/jquery_1.9.1.js"></script>	
+	<script type="text/javascript" src="./JS/JQuery/jquery_1.9.1.js"></script>
 	<script type="text/javascript" src="./JS/JQuery/jquery_1.6.2.js"></script>
 	<script type="text/javascript" src="./JS/JQuery/jquery_1.12.4.js"></script>
 	<script type="text/javascript" src="./JS/JQuery/jquery-ui-1.12.1.js"></script>
@@ -13,37 +13,37 @@
 	<script type="text/javascript" src="./JS/load_rapport.js"></script>
 	<script type="text/javascript" src="./JS/get_param.js"></script>
 	<script type="text/javascript" src="./JS/spin.js"></script>
-	
-	
+
+
 	 <link rel="stylesheet" href="style/backlog.css">
 	 <link rel="stylesheet" href="style/form-edit.css">
 	 <link rel="stylesheet" href="style/body.css">
 	 <link rel="stylesheet" href="style/tooltip.css">
-	<link rel="stylesheet" href="./JS/jquery-ui-themes-1.11.4/themes/smoothness/jquery-ui.css">	
+	<link rel="stylesheet" href="./JS/jquery-ui-themes-1.11.4/themes/smoothness/jquery-ui.css">
 	<style type="text/css" src="https://itoprec.hardis.fr/itop/css/light-grey.css"></style>
-	
+
 	<script>
-	
+
 		//savoir si on est sur chrome
 		var is_chrome = window.chrome;
-		
+
 		var hidden, visibilityChange;
 		//get param
 		var nomOrgGet = $_GET('client');
 		//pour les espaces
-		var nomOrg = nomOrgGet.replace(/%20/g, " "); 
-		
-		var page='afficheSelectInfo';		
-		
+		var nomOrg = nomOrgGet.replace(/%20/g, " ");
+
+		var page='afficheSelectInfo';
+
 		var loginVisible= 0;
-		
+
 		var cookieName= "rapport_"+getCurrentDate().replace(/\s/g,"-").replace(/\//g,"").replace(/:/g,"");
 		cookieName= cookieName.substr(0, 16)+ nomOrg.replace(/\s/g,"");
-		
+
 		console.log("cookie name :"+cookieName);
 		//anti drag&drop
 		$(document).on('dragstart',function(e){return false;});
-		
+
 		//pour reload la page quand on quitte et quon reviens sur la page
 		if (typeof document.hidden !== "undefined") {
 		  hidden = "hidden";
@@ -68,37 +68,38 @@
 		document.addEventListener(visibilityChange, changementVisibilite, false);
 		// Elément qui va permettre un affichage informatif
 		var log = document.getElementById('log');
-		
+
 		// Fonction qui traite l'événement
 		function changementVisibilite() {
-			
+
 			if(!document[hidden] && loginVisible==1) {
 				window.location.reload()
-				
-			} 		 
+
+			}
 		}
 
-		
+
 	</script>
 </head>
 <body onload='loadPageAfficheBacklog();'>
 	<div id="main_div">
 		<div id='login' hidden>
 			<h2>Authentification iTop</h2>
-			
+
 			<p>
 				Vous devez être connecté sur iTop.
 			</p>
-			<a href='https://itoprec.hardis.fr/itop' target='_blank'>Cliquez ici pour se connecter</a>
+			<!--<a href='https://itoprec.hardis.fr/itop' target='_blank'>Cliquez ici pour se connecter</a>-->
+			<a href='https://itoptest.hardis.fr/itop-preprod/pages/UI.php' target='_blank'>Cliquez ici pour se connecter</a>
 			<span class='errorMessage' id='errorMessage'></span><br />
 
 		</div>
 		<span id="backlogHardisListId">	</span>
-		
+
 		<div id='connected' hidden>
 			<span id='refresh' onclick='loadPageAfficheBacklog();'>Actualiser</span>
 			<h1>Bienvenue sur l'application de gestion du client</h1>
-				<div id="content_backlog" class="content"hidden>        
+				<div id="content_backlog" class="content"hidden>
 					<p id='lastExtractDate'></p>
 					<span id="startRapport" >Commencer le rapport</span>
 					<span id="finishRapport" onclick='finishRapport();'>Terminer et télécharger le rapport</span>
@@ -141,11 +142,11 @@
 										<th class='at'>AT</th>
 									</tr>
 								</thead>
-								<tbody>								
+								<tbody>
 								</tbody>
 							</table>
 						</article>
-				
+
 						<article id="recapCountDem">
 							<table id='tableRecapCountDem'>
 								<caption>Demandes</caption>
@@ -159,11 +160,11 @@
 										<th class='at'>AT</th>
 									</tr>
 								</thead>
-								<tbody>								
+								<tbody>
 								</tbody>
 							</table>
 						</article>
-						
+
 						<article id="recapCountProblem">
 							<table id='tableRecapCountProblem'>
 								<caption>Problèmes</caption>
@@ -177,12 +178,12 @@
 										<th class='at'>AT</th>
 									</tr>
 								</thead>
-								<tbody>								
+								<tbody>
 								</tbody>
 							</table>
 						</article>
 					</section>
-					<section id='ticketAT'>		
+					<section id='ticketAT'>
 						<table id='tableTicketAT'>
 							<caption>Liste des tickets à traiter</caption>
 							<thead>
@@ -200,7 +201,7 @@
 									<th></th>
 								</tr>
 							</thead>
-							<tbody>								
+							<tbody>
 							</tbody>
 						</table>
 					</section>
@@ -222,7 +223,7 @@
 									<th></th>
 								</tr>
 							</thead>
-							<tbody>								
+							<tbody>
 							</tbody>
 						</table>
 					</section>
@@ -256,12 +257,12 @@
 									<th></th>
 								</tr>
 							</thead>
-							<tbody id='bodyTableTicketF'>								
+							<tbody id='bodyTableTicketF'>
 							</tbody>
 						</table>
 					</section>
 					<section id='ticketSpe'>
-						<article id='ticketP1'>			
+						<article id='ticketP1'>
 							<table id='tableTicketP1'>
 							<caption>Liste des tickets P1 sur la période</caption>
 								<thead>
@@ -275,7 +276,7 @@
 										<th>Dernier commentaire public</th>
 									</tr>
 								</thead>
-								<tbody>								
+								<tbody>
 								</tbody>
 							</table>
 						</article>
@@ -294,17 +295,17 @@
 										<th>SLA</th>
 									</tr>
 								</thead>
-								<tbody>								
+								<tbody>
 								</tbody>
 							</table>
 						</article>
-					</section>	
-					
+					</section>
+
 				</div>
-				
+
 		</div>
 	</div>
-	
+
 	<!-- popup de modification du backlog -->
 	<div id='popupTicket' hidden>
 		<div id="popup_name" class="popup_block">
@@ -340,8 +341,8 @@
 						<select name="team" id="team" onchange='$("#agent").val(""); $("#errorMessageTeam").val("");$("#errorMessageTeam").fadeOut();'>
 						</select>
 						<span class='errorMessage' id='errorMessageTeam'></span><br>
-						<label for="agent">Agent: </label> 
-						<input type="search" name="agent" id="agent" onclick=" $('#errorMessageAgent').fadeOut(); $('#errorMessageAgent').text('');" /> 
+						<label for="agent">Agent: </label>
+						<input type="search" name="agent" id="agent" onclick=" $('#errorMessageAgent').fadeOut(); $('#errorMessageAgent').text('');" />
 						<img src="./img/croix.png" alt="Supprimer agent" onclick='$("#agent").val("");' />
 						<span class='errorMessage' id='errorMessageAgent'></span><br>
 					</fieldset>
@@ -352,19 +353,19 @@
 							<select name='codReso' id='codReso' onClick='$("#errorMessageCodRes").fadeOut();'>
 								<option id='0'></option>
 							</select>
-						<br><span class='errorMessage' id='errorMessageCodRes'></span><br>							
+						<br><span class='errorMessage' id='errorMessageCodRes'></span><br>
 							<label for='solution'>Solution:</label>
 							<textarea name='solution' id='solution' rows='7' cols='50' placeholder='Tapez votre solution ici' onClick='$("#errorMessageSolution").fadeOut();'></textarea>
 							<br><span class='errorMessage' id='errorMessageSolution'></span><br>
 						</div>
-						<div class='div_resolvedItem' id='divService'>						
+						<div class='div_resolvedItem' id='divService'>
 							<label for='eltService' >Élement de service:</label>
 							<select name='eltService' id='eltService' >
 								<option id='0'></option>
-							</select>								
+							</select>
 						</div>
-					
-						
+
+
 					</fieldset>
 					<fieldset id='div_dateHeure' >
 						<legend>Date et heure de plannification</legend>
@@ -384,10 +385,10 @@
 											$('#heure').append("<option id='h0"+a+"'>0"+a.toString()+"</option>");
 										else
 											$('#heure').append("<option id='h"+a+"'>"+a.toString()+"</option>");
-										
-									}	
+
+									}
 								</script>
-							</select> : 
+							</select> :
 						</div>
 						<div class='div_Plannif' id='div_minutePlannif' >
 							<select type='text' id='minute'>
@@ -408,7 +409,7 @@
 						</div>
 						<div class='divCom'>
 							<label for="compv">Commentaire privé: </label>
-							<textarea name="compv" id="compv" rows="7" cols="50" placeholder="Tapez votre commentaire ici"></textarea> 
+							<textarea name="compv" id="compv" rows="7" cols="50" placeholder="Tapez votre commentaire ici"></textarea>
 						</div>
 					</fieldset>
 					<input type="submit" value="Valider" class='actionButtonFormEdit'/>
@@ -417,10 +418,10 @@
 
 			</div>
 		</div>
-			
-			
+
+
 	</div>
-	
+
 	<div id="popupMessage" class="popup" hidden >
 			<div id="popup_name" class="popup_block">
 				<div class="popup_head">
